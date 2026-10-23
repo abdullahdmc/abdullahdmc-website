@@ -341,15 +341,10 @@ a.cite:hover b { color: var(--accent); }
 .bio-text p { margin: 0 0 1em; }
 .bio-side .contact { margin: 16px 0 0; font-size: 15px; font-weight: 600; }
 .bio-side .contact a { color: var(--accent); font-weight: 500; }
-.side-h { font: 600 12.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 24px 0 10px; }
+.side-h { font: 600 10.5px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 20px 0 8px; }
 .side-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .side-links .profile-link { padding: 8px 10px; font-size: 13.5px; gap: 8px; }
 .side-links .profile-link svg { width: 18px; height: 18px; }
-.side-yt { grid-template-columns: 1fr; gap: 10px; }
-.side-yt a { padding: 14px; gap: 12px; }
-.side-yt svg { width: 32px; height: 32px; }
-.side-yt b { font-size: 17px; }
-.side-yt span { font-size: 13px; }
 @media (max-width: 860px) { .bio-hero { grid-template-columns: 1fr; gap: 24px; } .bio-hero .portrait { max-width: 260px; } }
 .sub-h { font-size: clamp(22px, 2.6vw, 28px); margin: 0 0 18px; }
 .affil-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }

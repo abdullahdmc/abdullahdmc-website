@@ -19,7 +19,7 @@
     <h2 class="side-h">Profiles</h2>
     <div class="side-links" id="links"></div>
     <h2 class="side-h">YouTube</h2>
-    <div class="yt side-yt" id="yt"></div>
+    <div class="side-links" id="yt"></div>
   </aside>
   <div>
     <span class="eyebrow">Biography</span>
@@ -76,7 +76,7 @@
   document.getElementById("members").innerHTML = rows(P.memberships, m => `<li>${m}</li>`);
   document.getElementById("training").innerHTML = rows(P.training, ([t, i, y]) => `<li><b>${t}</b><span class="where">${i}</span><span class="when">${y}</span></li>`);
   document.getElementById("conf").innerHTML = rows(P.conferences, ([t, i, y]) => `<li><b>${t}</b><span class="where">${i}</span><span class="when">${y}</span></li>`);
-  document.getElementById("yt").innerHTML = rows(P.links.youtube, ([l, u, ic, sub]) => `<a href="${u}" target="_blank" rel="noopener">${linkIcon(ic)}<div><b>${l}</b><span>${sub}</span></div></a>`);
+  document.getElementById("yt").innerHTML = linkChips(P.links.youtube.map(([l, u, ic]) => [l, u, ic]));
   document.getElementById("social").innerHTML = linkChips([...P.links.social, ...P.links.youtube.map(([l, u, i]) => [l, u, i])]);
 
   const X = P.experience;
