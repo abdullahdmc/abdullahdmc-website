@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Biography · Abdullah Saeed Khan</title>
-<meta name="description" content="Biography, affiliations, qualifications, training and experience of Dr. Md. Abdullah Saeed Khan.">
+<meta name="description" content="Biography, affiliations, qualifications, training and experience of Dr. Md Abdullah Saeed Khan.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
@@ -13,13 +13,19 @@
 <div id="site-header"></div>
 
 <section><div class="wrap bio-hero">
-  <div class="portrait photo" style="background-image:url(assets/portrait.jpg)" role="img" aria-label="Dr. Md. Abdullah Saeed Khan speaking at a conference"></div>
+  <aside class="bio-side">
+    <div class="portrait photo" style="background-image:url(assets/portrait.jpg)" role="img" aria-label="Dr. Md Abdullah Saeed Khan speaking at a conference"></div>
+    <p class="contact">Contact: <a href="mailto:abdullahdmc@gmail.com">abdullahdmc@gmail.com</a></p>
+    <h2 class="side-h">Profiles</h2>
+    <div class="side-links" id="links"></div>
+    <h2 class="side-h">YouTube</h2>
+    <div class="yt side-yt" id="yt"></div>
+  </aside>
   <div>
     <span class="eyebrow">Biography</span>
     <h1 id="name"></h1>
-    <p class="role">Assistant Professor (Epidemiology) · DPhil candidate, University of Oxford</p>
+    <p class="role">Assistant Professor (Epidemiology) · DPhil fellow, University of Oxford</p>
     <div class="bio-text" id="bio"></div>
-    <div class="links-row" id="links" style="margin-top:8px"></div>
   </div>
 </div></section>
 
@@ -44,8 +50,7 @@
 
 <section class="section band"><div class="wrap two-col">
   <div><span class="eyebrow">Training</span><h2 class="sub-h" style="margin-top:10px">Training &amp; courses</h2><ul class="rows" id="training"></ul></div>
-  <div><span class="eyebrow">Conferences</span><h2 class="sub-h" style="margin-top:10px">Conferences &amp; presentations</h2><ul class="rows" id="conf"></ul>
-    <h2 class="sub-h" style="margin-top:36px">YouTube</h2><div class="yt" id="yt" style="grid-template-columns:1fr"></div></div>
+  <div><span class="eyebrow">Conferences</span><h2 class="sub-h" style="margin-top:10px">Conferences &amp; presentations</h2><ul class="rows" id="conf"></ul></div>
 </div></section>
 
 <section class="section"><div class="wrap">
@@ -64,7 +69,7 @@
   const rows = (list, f) => list.map(f).join("");
   document.getElementById("name").textContent = P.name;
   document.getElementById("bio").innerHTML = P.bio.map(p => `<p>${p}</p>`).join("");
-  document.getElementById("links").innerHTML = linkChips(P.links.research);
+  document.getElementById("links").innerHTML = linkChips([...P.links.research, ...P.links.social]);
   document.getElementById("affil").innerHTML = rows(P.affiliations, a => `<div class="box"><span class="pill">Since ${a.since}</span><h3>${a.org}</h3><div class="meta">${a.role}</div></div>`);
   document.getElementById("edu").innerHTML = rows(P.education, e => `<li><b>${e.degree}</b><span>${e.inst} · ${e.year}</span>${e.note ? `<em>${e.note}</em>` : ""}</li>`);
   document.getElementById("awards").innerHTML = rows(P.awards, a => `<li>${a}</li>`);
