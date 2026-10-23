@@ -41,7 +41,7 @@
   document.getElementById("head").innerHTML = `
     <div class="card-meta" style="--c1:${t.c1}"><span class="dot"></span><a href="writing.html?theme=${post.theme}">${t.bn}</a> · ${postDate(post)}</div>
     <h1>${esc(post.title)}</h1>
-    <div class="byline"><span class="brand-mark">AK</span><div><b>Dr. Md. Abdullah Saeed Khan</b><span>Physician · Epidemiologist</span></div></div>`;
+    <div class="byline"><span class="brand-mark">AK</span><div><b>Dr. Md. Abdullah Saeed Khan</b><span>Assistant Professor (Epidemiology)</span></div></div>`;
   document.getElementById("tags").innerHTML = post.cats.map(c => `<a class="tag" href="writing.html?tag=${encodeURIComponent(c)}">${esc(c)}</a>`).join("");
   document.getElementById("related").innerHTML = posts.filter(p => p.theme === post.theme && p !== post).slice(0, 3).map(cardHTML).join("");
 

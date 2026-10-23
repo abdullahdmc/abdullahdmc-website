@@ -4,14 +4,14 @@ window.PROFILE = {
   email: "abdullahdmc@gmail.com",
   bio: [
     "Dr. Md. Abdullah Saeed Khan is a physician and epidemiologist from Bangladesh and a DPhil candidate in Clinical Medicine at the University of Oxford, working with the Mahidol Oxford Tropical Medicine Research Unit (MORU). His doctoral work develops machine-learning prediction tools for the management of febrile illness with the South East Asian Community Trial Network (SEACTN).",
-    "He is a medical officer in the Ministry of Health and Family Welfare, Bangladesh, currently on deputation to Oxford. He trained in medicine at Dhaka Medical College (MBBS, University of Dhaka), then earned an MPH in Epidemiology from North South University and an MPhil in Preventive and Social Medicine from the National Institute of Preventive and Social Medicine (NIPSOM), where he placed first. Before Oxford he taught at NIPSOM and at Shaheed Syed Nazrul Islam Medical College, and worked as a clinician at the Infectious Disease Hospital, Dhaka, and Rajshahi Medical College Hospital.",
+    "He is an Assistant Professor of Epidemiology under the Ministry of Health and Family Welfare, Bangladesh, currently on deputation to Oxford. He trained in medicine at Dhaka Medical College (MBBS, University of Dhaka), then earned an MPH in Epidemiology from North South University and an MPhil in Preventive and Social Medicine from the National Institute of Preventive and Social Medicine (NIPSOM), where he placed first. Before Oxford he taught at NIPSOM and at Shaheed Syed Nazrul Islam Medical College, and worked as a clinician at the Infectious Disease Hospital, Dhaka, and Rajshahi Medical College Hospital.",
     "His research covers infectious diseases (tetanus, dengue, COVID-19, tuberculosis), noncommunicable diseases, mental health, quality of life, economic evaluation and health systems. Since 2017 he has analysed data for more than 300 research projects, and he is a Global Burden of Disease (GBD) collaborator. His goal is to become an expert in health data science, applying artificial intelligence and machine learning to preventive and curative medicine.",
     "Outside research, he writes in Bangla on science, philosophy, faith and health, and runs two YouTube channels: Truth Quest and Research Notes.",
   ],
   affiliations: [
     { org: "University of Oxford", role: "DPhil candidate, Clinical Medicine (Nuffield Department of Medicine; Wadham College)", since: "2025" },
     { org: "Mahidol Oxford Tropical Medicine Research Unit (MORU)", role: "Doctoral researcher, febrile illness prediction with SEACTN", since: "2025" },
-    { org: "Ministry of Health and Family Welfare, Bangladesh", role: "Medical officer, on deputation (DGHS) to Oxford", since: "2014" },
+    { org: "Ministry of Health and Family Welfare, Bangladesh", role: "Assistant Professor (Epidemiology), on deputation (DGHS) to Oxford", since: "2014" },
     { org: "Pi Research Development Center", role: "Research consultant and health data analyst", since: "2017" },
     { org: "Public Health Professional Development Society", role: "Advisory board member", since: "2020" },
   ],

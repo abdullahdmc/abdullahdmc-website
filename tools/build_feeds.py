@@ -19,6 +19,7 @@ OUT = Path(__file__).parent.parent / "docs" / "assets" / "feeds.js"
 PHILOSOPHY_REPO = "abdullahdmc/bangla-facebook-post-creator"
 AI_REPO = "abdullahdmc/AI-in-healthcare"
 PUBLISH_DELAY = timedelta(days=7)
+TITLES = Path(__file__).parent / "philosophy_titles.json"
 
 
 def gh(path):
@@ -40,6 +41,8 @@ def excerpt(text, n=170):
 
 def philosophy_posts(today):
     log = file_text(PHILOSOPHY_REPO, "LOG.md")
+    # Bangla titles by post file name; posts without one fall back to the English LOG.md topic.
+    titles = json.loads(TITLES.read_text(encoding="utf-8"))
     posts = []
     for row in re.findall(r"^\| (\d{4}-\d{2}-\d{2}) \| (.+?) \| \[(posts/[^\]]+)\]\([^)]+\) \| (.+?) \|$", log, re.M):
         written, topic, path, status = row
@@ -49,10 +52,14 @@ def philosophy_posts(today):
         if live > today:
             continue
         body = paragraphs(file_text(PHILOSOPHY_REPO, path))
+        stem = Path(path).stem
+        if stem not in titles:
+            print(f"No Bangla title for {stem}; add one to {TITLES.name}")
         posts.append({
-            "id": "ph-" + Path(path).stem,
+            "id": "ph-" + stem,
             "date": live.isoformat(),
-            "title": topic,
+            "title": titles.get(stem, topic),
+            "title_en": topic,
             "excerpt": excerpt(body[0]),
             "theme": "faith",
             "cats": ["স্রষ্টার অস্তিত্বের যুক্তি", "দর্শন"],
