@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About · Abdullah Saeed Khan</title>
+<title>Biography · Abdullah Saeed Khan</title>
+<meta name="description" content="Biography, affiliations, qualifications, training and experience of Dr. Md. Abdullah Saeed Khan.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
@@ -11,47 +12,84 @@
 <body>
 <div id="site-header"></div>
 
-<section class="page-head"><div class="wrap">
-  <span class="eyebrow">About</span>
-  <h1>Dr. Md. Abdullah Saeed Khan</h1>
-  <p>Epidemiologist and public health expert, Assistant Professor of Epidemiology (MoHFW, Bangladesh), and DPhil candidate in Clinical Medicine at the University of Oxford.</p>
-</div></section>
-
-<section><div class="wrap about-grid">
-  <div class="hero-visual" style="aspect-ratio:auto"><div class="portrait" style="position:relative;aspect-ratio:4/5"><div class="ph"><b>AK</b>Your portrait here</div></div></div>
+<section><div class="wrap bio-hero">
+  <div class="portrait photo" style="background-image:url(assets/portrait.jpg)" role="img" aria-label="Dr. Md. Abdullah Saeed Khan speaking at a conference"></div>
   <div>
-    <div class="prose">
-      <p>Dr. Khan works in the Ministry of Health and Family Welfare as an Assistant Professor of Epidemiology. He is a research consultant with Pi Research Development Center and an advisor to the Public Health Promotion and Development Society.</p>
-      <p>His studies cover infectious diseases, noncommunicable diseases, quality of life, economic evaluation and clinical trials. His current work develops machine-learning prediction algorithms for febrile illness management, with the South East Asian Community Trial Network (SEACTN) at the Mahidol-Oxford Tropical Medicine Research Unit (MORU).</p>
-      <p>He has more than 100 peer-reviewed publications and over 2,000 citations on Google Scholar (end of 2025).</p>
-    </div>
-    <ul class="timeline">
-      <li><b>DPhil in Clinical Medicine</b><span>University of Oxford · in progress</span></li>
-      <li><b>MPhil, Preventive &amp; Social Medicine (Health Economics)</b><span>National Institute of Preventive and Social Medicine</span></li>
-      <li><b>MPH, Epidemiology</b><span>North South University</span></li>
-      <li><b>MBBS</b><span>Dhaka Medical College</span></li>
-    </ul>
+    <span class="eyebrow">Biography</span>
+    <h1 id="name"></h1>
+    <p class="role">Physician · Epidemiologist · DPhil candidate, University of Oxford</p>
+    <div class="bio-text" id="bio"></div>
+    <div class="links-row" id="links" style="margin-top:8px"></div>
   </div>
 </div></section>
 
-<section class="section" id="research"><div class="wrap">
-  <div class="section-head"><div><span class="eyebrow">Research</span><h2>Publications</h2></div>
-    <a class="link-more" href="https://abdullahdmc.com/short-biography/publications/">On the current site ↗</a></div>
-  <div class="prose" id="pubs" style="max-width:none;font-family:var(--sans);font-size:16px;line-height:1.7"><p class="loading">Loading publications…</p></div>
+<section class="section"><div class="wrap">
+  <span class="eyebrow">Affiliations</span><h2 class="sub-h" style="margin-top:10px">Current affiliations</h2>
+  <div class="affil-grid" id="affil"></div>
+</div></section>
+
+<section class="section band"><div class="wrap two-col">
+  <div><span class="eyebrow">Education</span><h2 class="sub-h" style="margin-top:10px">Academic qualifications</h2><ul class="edu" id="edu"></ul></div>
+  <div>
+    <span class="eyebrow">Recognition</span><h2 class="sub-h" style="margin-top:10px">Awards &amp; achievements</h2><ul class="ticks gold" id="awards"></ul>
+    <h2 class="sub-h" style="margin-top:36px">Society memberships</h2><ul class="ticks" id="members"></ul>
+  </div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <span class="eyebrow">Experience</span><h2 class="sub-h" style="margin-top:10px">Experience</h2>
+  <div class="tabs" role="tablist" id="xtabs"></div>
+  <div id="xpanel"></div>
+</div></section>
+
+<section class="section band"><div class="wrap two-col">
+  <div><span class="eyebrow">Training</span><h2 class="sub-h" style="margin-top:10px">Training &amp; courses</h2><ul class="rows" id="training"></ul></div>
+  <div><span class="eyebrow">Conferences</span><h2 class="sub-h" style="margin-top:10px">Conferences &amp; presentations</h2><ul class="rows" id="conf"></ul>
+    <h2 class="sub-h" style="margin-top:36px">YouTube</h2><div class="yt" id="yt" style="grid-template-columns:1fr"></div></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="cta">
+    <div><h2>Get in touch</h2><p>For research collaboration, data analysis or speaking, write to <a href="mailto:abdullahdmc@gmail.com" style="color:#fff">abdullahdmc@gmail.com</a>.</p></div>
+    <div class="links-row" id="social"></div>
+  </div>
 </div></section>
 
 <div id="site-footer"></div>
+<script src="assets/profile.js"></script>
 <script src="assets/site.js"></script>
 <script>
-  renderChrome(location.hash === "#research" ? "about.html#research" : "about.html");
-  fetch("https://abdullahdmc.com/wp-json/wp/v2/pages?slug=publications&_fields=content")
-    .then(r => r.json())
-    .then(d => {
-      const doc = new DOMParser().parseFromString(d[0].content.rendered, "text/html");
-      doc.querySelectorAll("script, style").forEach(n => n.remove());
-      document.getElementById("pubs").innerHTML = doc.body.innerHTML;
-    })
-    .catch(() => { document.getElementById("pubs").innerHTML = `<p><a href="https://abdullahdmc.com/short-biography/publications/">See the publication list on the current site →</a></p>`; });
+  renderChrome("about.html");
+  const P = window.PROFILE;
+  const rows = (list, f) => list.map(f).join("");
+  document.getElementById("name").textContent = P.name;
+  document.getElementById("bio").innerHTML = P.bio.map(p => `<p>${p}</p>`).join("");
+  document.getElementById("links").innerHTML = linkChips(P.links.research);
+  document.getElementById("affil").innerHTML = rows(P.affiliations, a => `<div class="box"><span class="pill">Since ${a.since}</span><h3>${a.org}</h3><div class="meta">${a.role}</div></div>`);
+  document.getElementById("edu").innerHTML = rows(P.education, e => `<li><b>${e.degree}</b><span>${e.inst} · ${e.year}</span>${e.note ? `<em>${e.note}</em>` : ""}</li>`);
+  document.getElementById("awards").innerHTML = rows(P.awards, a => `<li>${a}</li>`);
+  document.getElementById("members").innerHTML = rows(P.memberships, m => `<li>${m}</li>`);
+  document.getElementById("training").innerHTML = rows(P.training, ([t, i, y]) => `<li><b>${t}</b><span class="where">${i}</span><span class="when">${y}</span></li>`);
+  document.getElementById("conf").innerHTML = rows(P.conferences, ([t, i, y]) => `<li><b>${t}</b><span class="where">${i}</span><span class="when">${y}</span></li>`);
+  document.getElementById("yt").innerHTML = rows(P.links.youtube, ([l, u, ic, sub]) => `<a href="${u}" target="_blank" rel="noopener">${linkIcon(ic)}<div><b>${l}</b><span>${sub}</span></div></a>`);
+  document.getElementById("social").innerHTML = linkChips([...P.links.social, ...P.links.youtube.map(([l, u, i]) => [l, u, i])]);
+
+  const X = P.experience;
+  const tabs = {
+    professional: ["Professional", () => `<ul class="rows">${rows(X.professional, ([r, o, d]) => `<li><b>${r}</b><span class="where">${o}</span><span class="when">${d}</span></li>`)}</ul>`],
+    research: ["Research", () => `<ul class="rows">${rows(X.research, ([r, o, d]) => `<li><b>${r}</b><span class="where">${o}</span><span class="when">${d}</span></li>`)}</ul>`],
+    analysis: ["Data analysis", () => `<ul class="rows">${rows(X.analysis, ([r, o, d, x]) => `<li><b>${r}</b><span class="where">${o}</span><span class="when">${d}</span><span class="extra">${x}</span></li>`)}</ul>
+      <div class="chips-wrap" style="margin-top:14px">${X.tools.map(t => `<span>${t}</span>`).join("")}</div>`],
+    teaching: ["Teaching", () => `<ul class="rows">${rows(X.teaching, ([t, o, d, x]) => `<li><b>${t}</b><span class="where">${o}${x ? " · " + x : ""}</span><span class="when">${d}</span></li>`)}</ul>`],
+  };
+  const xtabs = document.getElementById("xtabs");
+  xtabs.innerHTML = Object.entries(tabs).map(([k, [l]]) => `<button class="tab" role="tab" data-k="${k}">${l}</button>`).join("");
+  const show = k => {
+    xtabs.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.k === k));
+    document.getElementById("xpanel").innerHTML = tabs[k][1]();
+  };
+  xtabs.onclick = e => { const b = e.target.closest(".tab"); if (b) show(b.dataset.k); };
+  show("professional");
 </script>
 </body>
 </html>

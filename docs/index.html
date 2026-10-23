@@ -20,16 +20,16 @@
       <span class="lede-bn">এখানে বিজ্ঞান, মন, বিশ্বাস ও জীবন নিয়ে আমার লেখা।</span></p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="writing.html">লেখাগুলো পড়ুন →</a>
-      <a class="btn btn-ghost" href="about.html#research">Publications</a>
+      <a class="btn btn-ghost" href="research.html">Research &amp; publications</a>
     </div>
     <div class="stats">
-      <div class="stat"><b>100+</b><span>peer-reviewed publications</span></div>
-      <div class="stat"><b>2,000+</b><span>citations (Google Scholar)</span></div>
+      <div class="stat"><b id="cites">6,873</b><span>citations (Google Scholar)</span></div>
+      <div class="stat"><b id="hidx">28</b><span>h-index</span></div>
       <div class="stat"><b id="post-count">160</b><span>essays, poems &amp; reviews</span></div>
     </div>
   </div>
   <div class="hero-visual">
-    <div class="portrait"><div class="ph"><b>AK</b>Your portrait here</div></div>
+    <div class="portrait photo" style="background-image:url(assets/portrait.jpg)" role="img" aria-label="Dr. Md. Abdullah Saeed Khan speaking at a conference"></div>
     <div class="badge"><b>DPhil, University of Oxford</b>Machine-learning tools for febrile illness with MORU &amp; SEACTN</div>
   </div>
 </div></section>
@@ -43,6 +43,26 @@
   <div class="grid" id="latest"></div>
 </div></section>
 
+<section class="section" style="padding-top:0"><div class="wrap">
+  <div class="ai-strip">
+    <div class="section-head" style="margin-bottom:0">
+      <div><span class="eyebrow">Updated daily</span><h2>AI in Health Research</h2>
+        <p style="margin:8px 0 0;opacity:.8;max-width:40em">A daily roundup of new studies on large language models, machine learning and prediction models in medicine.</p></div>
+      <a class="link-more" href="writing.html?theme=ai">All roundups →</a>
+    </div>
+    <div class="ai-list" id="ai-list"></div>
+  </div>
+</div></section>
+
+<section class="section" style="padding-top:24px"><div class="wrap">
+  <div class="section-head">
+    <div><span class="eyebrow">ধারাবাহিক · Series</span><h2>স্রষ্টার অস্তিত্বের যুক্তি</h2>
+      <p style="margin:8px 0 0;color:var(--ink-2)">অ্যারিস্টটল, আকুইনাস, ইবনে সিনা থেকে লাইবনিজ: দর্শনের ইতিহাসের প্রধান যুক্তিগুলো, প্রতি সপ্তাহে নতুন পর্ব।</p></div>
+    <a class="link-more" href="writing.html?tag=স্রষ্টার অস্তিত্বের যুক্তি">পুরো সিরিজ →</a>
+  </div>
+  <div class="grid" id="series"></div>
+</div></section>
+
 <section class="section" style="padding-top:24px"><div class="wrap">
   <div class="section-head"><div><span class="eyebrow">বিষয়ভিত্তিক · Explore by theme</span><h2>যা নিয়ে লিখি</h2></div></div>
   <div class="themes" id="themes"></div>
@@ -54,7 +74,7 @@
     <h2 style="font-size:clamp(26px,3.2vw,34px);margin:10px 0 14px">Infectious disease, outcomes &amp; health systems</h2>
     <p>My work spans tetanus, dengue, COVID-19, febrile illness and health-system accountability: clinical studies, quality of life, economic evaluation and prediction models.</p>
     <div class="affil"><span>University of Oxford</span><span>MORU · SEACTN</span><span>MoHFW Bangladesh</span><span>Pi Research Development Center</span></div>
-    <p style="margin-top:22px"><a class="link-more" href="about.html#research">Full publication list →</a></p>
+    <p style="margin-top:22px"><a class="link-more" href="research.html">Metrics, projects &amp; all publications →</a></p>
   </div>
   <ul class="pubs">
     <li class="pub"><a href="https://doi.org/10.1371/journal.pdig.0000967" target="_blank" rel="noopener"><span class="pub-title">Citizens' feedback on health service and the responses of health authorities of Bangladesh: an analysis of the Grievance Redress System</span>
@@ -69,6 +89,12 @@
 </div></section>
 
 <section class="section"><div class="wrap">
+  <div class="section-head"><div><span class="eyebrow">Find me online</span><h2>Profiles &amp; channels</h2></div></div>
+  <div class="yt" id="yt"></div>
+  <div class="links-row" id="all-links" style="margin-top:16px"></div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
   <div class="cta">
     <div><h2>নতুন লেখা পৌঁছে যাক আপনার ইনবক্সে</h2><p>Get new essays and research notes by email. No spam, unsubscribe anytime.</p></div>
     <form onsubmit="event.preventDefault(); this.innerHTML='<p>Mockup only. Signup will work on the live site.</p>'">
@@ -79,20 +105,34 @@
 
 <div id="site-footer"></div>
 <script src="assets/posts.js"></script>
+<script src="assets/feeds.js"></script>
+<script src="assets/profile.js"></script>
+<script src="assets/research.js"></script>
 <script src="assets/site.js"></script>
 <script>
   renderChrome("index.html");
-  const posts = window.POSTS;
+  const everything = allPosts();
+  const posts = everything.filter(p => p.theme !== "ai");  // daily AI roundups get their own strip
+  const S = window.RESEARCH.scholar;
+  document.getElementById("cites").textContent = S.citations.toLocaleString("en-US");
+  document.getElementById("hidx").textContent = S.h_index;
   document.getElementById("post-count").textContent = posts.length;
-  const feature = posts.find(p => p.title.includes("অ্যাবস্ট্রাক্ট চিন্তা")) || posts[0];
+  const series = posts.filter(p => p.source === "philosophy");
+  const feature = series[0] || posts[0];
   const t = THEMES[feature.theme];
   document.getElementById("feature").innerHTML = `<a class="feature" href="${postURL(feature)}" style="--c1:${t.c1}">
     ${coverHTML(feature, "lg")}
     <div class="f-body"><div class="card-meta"><span class="dot"></span>Featured · ${t.bn} · ${bnDate(feature.date)}</div>
       <h3>${esc(feature.title)}</h3><p>${esc(feature.excerpt)}</p><span class="link-more">পড়ুন →</span></div></a>`;
   document.getElementById("latest").innerHTML = posts.filter(p => p !== feature).slice(0, 6).map(cardHTML).join("");
+  document.getElementById("series").innerHTML = series.filter(p => p !== feature).slice(0, 3).map(cardHTML).join("");
+  document.getElementById("ai-list").innerHTML = everything.filter(p => p.theme === "ai").slice(0, 3).map(p =>
+    `<a href="${postURL(p)}"><span class="d">${enDate(p.date).toUpperCase()}</span><p>${esc(p.excerpt)}</p></a>`).join("");
+  document.getElementById("yt").innerHTML = PROFILE.links.youtube.map(([l, u, ic, sub]) =>
+    `<a href="${u}" target="_blank" rel="noopener">${linkIcon(ic)}<div><b>${l}</b><span>YouTube · ${sub}</span></div></a>`).join("");
+  document.getElementById("all-links").innerHTML = linkChips([...PROFILE.links.research, ...PROFILE.links.social]);
   const counts = {};
-  posts.forEach(p => counts[p.theme] = (counts[p.theme] || 0) + 1);
+  everything.forEach(p => counts[p.theme] = (counts[p.theme] || 0) + 1);
   document.getElementById("themes").innerHTML = Object.entries(THEMES).map(([k, th]) =>
     `<a class="theme-tile" href="writing.html?theme=${k}" style="--c1:${th.c1};--c2:${th.c2}">${motifSVG(th.motif)}
       <b>${th.bn}</b><span>${th.en} · ${bn(counts[k] || 0)}টি লেখা</span></a>`).join("");

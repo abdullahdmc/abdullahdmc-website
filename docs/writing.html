@@ -30,12 +30,17 @@
 
 <div id="site-footer"></div>
 <script src="assets/posts.js"></script>
+<script src="assets/feeds.js"></script>
+<script src="assets/profile.js"></script>
 <script src="assets/site.js"></script>
 <script>
   renderChrome("writing.html");
-  const posts = window.POSTS;
+  const params = new URLSearchParams(location.search);
+  const tag = params.get("tag");
+  const posts = allPosts().filter(p => !tag || p.cats.includes(tag));
+  if (tag) document.querySelector(".page-head h1").textContent = tag;
   const PAGE = 12;
-  let theme = new URLSearchParams(location.search).get("theme") || "all";
+  let theme = params.get("theme") || "all";
   let shown = PAGE;
   const counts = { all: posts.length };
   posts.forEach(p => counts[p.theme] = (counts[p.theme] || 0) + 1);

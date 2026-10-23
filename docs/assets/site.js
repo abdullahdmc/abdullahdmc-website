@@ -7,7 +7,13 @@ const THEMES = {
   faith:      { bn: "বিশ্বাস ও দর্শন", en: "Faith & Philosophy", c1: "#1d3f66", c2: "#3a6ea5", motif: "star" },
   literature: { bn: "সাহিত্য ও রিভিউ", en: "Poems, Stories & Reviews", c1: "#7a4a17", c2: "#c08a3e", motif: "book" },
   essays:     { bn: "ভাবনা ও প্রবন্ধ", en: "Essays & Reflections", c1: "#34433a", c2: "#5f7a67", motif: "ripple" },
+  ai:         { bn: "AI in Health Research", en: "Daily research roundup", c1: "#0b3d5c", c2: "#1f8ab0", motif: "circuit" },
 };
+
+// WordPress posts plus the auto-written feeds (philosophy posts, daily AI roundups), newest first.
+function allPosts() {
+  return [...(window.POSTS || []), ...(window.FEEDS || [])].sort((a, b) => b.date.localeCompare(a.date));
+}
 
 const MOTIFS = {
   helix: `<path d="M40 0 C 160 50, 160 50, 40 100 S -80 150, 40 200" /><path d="M160 0 C 40 50, 40 50, 160 100 S 280 150, 160 200" />
@@ -21,13 +27,38 @@ const MOTIFS = {
   book: `<path d="M100 60 C 70 40, 30 40, 10 50 V 160 C 30 150, 70 150, 100 170 C 130 150, 170 150, 190 160 V 50 C 170 40, 130 40, 100 60 Z" />
     <path d="M100 60 V170" /><path d="M30 75 C 50 70, 70 72, 85 80 M30 100 C 50 95, 70 97, 85 105 M30 125 C 50 120, 70 122, 85 130 M115 80 C 130 72, 150 70, 170 75 M115 105 C 130 97, 150 95, 170 100" />`,
   ripple: `${[18, 38, 58, 78, 98].map(r => `<circle cx="100" cy="100" r="${r}" />`).join("")}`,
+  circuit: `<rect x="65" y="65" width="70" height="70" rx="8" /><rect x="85" y="85" width="30" height="30" rx="4" />
+    ${[75, 100, 125].map(v => `<path d="M${v} 65 V20 M${v} 135 V180 M65 ${v} H20 M135 ${v} H180" /><circle cx="${v}" cy="16" r="4" /><circle cx="${v}" cy="184" r="4" /><circle cx="16" cy="${v}" r="4" /><circle cx="184" cy="${v}" r="4" />`).join("")}`,
 };
+
+// Simple line icons for profile links.
+const LINK_ICONS = {
+  scholar: `<path d="M12 3 2 9l10 6 10-6-10-6Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/>`,
+  rg: `<rect x="3" y="3" width="18" height="18" rx="3"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor" stroke="none" font-family="Inter,sans-serif">RG</text>`,
+  orcid: `<circle cx="12" cy="12" r="9"/><path d="M9 10v6M9 7.5v.1M12 10h2a3 3 0 0 1 0 6h-2v-6Z"/>`,
+  scopus: `<circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.6-.9-1.7-1.5-3-1.5-1.7 0-3 1-3 2.2 0 2.8 6 1.4 6 4.2 0 1.3-1.3 2.3-3 2.3-1.4 0-2.6-.6-3.2-1.6"/>`,
+  wos: `<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/>`,
+  github: `<path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>`,
+  linkedin: `<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.1M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>`,
+  facebook: `<path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15V3Z"/>`,
+  x: `<path d="M4 4l16 16M20 4 4 20"/>`,
+  youtube: `<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor"/>`,
+  mail: `<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>`,
+};
+function linkIcon(name) {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${LINK_ICONS[name]}</svg>`;
+}
+function linkChips(list) {
+  return list.map(([label, url, icon, sub]) =>
+    `<a class="profile-link" href="${url}" target="_blank" rel="noopener">${linkIcon(icon)}<span>${label}${sub ? `<small>${sub}</small>` : ""}</span></a>`).join("");
+}
 
 function motifSVG(name, extra = "") {
   return `<svg class="motif" viewBox="-10 -10 220 220" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" ${extra} aria-hidden="true">${MOTIFS[name]}</svg>`;
 }
 
-function hash(n) {
+function hash(id) {
+  const n = typeof id === "number" ? id : [...String(id)].reduce((a, c) => (a * 31 + c.charCodeAt(0)) % 1000003, 7);
   let h = n * 2654435761 % 4294967296;
   return () => (h = (h * 1103515245 + 12345) % 2147483648) / 2147483648;
 }
@@ -50,12 +81,16 @@ function coverHTML(post, cls = "") {
 
 function postURL(post) { return `post.html?id=${post.id}`; }
 
+function postDate(post) {
+  return post.lang === "en" ? enDate(post.date) : bnDate(post.date);
+}
+
 function cardHTML(post) {
   const t = THEMES[post.theme];
   return `<a class="card" href="${postURL(post)}" style="--c1:${t.c1}">
     ${coverHTML(post)}
     <div class="card-body">
-      <div class="card-meta"><span class="dot"></span>${t.bn} · ${bnDate(post.date)}</div>
+      <div class="card-meta"><span class="dot"></span>${t.bn} · ${postDate(post)}</div>
       <h3>${esc(post.title)}</h3>
       <p>${esc(post.excerpt)}</p>
     </div>
@@ -69,10 +104,13 @@ function bnDate(iso) {
   const [y, m, d] = iso.split("-").map(Number);
   return `${bn(d)} ${BN_MONTHS[m - 1]} ${bn(y)}`;
 }
+function enDate(iso) {
+  return new Date(iso + "T00:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+}
 function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 
 function renderChrome(active) {
-  const links = [["index.html", "Home"], ["writing.html", "লেখা · Writing"], ["about.html#research", "Research"], ["about.html", "About"]];
+  const links = [["index.html", "Home"], ["writing.html", "লেখা · Writing"], ["research.html", "Research"], ["about.html", "Biography"]];
   document.getElementById("site-header").outerHTML = `
   <div class="mock-note">Design mockup — not the live site. Posts load from abdullahdmc.com.</div>
   <header class="site-header"><div class="wrap">
@@ -83,7 +121,9 @@ function renderChrome(active) {
   </div></header>`;
   document.getElementById("site-footer").outerHTML = `
   <footer class="site-footer"><div class="wrap">
-    <div>© ${new Date().getFullYear()} Md. Abdullah Saeed Khan</div>
-    <div><a href="writing.html">Writing</a><a href="about.html#research">Publications</a><a href="about.html">About</a><a href="https://abdullahdmc.com/">Current site ↗</a></div>
+    <div>© ${new Date().getFullYear()} Md. Abdullah Saeed Khan<br><a href="mailto:abdullahdmc@gmail.com">abdullahdmc@gmail.com</a></div>
+    ${window.PROFILE ? `<div class="footer-icons">${[...PROFILE.links.research, ...PROFILE.links.social, ...PROFILE.links.youtube]
+      .map(([label, url, icon]) => `<a href="${url}" target="_blank" rel="noopener" title="${label}" aria-label="${label}">${linkIcon(icon)}</a>`).join("")}</div>` : ""}
+    <div><a href="writing.html">Writing</a><a href="research.html">Research</a><a href="about.html">Biography</a><a href="https://abdullahdmc.com/">Current site ↗</a></div>
   </div></footer>`;
 }
