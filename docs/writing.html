@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing · Abdullah Saeed Khan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<section class="page-head"><div class="wrap">
+  <span class="eyebrow">লেখা · Writing</span>
+  <h1>প্রবন্ধ, কবিতা ও ভাবনা</h1>
+  <p>বিবর্তন, মস্তিষ্ক, চিকিৎসা, বিশ্বাস ও দর্শন নিয়ে লেখা, সঙ্গে কবিতা, গল্প আর বইয়ের রিভিউ।</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="toolbar">
+    <div class="chips" id="chips"></div>
+    <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input id="q" type="search" placeholder="লেখা খুঁজুন…" aria-label="Search posts"></label>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="list"></div>
+  <div class="more-wrap"><button class="btn btn-ghost" id="more">আরও দেখুন</button></div>
+</div></section>
+
+<div id="site-footer"></div>
+<script src="assets/posts.js"></script>
+<script src="assets/site.js"></script>
+<script>
+  renderChrome("writing.html");
+  const posts = window.POSTS;
+  const PAGE = 12;
+  let theme = new URLSearchParams(location.search).get("theme") || "all";
+  let shown = PAGE;
+  const counts = { all: posts.length };
+  posts.forEach(p => counts[p.theme] = (counts[p.theme] || 0) + 1);
+  const chips = document.getElementById("chips");
+  chips.innerHTML = [["all", "সব"], ...Object.entries(THEMES).map(([k, t]) => [k, t.bn])]
+    .map(([k, l]) => `<button class="chip" data-k="${k}">${k === "all" ? "" : `<span class="dot" style="--c1:${THEMES[k].c1}"></span>`}${l} <small>${bn(counts[k] || 0)}</small></button>`).join("");
+  chips.onclick = e => { const b = e.target.closest(".chip"); if (!b) return; theme = b.dataset.k; shown = PAGE; draw(); };
+  document.getElementById("q").oninput = () => { shown = PAGE; draw(); };
+  document.getElementById("more").onclick = () => { shown += PAGE; draw(); };
+
+  function draw() {
+    chips.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.k === theme));
+    const q = document.getElementById("q").value.trim().toLowerCase();
+    const list = posts.filter(p => (theme === "all" || p.theme === theme) &&
+      (!q || (p.title + " " + p.excerpt + " " + p.cats.join(" ")).toLowerCase().includes(q)));
+    document.getElementById("count").textContent = `${bn(list.length)}টি লেখা`;
+    document.getElementById("list").innerHTML = list.length
+      ? list.slice(0, shown).map(cardHTML).join("")
+      : `<div class="empty" style="grid-column:1/-1">কোনো লেখা পাওয়া যায়নি।</div>`;
+    document.getElementById("more").style.display = list.length > shown ? "" : "none";
+  }
+  draw();
+</script>
+</body>
+</html>

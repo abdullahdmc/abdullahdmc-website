@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Md. Abdullah Saeed Khan</title>
+<meta name="description" content="Physician, epidemiologist and writer. Research on infectious disease and public health, and essays in Bangla on science, mind and faith.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<section class="hero"><div class="wrap hero-grid">
+  <div>
+    <span class="eyebrow">Physician · Researcher · Thinker</span>
+    <h1>Evidence for health,<br><em>reflection</em> for life.</h1>
+    <p class="lede">I'm an epidemiologist and public health researcher working on infectious diseases in Bangladesh, now pursuing a DPhil in Clinical Medicine at the University of Oxford.
+      <span class="lede-bn">এখানে বিজ্ঞান, মন, বিশ্বাস ও জীবন নিয়ে আমার লেখা।</span></p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="writing.html">লেখাগুলো পড়ুন →</a>
+      <a class="btn btn-ghost" href="about.html#research">Publications</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>100+</b><span>peer-reviewed publications</span></div>
+      <div class="stat"><b>2,000+</b><span>citations (Google Scholar)</span></div>
+      <div class="stat"><b id="post-count">160</b><span>essays, poems &amp; reviews</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="portrait"><div class="ph"><b>AK</b>Your portrait here</div></div>
+    <div class="badge"><b>DPhil, University of Oxford</b>Machine-learning tools for febrile illness with MORU &amp; SEACTN</div>
+  </div>
+</div></section>
+
+<section class="section" style="padding-top:32px"><div class="wrap">
+  <div class="section-head">
+    <div><span class="eyebrow">সাম্প্রতিক লেখা · Latest writing</span><h2>নতুন লেখা</h2></div>
+    <a class="link-more" href="writing.html">সব লেখা দেখুন →</a>
+  </div>
+  <div id="feature"></div>
+  <div class="grid" id="latest"></div>
+</div></section>
+
+<section class="section" style="padding-top:24px"><div class="wrap">
+  <div class="section-head"><div><span class="eyebrow">বিষয়ভিত্তিক · Explore by theme</span><h2>যা নিয়ে লিখি</h2></div></div>
+  <div class="themes" id="themes"></div>
+</div></section>
+
+<section class="section band" id="research"><div class="wrap research">
+  <div class="intro">
+    <span class="eyebrow">Research</span>
+    <h2 style="font-size:clamp(26px,3.2vw,34px);margin:10px 0 14px">Infectious disease, outcomes &amp; health systems</h2>
+    <p>My work spans tetanus, dengue, COVID-19, febrile illness and health-system accountability: clinical studies, quality of life, economic evaluation and prediction models.</p>
+    <div class="affil"><span>University of Oxford</span><span>MORU · SEACTN</span><span>MoHFW Bangladesh</span><span>Pi Research Development Center</span></div>
+    <p style="margin-top:22px"><a class="link-more" href="about.html#research">Full publication list →</a></p>
+  </div>
+  <ul class="pubs">
+    <li class="pub"><a href="https://doi.org/10.1371/journal.pdig.0000967" target="_blank" rel="noopener"><span class="pub-title">Citizens' feedback on health service and the responses of health authorities of Bangladesh: an analysis of the Grievance Redress System</span>
+      <div class="pub-meta"><span class="j">PLOS Digital Health</span><span>2025</span><span>First author</span></div></a></li>
+    <li class="pub"><a href="https://doi.org/10.1016/j.ijregi.2024.03.006" target="_blank" rel="noopener"><span class="pub-title">The impact of comorbidity on the quality of life of COVID-19 recovered people in Bangladesh</span>
+      <div class="pub-meta"><span class="j">IJID Regions</span><span>2024</span><span>First author</span></div></a></li>
+    <li class="pub"><a href="https://doi.org/10.1371/journal.pntd.0010235" target="_blank" rel="noopener"><span class="pub-title">Factors associated with in-hospital mortality of adult tetanus patients: a multicenter study from Bangladesh</span>
+      <div class="pub-meta"><span class="j">PLOS Neglected Tropical Diseases</span><span>2022</span><span>First author</span></div></a></li>
+    <li class="pub"><a href="https://doi.org/10.1186/s12887-021-02947-y" target="_blank" rel="noopener"><span class="pub-title">Clinical spectrum and predictors of severity of dengue among children in the 2019 outbreak in Bangladesh</span>
+      <div class="pub-meta"><span class="j">BMC Pediatrics</span><span>2021</span><span>First author</span></div></a></li>
+  </ul>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="cta">
+    <div><h2>নতুন লেখা পৌঁছে যাক আপনার ইনবক্সে</h2><p>Get new essays and research notes by email. No spam, unsubscribe anytime.</p></div>
+    <form onsubmit="event.preventDefault(); this.innerHTML='<p>Mockup only. Signup will work on the live site.</p>'">
+      <input type="email" placeholder="your@email.com" aria-label="Email"><button class="btn" type="submit">Subscribe</button>
+    </form>
+  </div>
+</div></section>
+
+<div id="site-footer"></div>
+<script src="assets/posts.js"></script>
+<script src="assets/site.js"></script>
+<script>
+  renderChrome("index.html");
+  const posts = window.POSTS;
+  document.getElementById("post-count").textContent = posts.length;
+  const feature = posts.find(p => p.title.includes("অ্যাবস্ট্রাক্ট চিন্তা")) || posts[0];
+  const t = THEMES[feature.theme];
+  document.getElementById("feature").innerHTML = `<a class="feature" href="${postURL(feature)}" style="--c1:${t.c1}">
+    ${coverHTML(feature, "lg")}
+    <div class="f-body"><div class="card-meta"><span class="dot"></span>Featured · ${t.bn} · ${bnDate(feature.date)}</div>
+      <h3>${esc(feature.title)}</h3><p>${esc(feature.excerpt)}</p><span class="link-more">পড়ুন →</span></div></a>`;
+  document.getElementById("latest").innerHTML = posts.filter(p => p !== feature).slice(0, 6).map(cardHTML).join("");
+  const counts = {};
+  posts.forEach(p => counts[p.theme] = (counts[p.theme] || 0) + 1);
+  document.getElementById("themes").innerHTML = Object.entries(THEMES).map(([k, th]) =>
+    `<a class="theme-tile" href="writing.html?theme=${k}" style="--c1:${th.c1};--c2:${th.c2}">${motifSVG(th.motif)}
+      <b>${th.bn}</b><span>${th.en} · ${bn(counts[k] || 0)}টি লেখা</span></a>`).join("");
+</script>
+</body>
+</html>

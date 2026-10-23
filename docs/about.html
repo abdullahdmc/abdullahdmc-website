@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Abdullah Saeed Khan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<section class="page-head"><div class="wrap">
+  <span class="eyebrow">About</span>
+  <h1>Dr. Md. Abdullah Saeed Khan</h1>
+  <p>Epidemiologist and public health expert, Assistant Professor of Epidemiology (MoHFW, Bangladesh), and DPhil candidate in Clinical Medicine at the University of Oxford.</p>
+</div></section>
+
+<section><div class="wrap about-grid">
+  <div class="hero-visual" style="aspect-ratio:auto"><div class="portrait" style="position:relative;aspect-ratio:4/5"><div class="ph"><b>AK</b>Your portrait here</div></div></div>
+  <div>
+    <div class="prose">
+      <p>Dr. Khan works in the Ministry of Health and Family Welfare as an Assistant Professor of Epidemiology. He is a research consultant with Pi Research Development Center and an advisor to the Public Health Promotion and Development Society.</p>
+      <p>His studies cover infectious diseases, noncommunicable diseases, quality of life, economic evaluation and clinical trials. His current work develops machine-learning prediction algorithms for febrile illness management, with the South East Asian Community Trial Network (SEACTN) at the Mahidol-Oxford Tropical Medicine Research Unit (MORU).</p>
+      <p>He has more than 100 peer-reviewed publications and over 2,000 citations on Google Scholar (end of 2025).</p>
+    </div>
+    <ul class="timeline">
+      <li><b>DPhil in Clinical Medicine</b><span>University of Oxford · in progress</span></li>
+      <li><b>MPhil, Preventive &amp; Social Medicine (Health Economics)</b><span>National Institute of Preventive and Social Medicine</span></li>
+      <li><b>MPH, Epidemiology</b><span>North South University</span></li>
+      <li><b>MBBS</b><span>Dhaka Medical College</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="section" id="research"><div class="wrap">
+  <div class="section-head"><div><span class="eyebrow">Research</span><h2>Publications</h2></div>
+    <a class="link-more" href="https://abdullahdmc.com/short-biography/publications/">On the current site ↗</a></div>
+  <div class="prose" id="pubs" style="max-width:none;font-family:var(--sans);font-size:16px;line-height:1.7"><p class="loading">Loading publications…</p></div>
+</div></section>
+
+<div id="site-footer"></div>
+<script src="assets/site.js"></script>
+<script>
+  renderChrome(location.hash === "#research" ? "about.html#research" : "about.html");
+  fetch("https://abdullahdmc.com/wp-json/wp/v2/pages?slug=publications&_fields=content")
+    .then(r => r.json())
+    .then(d => {
+      const doc = new DOMParser().parseFromString(d[0].content.rendered, "text/html");
+      doc.querySelectorAll("script, style").forEach(n => n.remove());
+      document.getElementById("pubs").innerHTML = doc.body.innerHTML;
+    })
+    .catch(() => { document.getElementById("pubs").innerHTML = `<p><a href="https://abdullahdmc.com/short-biography/publications/">See the publication list on the current site →</a></p>`; });
+</script>
+</body>
+</html>

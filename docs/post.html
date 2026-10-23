@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post · Abdullah Saeed Khan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<article>
+  <div class="wrap post-hero" id="hero"></div>
+  <div class="wrap">
+    <header class="post-head" id="head"></header>
+    <div class="prose" id="body"><p class="loading">লেখাটি লোড হচ্ছে…</p></div>
+    <div class="post-foot" id="tags"></div>
+  </div>
+</article>
+
+<section class="section"><div class="wrap">
+  <div class="section-head"><div><span class="eyebrow">আরও পড়ুন</span><h2>একই বিষয়ে আরও লেখা</h2></div></div>
+  <div class="grid" id="related"></div>
+</div></section>
+
+<div id="site-footer"></div>
+<script src="assets/posts.js"></script>
+<script src="assets/site.js"></script>
+<script>
+  renderChrome("writing.html");
+  const posts = window.POSTS;
+  const id = Number(new URLSearchParams(location.search).get("id"));
+  const post = posts.find(p => p.id === id) || posts.find(p => p.title.includes("অ্যাবস্ট্রাক্ট চিন্তা")) || posts[0];
+  const t = THEMES[post.theme];
+  document.title = `${post.title} · Abdullah Saeed Khan`;
+  document.getElementById("hero").innerHTML = coverHTML(post, "lg");
+  document.getElementById("head").innerHTML = `
+    <div class="card-meta" style="--c1:${t.c1}"><span class="dot"></span><a href="writing.html?theme=${post.theme}">${t.bn}</a> · ${bnDate(post.date)}</div>
+    <h1>${esc(post.title)}</h1>
+    <div class="byline"><span class="brand-mark">AK</span><div><b>Dr. Md. Abdullah Saeed Khan</b><span>Physician · Epidemiologist</span></div></div>`;
+  document.getElementById("tags").innerHTML = post.cats.map(c => `<span class="tag">${esc(c)}</span>`).join("");
+  document.getElementById("related").innerHTML = posts.filter(p => p.theme === post.theme && p !== post).slice(0, 3).map(cardHTML).join("");
+
+  // Full text comes live from the current WordPress site.
+  fetch(`https://abdullahdmc.com/wp-json/wp/v2/posts/${post.id}?_fields=content`)
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(d => {
+      const doc = new DOMParser().parseFromString(d.content.rendered, "text/html");
+      doc.querySelectorAll("script, style").forEach(n => n.remove());
+      document.getElementById("body").innerHTML = doc.body.innerHTML;
+    })
+    .catch(() => {
+      document.getElementById("body").innerHTML = `<p>${esc(post.excerpt)}</p><p><a href="${post.link}">বর্তমান সাইটে পুরো লেখাটি পড়ুন →</a></p>`;
+    });
+</script>
+</body>
+</html>
