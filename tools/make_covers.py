@@ -16,6 +16,8 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+from PIL import Image
+
 from build_data import THEME_ORDER, THEMES
 from wp import WP
 
@@ -53,7 +55,11 @@ def main(upload):
     (ROOT / "tools" / "covers.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     OUT.mkdir(exist_ok=True)
 
-    server = ThreadingHTTPServer(("127.0.0.1", PORT), partial(SimpleHTTPRequestHandler, directory=str(ROOT)))
+    class QuietHandler(SimpleHTTPRequestHandler):
+        def log_message(self, *args):
+            pass
+
+    server = ThreadingHTTPServer(("127.0.0.1", PORT), partial(QuietHandler, directory=str(ROOT)))
     threading.Thread(target=server.serve_forever, daemon=True).start()
     tmp = ROOT / "dist" / "chrome-profiles"
     tmp.mkdir(parents=True, exist_ok=True)
@@ -65,12 +71,25 @@ def main(upload):
     print(f"rendered {len(pngs) - len(missing)} covers in {time.time() - t0:.0f}s; missing: {len(missing)}")
 
     if upload:
+        failed = []
         for post, png in zip(data, pngs):
             if not png.exists():
                 continue
-            media = wp.upload(png, title=post["title"], alt=post["title"])
-            wp.post(f"/wp/v2/posts/{post['id']}", {"featured_media": media["id"]})
-            print("set", post["id"], "->", media["id"], flush=True)
+            jpg = png.with_suffix(".jpg")
+            if not jpg.exists():  # JPEG is ~6x smaller than the PNG screenshot
+                Image.open(png).convert("RGB").save(jpg, quality=86, optimize=True, progressive=True)
+            for attempt in range(3):
+                try:
+                    media = wp.upload(jpg, title=post["title"], alt=post["title"])
+                    wp.post(f"/wp/v2/posts/{post['id']}", {"featured_media": media["id"]})
+                    print("set", post["id"], "->", media["id"], flush=True)
+                    break
+                except Exception as e:  # network hiccups or server timeouts: retry, then move on
+                    print("retry", post["id"], attempt + 1, str(e)[:120], flush=True)
+                    time.sleep(5)
+            else:
+                failed.append(post["id"])
+        print("failed:", failed, flush=True)
 
 
 if __name__ == "__main__":

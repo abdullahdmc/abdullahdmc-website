@@ -79,7 +79,9 @@ function amk_cover( $post = null, $size = 'amk-card', $class = '' ) {
 	$post  = get_post( $post );
 	$theme = amk_themes()[ amk_theme_of( $post ) ];
 	if ( has_post_thumbnail( $post ) ) {
-		return '<div class="cover-img ' . esc_attr( $class ) . '">' . get_the_post_thumbnail( $post, $size, array( 'alt' => esc_attr( get_the_title( $post ) ), 'loading' => 'lazy' ) ) . '</div>';
+		// Large covers sit at the top of the page, so they load straight away; card covers load lazily.
+		$loading = 'lg' === $class ? array( 'loading' => 'eager', 'fetchpriority' => 'high' ) : array( 'loading' => 'lazy' );
+		return '<div class="cover-img ' . esc_attr( $class ) . '">' . get_the_post_thumbnail( $post, $size, array( 'alt' => esc_attr( get_the_title( $post ) ) ) + $loading ) . '</div>';
 	}
 	return sprintf(
 		'<div class="cover %s" style="--c1:%s;--c2:%s"><span class="c-chip">%s</span><span class="c-sig">abdullahdmc.com</span><div class="c-title">%s</div></div>',

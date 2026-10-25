@@ -7,6 +7,7 @@
 .post-hero .cover-img { border-radius: 20px; }
 @media (max-width: 860px) { .feature .cover-img { min-height: 0; aspect-ratio: 16 / 9; } }
 a.chip { text-decoration: none; }
+#ast-scroll-top { display: none !important; }
 
 /* Pagination on the writing page and archives. */
 .pager { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-top: 36px; }

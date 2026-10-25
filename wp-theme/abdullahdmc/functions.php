@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AMK_VERSION', '1.0.0' );
+define( 'AMK_VERSION', '1.0.1' );
 
 require_once __DIR__ . '/inc/helpers.php';
 
@@ -23,6 +23,15 @@ add_action( 'after_setup_theme', function () {
 
 // Profile and research data, editable by administrators over REST, readable by the theme.
 add_action( 'init', function () {
+	// Extra CSS for small design tweaks without re-uploading the theme.
+	register_setting( 'general', 'amk_css', array(
+		'type'              => 'string',
+		'default'           => '',
+		'show_in_rest'      => true,
+		'sanitize_callback' => function ( $value ) {
+			return wp_strip_all_tags( (string) $value );
+		},
+	) );
 	foreach ( array( 'amk_profile', 'amk_research' ) as $name ) {
 		register_setting( 'general', $name, array(
 			'type'         => 'string',
@@ -50,10 +59,16 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( 'amk-fonts', 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap', array(), null );
 	wp_enqueue_style( 'amk-site', get_stylesheet_directory_uri() . '/assets/site.css', array( 'amk-fonts' ), AMK_VERSION );
 	wp_enqueue_style( 'amk-wp', get_stylesheet_directory_uri() . '/assets/wp.css', array( 'amk-site' ), AMK_VERSION );
+	if ( get_option( 'amk_css' ) ) {
+		wp_add_inline_style( 'amk-wp', get_option( 'amk_css' ) );
+	}
 	wp_enqueue_script( 'amk-site', get_stylesheet_directory_uri() . '/assets/site.js', array(), AMK_VERSION, true );
 	wp_add_inline_script( 'amk-site', amk_data_script(), 'before' );
 	wp_enqueue_script( 'amk-pages', get_stylesheet_directory_uri() . '/assets/pages.js', array( 'amk-site' ), AMK_VERSION, true );
 }, 100 );
+
+// Astra's scroll-to-top button has no styling without Astra's CSS.
+add_filter( 'astra_get_option_scroll-to-top-enable', '__return_false' );
 
 add_filter( 'excerpt_length', function () {
 	return 32;
