@@ -5,6 +5,8 @@ Each CV entry is matched to a Scholar paper by title words; a match supplies the
 venue, year, citation count and Scholar link.
 """
 import json
+import urllib.parse
+import urllib.request
 from datetime import date
 import re
 from pathlib import Path
@@ -111,11 +113,74 @@ def main():
             "title": title, "venue": venue, "year": year, "cites": cites, "link": link,
             "scholar": scholar, "first": e["first_author"], "notes": e["notes"], "icon": topic(title),
         })
+    added, review = add_from_scholar(papers, used, pubs, out)
     out.sort(key=lambda p: -(p["year"] or 0))  # stable: CV order kept within a year
     data = {k: metrics[k] for k in ("updated", "scholar", "researchgate")}
     data["publications"] = out
     (ASSETS / "research.js").write_text("window.RESEARCH = " + json.dumps(data, ensure_ascii=False) + ";\n", encoding="utf-8")
-    print(f"{len(out)} publications ({sum(p['first'] for p in out)} first-author), {unmatched} not matched to Scholar")
+    REVIEW.write_text(
+        "Google Scholar entries NOT shown on the website (possible duplicates, preprints, corrections or older items).\n"
+        "To show one, add it to tools/publications.json; to stop seeing one here, add its title to tools/publications_exclude.json.\n\n"
+        + "\n".join(f"{p['year'] or '----'} | {p['venue'][:45]:45} | {p['title']}" for p in review) + "\n",
+        encoding="utf-8")
+    print(f"{len(out)} publications ({sum(p['first'] for p in out)} first-author), {unmatched} CV entries not matched to Scholar")
+    print(f"added from Google Scholar: {len(added)}" + "".join(f"\n  + {p['year']} {p['title'][:90]}" for p in added))
+    print(f"left for review in {REVIEW.name}: {len(review)}")
+
+
+REVIEW = HERE / "scholar_review.txt"
+EXCLUDE = HERE / "publications_exclude.json"
+NOT_ARTICLE = re.compile(r"medrxiv|biorxiv|arxiv|ssrn|research square|preprint|socarxiv|osf", re.I)
+MY_NAME_FIRST = re.compile(r"^(MAS|MA Saeed|M Abdullah Saeed|Md Abdullah Saeed|Md\.? A\.? S\.?) Khan\b")
+
+
+def similarity(title, text):
+    tw = words(title)
+    have = set(words(text))
+    return sum(w in have for w in tw) / len(tw) if tw else 0
+
+
+def crossref_doi(title, year):
+    """DOI for a title from Crossref, only when the top hit clearly is the same paper."""
+    url = "https://api.crossref.org/works?" + urllib.parse.urlencode({"query.bibliographic": title, "rows": 3, "select": "DOI,title,issued"})
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "abdullahdmc-website-builder"})
+        items = json.loads(urllib.request.urlopen(req, timeout=30).read())["message"]["items"]
+    except Exception:
+        return None
+    for it in items:
+        t = (it.get("title") or [""])[0]
+        if t and similarity(title, t) >= 0.9 and similarity(t, title) >= 0.9:
+            return it["DOI"]
+    return None
+
+
+def add_from_scholar(papers, used, pubs, out):
+    """Scholar papers missing from the CV list: recent, clearly new journal articles are added;
+    everything else is left for the author to review (see scholar_review.txt)."""
+    exclude = set(json.loads(EXCLUDE.read_text(encoding="utf-8"))) if EXCLUDE.exists() else set()
+    known = [e["text"] for e in pubs] + [p["title"] for p in out]
+    added, review = [], []
+    recent = date.today().year - 1
+    for i, p in enumerate(papers):
+        if i in used or p["title"] in exclude:
+            continue
+        new = (p["year"] and p["year"] >= recent and p["venue"] and not NOT_ARTICLE.search(p["venue"] + " " + p["title"])
+               and not p["title"].lower().startswith(("correction", "erratum"))
+               and max(similarity(p["title"], k) for k in known) < 0.5)
+        if not new:
+            review.append(p)
+            continue
+        doi = crossref_doi(p["title"], p["year"])
+        entry = {
+            "title": p["title"], "venue": venue_clean(p["venue"]), "year": p["year"], "cites": p["cites"],
+            "link": f"https://doi.org/{doi}" if doi else p["scholar"], "scholar": p["scholar"],
+            "first": bool(MY_NAME_FIRST.match(p["authors"])), "notes": [], "icon": topic(p["title"]),
+        }
+        out.append(entry)
+        known.append(p["title"])
+        added.append(entry)
+    return added, review
 
 
 if __name__ == "__main__":

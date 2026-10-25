@@ -1,0 +1,36 @@
+Google Scholar entries NOT shown on the website (possible duplicates, preprints, corrections or older items).
+To show one, add it to tools/publications.json; to stop seeing one here, add its title to tools/publications_exclude.json.
+
+2026 | JAMA, 2026                                    | Global burden of elevated LDL-C: findings from the Global Burden of Disease Study 2023
+2026 | Sustainable Development Goals and Mental Heal | Sustainable Development Goals and Mental Health in Bangladesh
+2026 | medRxiv, 2026.07. 27.26359069, 2026           | Association between coastal residence since birth and blood pressure among adolescents: a cross-sectional comparative study
+2026 | medRxiv, 2026.06. 24.26356486, 2026           | Vaccination Status and Its Association with Complications among the Patients Admitted with Measles in the Dedicated Measles Hospitals, Dhaka, Bangladesh
+2025 | Available at SSRN 5533924, 2025               | Global, regional, and national burden of breast cancer among females, 1990-2023, with forecasts to 2050: a systematic analysis for the Global Burden of Disease Study 2023
+2025 | Journal of the American College of Cardiology | Global, Regional, and National Burden of Cardiovascular Diseases and Risk Factors in 204 Countries and Territories, 1990-2023
+2025 | Journal of the American College of Cardiology | Global, regional, and national burden of cardiovascular diseases and risk factors in 204 countries and territories, 1990-2023
+2024 | Discover Public Health 21 (1), 1-15, 2024     | Post-recovery quality of life (QoL) of the healthcare professionals affected by COVID-19: a longitudinal study in Bangladesh
+2024 | IJID regions 11, 100351, 2024                 | The impact of comorbidity on the quality of life of people who recovered from COVID-19 in Bangladesh
+2024 | GLOBAL PSYCHIATRY ARCHIVES 7 (1), 7-12, 2024  | The perception of imams (Islamic religious leaders) on the legal status and decriminalization of suicide attempts in Bangladesh: A Cross-sectional study
+2024 |                                               | Acceptance of COVID-19 vaccine and its determinants: Evidence from a large population-based study in Bangladesh
+2024 |                                               | Who belongs to the middle class? Identifying them using monthly family income
+2023 | Endocrine and Metabolic Science, 100152, 2023 | Prevalence and patterns of dyslipidemia among lipid-lowering drug-naïve patients with type 2 diabetes mellitus–A countrywide study in Bangladesh
+2023 | International Review of Psychiatry, 1-8, 2023 | Literacy and stigma of suicide among Islamic religious leaders (Imams) in Bangladesh: a cross-sectional study
+2023 | SocArXiv, 2023                                | Social Class Determination through Monthly Household Income: A Perspective from Bangladesh.
+2022 | Indian Journal of Otolaryngology and Head & N | Virucidal Effect of Povidone Iodine on SARS-CoV-2 in Nasopharynx: An Open-label Randomized Clinical Trial
+2022 |                                               | Real-life experience on the effectiveness of conjunctival flap and amniotic membrane graft in the treatment of refractory fungal corneal ulcer
+2022 | Indian Journal of Otolaryngology and Head & N | Virucidal Effect of Povidone Iodine on SARS-CoV-2 in Nasopharynx: An Open-label Randomized Clinical Trial
+2022 |                                               | Research Article A Community-Based Cross-Sectional Study about the Knowledge, Attitude, and Practices of Food Safety Measures among Rural Households in Bangladesh
+2022 |                                               | Research Article Psychometric Properties of the Bangla Brief Suicide Cognitions Scale among University Level Students
+2021 |                                               | Genetic Mutation of Hb E/beta Thalassemia Patient in Bangladesh and Its Relation With Clinical Severity
+2021 | International Journal of Infectious Diseases, | Belief, Attitude, and Intention to take COVID-19 Vaccine among South Asian Population: A Multi-country Study
+2021 | Heliyon, e07173, 2021                         | Mental health of young people amidst COVID-19 pandemic in Bangladesh
+2021 | Asia Pacific Journal of Public Health 33 (1), | Health System Resilience for a Concurrent Outbreak of Coronavirus Disease 2019 and Dengue: A Response From Bangladesh
+2020 | JGH Open 4 (4), 663-669, 2020                 | Effect of telmisartan and vitamin E on liver histopathology with non‐alcoholic steatohepatitis: A randomized, open‐label, noninferiority trial
+2020 |                                               | Sociodemographic profile, clinical characteristics, anxiety, and depression of 74 patients infected with COVID-19: first report from Bangladesh
+2020 | Clinical Characteristics, Anxiety and Depress | Socio-Demographics, Clinical Characteristics, Anxiety and Depression of 74 Patients Infected with COVID-19: First Report from Bangladesh
+2020 |                                               | Clinico-epidemiological characteristics of asymptomatic and symptomatic COVID-19-positive patients in Bangladesh (preprint)
+---- | Sustainable Development Goals and Mental Heal | Sustainable Development Goals and Mental Health in Bangladesh
+---- | IJID Regions 11, 100351, 0                    | The impact of comorbidity on the quality of life of people who recovered from COVID-19 in Bangladesh
+---- | Clinical Characteristics, and Outcomes of Sna | Epidemiology, Clinical Characteristics, and Outcomes of Snakebite Victims in Bangladesh: A Systematic Review and Meta-Analysis
+---- |                                               | Correction to: Chikungunya outbreak in Bangladesh (2017): sociodemographic and clinical characteristics of patients from three hotspots
+---- |                                               | Sociodemographic profile, clinical characteristics, anxiety, and depression of 74 patients infected with COVID-19: 1st report from Bangladesh
