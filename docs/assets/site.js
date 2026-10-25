@@ -110,14 +110,14 @@ function enDate(iso) {
 function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 
 function renderChrome(active) {
-  const links = [["index.html", "Home"], ["writing.html", "লেখা · Writing"], ["research.html", "Research"], ["about.html", "Biography"]];
+  const links = [["index.html", "Home"], ["writing.html", "লেখা · Writing"], ["research.html", "Research"], ["about.html", "Biography"], ["consultation.html", "Consultation", "nav-consult"]];
   document.getElementById("site-header").outerHTML = `
   <div class="mock-note">Design mockup — not the live site. Posts load from abdullahdmc.com.</div>
   <header class="site-header"><div class="wrap">
     <a class="brand" href="index.html"><span class="brand-mark">AK</span>
       <span class="brand-name">Md Abdullah Saeed Khan<small>MBBS, MPH, MPhil, DPhil (Ongoing)</small><small>Assistant Professor (Epidemiology)</small><small>Health Research &amp; Data Analytics Consultant</small></span></a>
     <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button>
-    <nav class="nav">${links.map(([h, l]) => `<a href="${h}" class="${h === active ? "active" : ""}">${l}</a>`).join("")}</nav>
+    <nav class="nav">${links.map(([h, l, cls = ""]) => `<a href="${h}" class="${cls} ${h === active ? "active" : ""}">${l}</a>`).join("")}</nav>
   </div></header>`;
   document.getElementById("site-footer").outerHTML = `
   <footer class="site-footer"><div class="wrap">

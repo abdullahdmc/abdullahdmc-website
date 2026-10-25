@@ -87,6 +87,15 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.25; mar
 .btn-primary:hover { filter: brightness(1.08); }
 .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--surface); }
 .btn-ghost:hover { border-color: var(--ink-3); }
+.btn-consult { background: linear-gradient(135deg, #d32f2f, #b71c1c); color: #fff; padding: 15px 24px; font-size: 16.5px; margin-bottom: 14px;
+  box-shadow: 0 6px 18px rgba(183, 28, 28, .32); transition: transform .2s, box-shadow .2s; }
+.btn-consult:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(183, 28, 28, .4); }
+.pulse { width: 10px; height: 10px; border-radius: 50%; background: #fff; position: relative; flex: none; }
+.pulse::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #fff; animation: pulse 1.8s ease-out infinite; }
+@keyframes pulse { from { transform: scale(1); opacity: .8; } to { transform: scale(2.8); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .pulse::after { animation: none; } }
+.nav a.nav-consult { color: #c62828; font-weight: 600; }
+.nav a.nav-consult.active { background: #c62828; color: #fff; }
 
 /* ---------- hero ---------- */
 .hero { padding: 64px 0 40px; }
