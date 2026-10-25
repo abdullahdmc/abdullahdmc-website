@@ -7,7 +7,7 @@
 <meta name="description" content="Physician, epidemiologist and writer. Research on infectious disease and public health, and essays in Bangla on science, mind and faith.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261025c">
+<link rel="stylesheet" href="assets/style.css?v=20261026">
 </head>
 <body>
 <div id="site-header"></div>
@@ -105,14 +105,14 @@
 <script src="assets/feeds.js"></script>
 <script src="assets/profile.js"></script>
 <script src="assets/research.js"></script>
-<script src="assets/site.js?v=20261025c"></script>
+<script src="assets/site.js?v=20261026"></script>
 <script>
   renderChrome("index.html");
   const everything = allPosts();
   const posts = everything.filter(p => p.theme !== "ai");  // daily AI roundups get their own strip
   const R = window.RESEARCH, S = R.scholar;
   const fmt = n => n.toLocaleString("en-US");
-  document.getElementById("pub-count").textContent = R.publications.length;
+  document.getElementById("pub-count").textContent = publishedPubs(R.publications).length;
 
   // Google Scholar card under the photo (same layout as the Scholar profile table).
   const yrs = Object.entries(S.per_year).slice(-6);
@@ -126,7 +126,7 @@
     </tbody></table>
     <div class="sc-bars">${yrs.map(([y, v]) => `<div title="${y}: ${fmt(v)} citations"><i style="height:${Math.max(4, v / peak * 100)}%"></i><span>${y.slice(2)}</span></div>`).join("")}</div></div>`;
 
-  document.getElementById("recent-pubs").innerHTML = R.publications.slice(0, 4).map(p => `<li class="pub">
+  document.getElementById("recent-pubs").innerHTML = publishedPubs(R.publications).slice(0, 4).map(p => `<li class="pub">
     <a href="${p.link || p.scholar || "research.html"}" target="_blank" rel="noopener"><span class="pub-title">${esc(p.title)}</span>
     <div class="pub-meta">${p.venue ? `<span class="j">${esc(p.venue)}</span>` : ""}<span>${p.year || "In press"}</span>${p.first ? "<span>First author</span>" : ""}${p.cites ? `<span>${fmt(p.cites)} citations</span>` : ""}</div></a></li>`).join("");
   document.getElementById("post-count").textContent = posts.length;

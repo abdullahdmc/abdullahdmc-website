@@ -339,6 +339,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.25; mar
 .box .meta { font-size: 13.5px; color: var(--ink-3); }
 .pill { align-self: flex-start; display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
 .pill.gold { background: color-mix(in srgb, var(--gold) 18%, transparent); color: var(--gold); }
+.pill.kind { background: color-mix(in srgb, #6a5fc1 16%, transparent); color: #5a4fb0; }
+.pill.kind.pre { background: color-mix(in srgb, var(--ink-3) 16%, transparent); color: var(--ink-2); }
 .amount { font: 600 20px/1.2 var(--serif); }
 
 /* ---------- publication list ---------- */

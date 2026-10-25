@@ -79,6 +79,19 @@ function coverHTML(post, cls = "") {
   </div>`;
 }
 
+// Publications: preprints are listed separately and left out of publication counts.
+function publishedPubs(list) {
+  return list.filter(p => p.type !== "preprint");
+}
+function pubGroups(list) {
+  const pub = publishedPubs(list);
+  return [["first", "First author", pub.filter(p => p.first)], ["co", "Co-author", pub.filter(p => !p.first)],
+    ["preprints", "Preprints", list.filter(p => p.type === "preprint")], ["all", "All", list]];
+}
+function pubTypePill(p) {
+  return p.type === "chapter" ? `<span class="pill kind">Book chapter</span>` : p.type === "preprint" ? `<span class="pill kind pre">Preprint</span>` : "";
+}
+
 function postURL(post) { return `post.html?id=${post.id}`; }
 
 function postDate(post) {

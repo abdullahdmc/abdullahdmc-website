@@ -18,7 +18,7 @@
   });
 
   // ---- Home ----
-  if (R && $("pub-count")) $("pub-count").textContent = R.publications.length;
+  if (R && $("pub-count")) $("pub-count").textContent = publishedPubs(R.publications).length;
   if (S && $("scholar-card")) {
     const yrs = Object.entries(S.per_year).slice(-6);
     const peak = Math.max(...yrs.map(([, v]) => v));
@@ -32,7 +32,7 @@
       <div class="sc-bars">${yrs.map(([y, v]) => `<div title="${y}: ${fmt(v)} citations"><i style="height:${Math.max(4, v / peak * 100)}%"></i><span>${y.slice(2)}</span></div>`).join("")}</div></div>`;
   }
   if (R && $("recent-pubs")) {
-    $("recent-pubs").innerHTML = R.publications.slice(0, 4).map(p => `<li class="pub">
+    $("recent-pubs").innerHTML = publishedPubs(R.publications).slice(0, 4).map(p => `<li class="pub">
       <a href="${p.link || p.scholar || AMK.research}" target="_blank" rel="noopener"><span class="pub-title">${esc(p.title)}</span>
       <div class="pub-meta">${p.venue ? `<span class="j">${esc(p.venue)}</span>` : ""}<span>${p.year || "In press"}</span>${p.first ? "<span>First author</span>" : ""}${p.cites ? `<span>${fmt(p.cites)} citations</span>` : ""}</div></a></li>`).join("");
   }
@@ -52,7 +52,7 @@
       <div class="metric"><b>${fmt(S.citations)}</b><span class="lbl">Citations</span><span class="sub">${fmt(S.citations_recent)} since ${S.since}</span></div>
       <div class="metric"><b>${S.h_index}</b><span class="lbl">h-index</span><span class="sub">${S.h_index_recent} since ${S.since}</span></div>
       <div class="metric"><b>${S.i10_index}</b><span class="lbl">i10-index</span><span class="sub">${S.i10_index_recent} since ${S.since}</span></div>
-      <div class="metric"><b>${rg.research_interest_score ?? fmt(R.publications.length)}</b><span class="lbl">${rg.research_interest_score != null ? "ResearchGate interest" : "Publications listed"}</span>
+      <div class="metric"><b>${rg.research_interest_score ?? fmt(publishedPubs(R.publications).length)}</b><span class="lbl">${rg.research_interest_score != null ? "ResearchGate interest" : "Publications listed"}</span>
         <span class="sub">${rg.research_interest_score != null ? `${fmt(rg.reads)} reads` : "peer-reviewed articles"}</span></div>
       <div class="metric chart"><span class="lbl" style="margin:0">Citations per year</span>
         <div class="bars">${years.map(([y, v]) => `<div style="height:${Math.max(4, v / max * 100)}%" title="${y}: ${fmt(v)}"></div>`).join("")}</div>
@@ -80,7 +80,7 @@
     const icon = k => { const [c, d] = PUB_ICONS[k] || PUB_ICONS.paper;
       return `<span class="picon" style="--ic:${c}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${d}</svg></span>`; };
     const pubs = R.publications;
-    const groups = [["first", "First author", pubs.filter(p => p.first)], ["co", "Co-author", pubs.filter(p => !p.first)], ["all", "All", pubs]];
+    const groups = pubGroups(pubs);
     let tab = "first";
     const ptabs = $("ptabs");
     ptabs.innerHTML = groups.map(([k, l, list]) => `<button class="chip" data-k="${k}">${l} <small>${list.length}</small></button>`).join("");
@@ -88,7 +88,7 @@
       const title = p.link ? `<a class="pt" href="${p.link}" target="_blank" rel="noopener">${esc(p.title)}</a>` : `<span class="pt" style="font:600 16.5px/1.45 var(--serif)">${esc(p.title)}</span>`;
       const cite = p.cites == null ? `<span class="cite"><b>—</b><span>CITATIONS</span></span>`
         : `<a class="cite" href="${p.scholar}" target="_blank" rel="noopener" title="Google Scholar record"><b>${fmt(p.cites)}</b><span>CITATIONS</span></a>`;
-      return `<li class="pitem">${icon(p.icon)}<div>${title}<div class="pm">${p.venue ? `<span class="j">${esc(p.venue)}</span>` : ""}${p.first ? `<span class="pill gold">First author</span>` : ""}${p.notes.map(n => `<span class="pill">${n}</span>`).join("")}</div></div>${cite}</li>`;
+      return `<li class="pitem">${icon(p.icon)}<div>${title}<div class="pm">${p.venue ? `<span class="j">${esc(p.venue)}</span>` : ""}${pubTypePill(p)}${p.first ? `<span class="pill gold">First author</span>` : ""}${p.notes.map(n => `<span class="pill">${n}</span>`).join("")}</div></div>${cite}</li>`;
     };
     const drawPubs = () => {
       ptabs.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.k === tab));

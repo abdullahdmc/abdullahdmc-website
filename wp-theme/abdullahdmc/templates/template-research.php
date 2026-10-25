@@ -31,7 +31,7 @@ amk_header( 'research' );
 </div></section>
 
 <section class="section" id="publications"><div class="wrap">
-	<div class="section-head"><div><span class="eyebrow">Publications</span><h2>Peer-reviewed publications</h2></div></div>
+	<div class="section-head"><div><span class="eyebrow">Publications</span><h2>Articles, book chapters &amp; preprints</h2></div></div>
 	<div class="pub-tabs">
 		<div class="chips" id="ptabs"></div>
 		<label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>

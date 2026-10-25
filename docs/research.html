@@ -7,7 +7,7 @@
 <meta name="description" content="Publications, citation metrics, current projects, funding and peer-review activity of Dr. Md Abdullah Saeed Khan.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261025c">
+<link rel="stylesheet" href="assets/style.css?v=20261026">
 </head>
 <body>
 <div id="site-header"></div>
@@ -35,7 +35,7 @@
 </div></section>
 
 <section class="section" id="publications"><div class="wrap">
-  <div class="section-head"><div><span class="eyebrow">Publications</span><h2>Peer-reviewed publications</h2></div></div>
+  <div class="section-head"><div><span class="eyebrow">Publications</span><h2>Articles, book chapters &amp; preprints</h2></div></div>
   <div class="pub-tabs">
     <div class="chips" id="ptabs"></div>
     <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
@@ -52,7 +52,7 @@
 <div id="site-footer"></div>
 <script src="assets/profile.js"></script>
 <script src="assets/research.js"></script>
-<script src="assets/site.js?v=20261025c"></script>
+<script src="assets/site.js?v=20261026"></script>
 <script>
   renderChrome("research.html");
   const R = window.RESEARCH, P = window.PROFILE, S = R.scholar;
@@ -67,7 +67,7 @@
     <div class="metric"><b>${fmt(S.citations)}</b><span class="lbl">Citations</span><span class="sub">${fmt(S.citations_recent)} since ${S.since}</span></div>
     <div class="metric"><b>${S.h_index}</b><span class="lbl">h-index</span><span class="sub">${S.h_index_recent} since ${S.since}</span></div>
     <div class="metric"><b>${S.i10_index}</b><span class="lbl">i10-index</span><span class="sub">${S.i10_index_recent} since ${S.since}</span></div>
-    <div class="metric"><b>${rg.research_interest_score ?? fmt(R.publications.length)}</b><span class="lbl">${rg.research_interest_score != null ? "ResearchGate interest" : "Publications listed"}</span>
+    <div class="metric"><b>${rg.research_interest_score ?? fmt(publishedPubs(R.publications).length)}</b><span class="lbl">${rg.research_interest_score != null ? "ResearchGate interest" : "Publications listed"}</span>
       <span class="sub">${rg.research_interest_score != null ? `${fmt(rg.reads)} reads` : "peer-reviewed articles"}</span></div>
     <div class="metric chart"><span class="lbl" style="margin:0">Citations per year</span>
       <div class="bars">${years.map(([y, v]) => `<div style="height:${Math.max(4, v / max * 100)}%" title="${y}: ${fmt(v)}"></div>`).join("")}</div>
@@ -100,7 +100,7 @@
     return `<span class="picon" style="--ic:${c}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${d}</svg></span>`; };
 
   const pubs = R.publications;
-  const groups = [["first", "First author", pubs.filter(p => p.first)], ["co", "Co-author", pubs.filter(p => !p.first)], ["all", "All", pubs]];
+  const groups = pubGroups(pubs);
   let tab = "first";
   const ptabs = document.getElementById("ptabs");
   ptabs.innerHTML = groups.map(([k, l, list]) => `<button class="chip" data-k="${k}">${l} <small>${list.length}</small></button>`).join("");
@@ -113,7 +113,7 @@
     const cite = p.cites == null ? `<span class="cite"><b>—</b><span>CITATIONS</span></span>`
       : `<a class="cite" href="${p.scholar}" target="_blank" rel="noopener" title="Google Scholar record"><b>${fmt(p.cites)}</b><span>CITATIONS</span></a>`;
     return `<li class="pitem">${icon(p.icon)}<div>${title}
-      <div class="pm">${p.venue ? `<span class="j">${esc(p.venue)}</span>` : ""}${p.first ? `<span class="pill gold">First author</span>` : ""}${notes}</div></div>${cite}</li>`;
+      <div class="pm">${p.venue ? `<span class="j">${esc(p.venue)}</span>` : ""}${pubTypePill(p)}${p.first ? `<span class="pill gold">First author</span>` : ""}${notes}</div></div>${cite}</li>`;
   }
   function drawPubs() {
     ptabs.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.k === tab));
