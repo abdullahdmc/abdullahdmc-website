@@ -2,3 +2,6 @@
 *.env
 .claude/
 __pycache__/
+dist/
+covers/
+tools/covers.json

@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- Renders one post cover full-window for tools/make_covers.py: cover.html?i=<index into covers.json> -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@500;600&family=Noto+Serif+Bengali:wght@600&display=block" rel="stylesheet">
+<link rel="stylesheet" href="../docs/assets/style.css">
+<style>
+  html, body { margin: 0; background: #000; overflow: hidden; }
+  .cover { width: 100vw; height: 100vh; aspect-ratio: auto; }
+</style>
+</head>
+<body>
+<div id="out"></div>
+<script src="../docs/assets/site.js"></script>
+<script>
+  fetch("covers.json").then(r => r.json()).then(async list => {
+    const post = list[Number(new URLSearchParams(location.search).get("i"))];
+    document.getElementById("out").innerHTML = coverHTML(post);
+    await document.fonts.ready;
+    document.title = "ready";
+  });
+</script>
+</body>
+</html>
