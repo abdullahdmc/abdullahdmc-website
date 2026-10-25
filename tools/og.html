@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- Social preview image (1200x630) for pages without a cover. Render: see tools/make_og_image.py -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,500&family=Inter:wght@500;600&display=block" rel="stylesheet">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body { display: grid; grid-template-columns: 470px 1fr; background: #f7f4ee; font-family: Inter, sans-serif; color: #1b2230; }
+  .photo { background: url(../docs/assets/portrait.jpg) center 22% / cover; }
+  .text { padding: 58px 56px; display: flex; flex-direction: column; justify-content: center; gap: 18px;
+    background: linear-gradient(160deg, #f7f4ee, #efe9dd); position: relative; }
+  .eyebrow { font: 600 17px Inter; letter-spacing: .14em; text-transform: uppercase; color: #0f5c5a; }
+  h1 { font: 600 56px/1.08 Fraunces, serif; margin: 0; letter-spacing: -.01em; }
+  .creds { font: 600 21px/1.4 Inter; color: #4a5263; }
+  .tag { font: 500 italic 30px/1.25 Fraunces, serif; color: #0f5c5a; margin-top: 6px; }
+  .url { position: absolute; left: 56px; bottom: 44px; font: 600 20px Inter; color: #1b2230; display: flex; align-items: center; gap: 12px; }
+  .url span { width: 40px; height: 40px; border-radius: 11px; background: #0f5c5a; color: #fff; display: grid; place-items: center; font: 600 16px Fraunces, serif; }
+  .bar { position: absolute; right: 0; top: 0; bottom: 0; width: 14px; background: #c62828; }
+</style>
+</head>
+<body>
+  <div class="photo"></div>
+  <div class="text">
+    <div class="eyebrow">Physician · Epidemiologist · Researcher</div>
+    <h1>Dr. Md Abdullah<br>Saeed Khan</h1>
+    <div class="creds">Assistant Professor (Epidemiology)<br>DPhil fellow, University of Oxford</div>
+    <div class="tag">Evidence for health, reflection for life.</div>
+    <div class="url"><span>AK</span>abdullahdmc.com</div>
+    <div class="bar"></div>
+  </div>
+  <script>document.fonts.ready.then(() => document.title = "ready");</script>
+</body>
+</html>

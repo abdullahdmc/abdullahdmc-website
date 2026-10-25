@@ -9,7 +9,8 @@ $amk_series  = new WP_Query( array( 'tag' => 'arguments-for-god', 'posts_per_pag
 $amk_latest  = new WP_Query( array( 'posts_per_page' => 8, 'category__not_in' => $amk_ai_ids, 'ignore_sticky_posts' => true ) );
 $amk_ai      = $amk_ai_ids ? new WP_Query( array( 'category__in' => $amk_ai_ids, 'posts_per_page' => 3 ) ) : null;
 $amk_feature = $amk_series->have_posts() ? $amk_series->posts[0] : ( $amk_latest->posts[0] ?? null );
-$amk_count   = (int) wp_count_posts()->publish;
+// "Essays, poems & reviews": the author's own writing, so the daily AI roundups are not counted.
+$amk_count   = ( new WP_Query( array( 'category__not_in' => $amk_ai_ids, 'posts_per_page' => 1, 'fields' => 'ids', 'no_found_rows' => false ) ) )->found_posts;
 
 amk_head();
 amk_header( 'home' );

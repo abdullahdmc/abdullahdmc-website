@@ -9,9 +9,10 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AMK_VERSION', '1.0.4' );
+define( 'AMK_VERSION', '1.0.5' );
 
 require_once __DIR__ . '/inc/helpers.php';
+require_once __DIR__ . '/inc/seo.php';
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'post-thumbnails' );
@@ -31,6 +32,12 @@ add_action( 'init', function () {
 		'sanitize_callback' => function ( $value ) {
 			return wp_strip_all_tags( (string) $value );
 		},
+	) );
+	// Default social preview image (attachment id) for pages without a cover.
+	register_setting( 'general', 'amk_og_image', array(
+		'type'         => 'integer',
+		'default'      => 0,
+		'show_in_rest' => true,
 	) );
 	// MailPoet form shown in the home-page sign-up box (0 = no box).
 	register_setting( 'general', 'amk_newsletter_form', array(
