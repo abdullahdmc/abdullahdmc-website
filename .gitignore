@@ -5,3 +5,4 @@ __pycache__/
 dist/
 covers/
 tools/covers.json
+covers-staging/
