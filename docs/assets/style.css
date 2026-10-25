@@ -126,10 +126,33 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.25; mar
   border: 1px solid var(--line);
 }
 .badge b { display: block; font-family: var(--serif); font-size: 16px; }
+.hero-side { display: flex; flex-direction: column; gap: 16px; }
+.hero-side .hero-visual { aspect-ratio: 6 / 5; }
+.sc-body { display: grid; grid-template-columns: 1.5fr 1fr; gap: 18px; align-items: end; }
+.hero-side .portrait.photo { background-position: center 22%; }
+.scholar-card { display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+  padding: 16px 18px 14px; box-shadow: var(--shadow); transition: border-color .2s; }
+.scholar-card:hover { border-color: var(--accent); }
+.sc-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 8px; }
+.sc-head span { display: inline-flex; align-items: center; gap: 8px; font: 600 15px var(--sans); }
+.sc-head svg { width: 18px; height: 18px; color: var(--accent); }
+.sc-head small { font-size: 11.5px; color: var(--ink-3); }
+.scholar-card table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.scholar-card th { font: 600 11.5px var(--sans); color: var(--ink-3); text-align: right; padding: 4px 0 6px; letter-spacing: .03em; }
+.scholar-card td { padding: 6px 0; border-top: 1px solid var(--line); text-align: right; font: 600 16px var(--serif); }
+.scholar-card td:first-child { text-align: left; font: 500 14px var(--sans); color: var(--ink-2); }
+.scholar-card th:first-child { width: 40%; }
+.sc-bars { display: flex; gap: 5px; align-items: flex-end; height: 92px; }
+.sc-bars div { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 3px; }
+.sc-bars i { display: block; width: 100%; background: var(--accent); border-radius: 3px 3px 0 0; opacity: .85; }
+.sc-bars div:last-child i { opacity: 1; }
+.sc-bars span { font-size: 10.5px; color: var(--ink-3); line-height: 1; }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero-side { max-width: 380px; }
   .hero-visual { max-width: 380px; aspect-ratio: 1 / 1; }
   .hero-visual .badge { left: 16px; bottom: -18px; }
+  .hero-side .scholar-card { margin-top: 18px; }
 }
 
 /* ---------- cover (generated post image) ---------- */

@@ -7,7 +7,7 @@
 <meta name="description" content="Physician, epidemiologist and writer. Research on infectious disease and public health, and essays in Bangla on science, mind and faith.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261025">
+<link rel="stylesheet" href="assets/style.css?v=20261025c">
 </head>
 <body>
 <div id="site-header"></div>
@@ -23,14 +23,17 @@
       <a class="btn btn-ghost" href="research.html">Research &amp; publications</a>
     </div>
     <div class="stats">
-      <div class="stat"><b id="cites">6,873</b><span>citations (Google Scholar)</span></div>
-      <div class="stat"><b id="hidx">28</b><span>h-index</span></div>
+      <div class="stat"><b id="pub-count">109</b><span>peer-reviewed publications</span></div>
+      <div class="stat"><b>300+</b><span>research projects analysed</span></div>
       <div class="stat"><b id="post-count">160</b><span>essays, poems &amp; reviews</span></div>
     </div>
   </div>
-  <div class="hero-visual">
-    <div class="portrait photo" style="background-image:url(assets/portrait.jpg)" role="img" aria-label="Dr. Md Abdullah Saeed Khan speaking at a conference"></div>
-    <div class="badge"><b>DPhil, University of Oxford</b>Machine-learning tools for febrile illness with MORU &amp; SEACTN</div>
+  <div class="hero-side">
+    <div class="hero-visual">
+      <div class="portrait photo" style="background-image:url(assets/portrait.jpg)" role="img" aria-label="Dr. Md Abdullah Saeed Khan speaking at a conference"></div>
+      <div class="badge"><b>DPhil, University of Oxford</b>Machine-learning tools for febrile illness with MORU &amp; SEACTN</div>
+    </div>
+    <a class="scholar-card" id="scholar-card" href="research.html" aria-label="Google Scholar citation metrics"></a>
   </div>
 </div></section>
 
@@ -76,16 +79,10 @@
     <div class="affil"><span>University of Oxford</span><span>MORU · SEACTN</span><span>MoHFW Bangladesh</span><span>Pi Research Development Center</span></div>
     <p style="margin-top:22px"><a class="link-more" href="research.html">Metrics, projects &amp; all publications →</a></p>
   </div>
-  <ul class="pubs">
-    <li class="pub"><a href="https://doi.org/10.1371/journal.pdig.0000967" target="_blank" rel="noopener"><span class="pub-title">Citizens' feedback on health service and the responses of health authorities of Bangladesh: an analysis of the Grievance Redress System</span>
-      <div class="pub-meta"><span class="j">PLOS Digital Health</span><span>2025</span><span>First author</span></div></a></li>
-    <li class="pub"><a href="https://doi.org/10.1016/j.ijregi.2024.03.006" target="_blank" rel="noopener"><span class="pub-title">The impact of comorbidity on the quality of life of COVID-19 recovered people in Bangladesh</span>
-      <div class="pub-meta"><span class="j">IJID Regions</span><span>2024</span><span>First author</span></div></a></li>
-    <li class="pub"><a href="https://doi.org/10.1371/journal.pntd.0010235" target="_blank" rel="noopener"><span class="pub-title">Factors associated with in-hospital mortality of adult tetanus patients: a multicenter study from Bangladesh</span>
-      <div class="pub-meta"><span class="j">PLOS Neglected Tropical Diseases</span><span>2022</span><span>First author</span></div></a></li>
-    <li class="pub"><a href="https://doi.org/10.1186/s12887-021-02947-y" target="_blank" rel="noopener"><span class="pub-title">Clinical spectrum and predictors of severity of dengue among children in the 2019 outbreak in Bangladesh</span>
-      <div class="pub-meta"><span class="j">BMC Pediatrics</span><span>2021</span><span>First author</span></div></a></li>
-  </ul>
+  <div>
+    <span class="eyebrow">Recent publications</span>
+    <ul class="pubs" id="recent-pubs" style="margin-top:12px"></ul>
+  </div>
 </div></section>
 
 <section class="section"><div class="wrap">
@@ -108,14 +105,30 @@
 <script src="assets/feeds.js"></script>
 <script src="assets/profile.js"></script>
 <script src="assets/research.js"></script>
-<script src="assets/site.js?v=20261025"></script>
+<script src="assets/site.js?v=20261025c"></script>
 <script>
   renderChrome("index.html");
   const everything = allPosts();
   const posts = everything.filter(p => p.theme !== "ai");  // daily AI roundups get their own strip
-  const S = window.RESEARCH.scholar;
-  document.getElementById("cites").textContent = S.citations.toLocaleString("en-US");
-  document.getElementById("hidx").textContent = S.h_index;
+  const R = window.RESEARCH, S = R.scholar;
+  const fmt = n => n.toLocaleString("en-US");
+  document.getElementById("pub-count").textContent = R.publications.length;
+
+  // Google Scholar card under the photo (same layout as the Scholar profile table).
+  const yrs = Object.entries(S.per_year).slice(-6);
+  const peak = Math.max(...yrs.map(([, v]) => v));
+  document.getElementById("scholar-card").innerHTML = `
+    <div class="sc-head"><span>${linkIcon("scholar")}Google Scholar</span><small>Updated ${enDate(R.updated)}</small></div>
+    <div class="sc-body"><table><thead><tr><th></th><th>All</th><th>Since ${S.since}</th></tr></thead><tbody>
+      <tr><td>Citations</td><td>${fmt(S.citations)}</td><td>${fmt(S.citations_recent)}</td></tr>
+      <tr><td>h-index</td><td>${S.h_index}</td><td>${S.h_index_recent}</td></tr>
+      <tr><td>i10-index</td><td>${S.i10_index}</td><td>${S.i10_index_recent}</td></tr>
+    </tbody></table>
+    <div class="sc-bars">${yrs.map(([y, v]) => `<div title="${y}: ${fmt(v)} citations"><i style="height:${Math.max(4, v / peak * 100)}%"></i><span>${y.slice(2)}</span></div>`).join("")}</div></div>`;
+
+  document.getElementById("recent-pubs").innerHTML = R.publications.slice(0, 4).map(p => `<li class="pub">
+    <a href="${p.link || p.scholar || "research.html"}" target="_blank" rel="noopener"><span class="pub-title">${esc(p.title)}</span>
+    <div class="pub-meta">${p.venue ? `<span class="j">${esc(p.venue)}</span>` : ""}<span>${p.year || "In press"}</span>${p.first ? "<span>First author</span>" : ""}${p.cites ? `<span>${fmt(p.cites)} citations</span>` : ""}</div></a></li>`).join("");
   document.getElementById("post-count").textContent = posts.length;
   const series = posts.filter(p => p.source === "philosophy");
   const feature = series[0] || posts[0];
