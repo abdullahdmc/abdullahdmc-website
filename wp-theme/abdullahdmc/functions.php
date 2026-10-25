@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AMK_VERSION', '1.0.5' );
+define( 'AMK_VERSION', '1.0.6' );
 
 require_once __DIR__ . '/inc/helpers.php';
 require_once __DIR__ . '/inc/seo.php';

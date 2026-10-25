@@ -82,8 +82,16 @@ add_filter( 'wpseo_opengraph_title', function ( $title ) {
 
 // Social preview image: the post's cover, otherwise the site's default image (option amk_og_image).
 add_action( 'wpseo_add_opengraph_images', function ( $images ) {
+	if ( method_exists( $images, 'has_images' ) && $images->has_images() ) {
+		return;
+	}
+	// Yoast can miss a cover attached after the post was first saved; use it directly.
+	if ( is_singular() && has_post_thumbnail() ) {
+		$images->add_image_by_id( get_post_thumbnail_id() );
+		return;
+	}
 	$default = (int) get_option( 'amk_og_image' );
-	if ( $default && ( ! is_singular() || ! has_post_thumbnail() ) ) {
+	if ( $default ) {
 		$images->add_image_by_id( $default );
 	}
 } );
