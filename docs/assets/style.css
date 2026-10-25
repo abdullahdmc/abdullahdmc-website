@@ -50,10 +50,12 @@ img { max-width: 100%; display: block; }
   width: 38px; height: 38px; border-radius: 10px; background: var(--accent); color: var(--accent-ink);
   display: grid; place-items: center; font: 600 15px/1 var(--serif); letter-spacing: .5px;
 }
-.brand-name { font: 600 17px/1.15 var(--serif); }
-.brand-name small { display: block; font: 500 11.5px/1.35 var(--sans); color: var(--ink-3); letter-spacing: .2px; }
-.brand-name small:first-of-type { margin-top: 3px; color: var(--ink-2); font-weight: 600; }
-@media (max-width: 400px) { .site-header .brand-mark { display: none; } .brand-name { font-size: 15.5px; } .brand-name small { font-size: 10.5px; } }
+.brand-name { font: 600 23px/1.15 var(--serif); }
+.brand-name small { display: block; font: 500 13.5px/1.4 var(--sans); color: var(--ink-3); letter-spacing: .1px; }
+.brand-name small:first-of-type { margin-top: 4px; color: var(--ink-2); font-weight: 600; }
+.site-header .brand-mark { width: 46px; height: 46px; font-size: 17px; border-radius: 12px; }
+@media (max-width: 600px) { .brand-name { font-size: 18px; } .brand-name small { font-size: 12px; } .site-header .brand-mark { width: 40px; height: 40px; font-size: 15px; } }
+@media (max-width: 400px) { .site-header .brand-mark { display: none; } .brand-name { font-size: 17px; } .brand-name small { font-size: 11.5px; } }
 .nav { margin-left: auto; display: flex; gap: 4px; }
 .nav a {
   text-decoration: none; padding: 8px 14px; border-radius: 999px; font-size: 15px; color: var(--ink-2);
@@ -62,7 +64,8 @@ img { max-width: 100%; display: block; }
 .nav a.active { background: var(--ink); color: var(--paper); }
 .menu-btn { display: none; margin-left: auto; background: none; border: 1px solid var(--line); border-radius: 10px;
   width: 42px; height: 42px; color: var(--ink); font-size: 20px; cursor: pointer; }
-@media (max-width: 760px) {
+.brand-name, .nav a { white-space: nowrap; }
+@media (max-width: 1020px) {
   .menu-btn { display: block; }
   .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column;
     background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px 16px 16px; }
@@ -100,9 +103,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.25; mar
 /* ---------- hero ---------- */
 .hero { padding: 64px 0 40px; }
 .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 56px; align-items: center; }
-.hero h1 { font-size: clamp(38px, 5.4vw, 62px); margin: 16px 0 18px; }
+.hero h1 { font-size: clamp(32px, 4vw, 48px); margin: 14px 0 16px; }
 .hero h1 em { font-style: italic; color: var(--accent); }
-.hero .lede { font-size: 19px; color: var(--ink-2); max-width: 36em; margin: 0 0 28px; }
+.hero .lede { font-size: 18px; color: var(--ink-2); max-width: 36em; margin: 0 0 28px; }
 .hero .lede-bn { font-family: "Hind Siliguri", var(--sans); }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 36px; max-width: 520px; }
