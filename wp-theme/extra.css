@@ -1,0 +1,13 @@
+/* Extra CSS stored in the amk_css option (loaded after the theme's styles). Apply with: python tools/push_css.py */
+
+/* MailPoet sign-up form on the home page: one row, pill input, gold button. */
+#main .cta-form form.mailpoet_form { display: flex !important; gap: 10px; flex-wrap: wrap; align-items: stretch; margin: 0 !important; }
+#main .cta-form form.mailpoet_form .mailpoet_paragraph { margin: 0 !important; flex: 1 1 220px; }
+#main .cta-form form.mailpoet_form .mailpoet_paragraph.last { flex: 0 0 auto; }
+#main .cta-form form.mailpoet_form input.mailpoet_text { height: 48px; padding: 0 18px !important; border-radius: 999px !important; border: 0 !important;
+  font: 15px var(--sans) !important; background: #fff !important; color: #1b2230 !important; }
+#main .cta-form form.mailpoet_form input.mailpoet_submit { height: 48px; width: auto !important; padding: 0 26px !important; border-radius: 999px !important;
+  border: 0 !important; background: var(--gold) !important; color: #1b2230 !important; font: 600 15px var(--sans) !important; cursor: pointer; }
+#main .cta-form form.mailpoet_form input.mailpoet_submit:hover { filter: brightness(1.08); }
+#main .cta-form .mailpoet_message, #main .cta-form .mailpoet_validate_success, #main .cta-form .mailpoet_validate_error { flex-basis: 100%; font-size: 14px; color: #fff !important; }
+#main .cta-form .parsley-errors-list { color: #ffd9d9; font-size: 13px; margin: 6px 0 0 14px; padding: 0; list-style: none; }
