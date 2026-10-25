@@ -124,6 +124,16 @@ amk_header( 'home' );
 	<div class="yt" id="yt"></div>
 	<div class="links-row" id="all-links" style="margin-top:16px"></div>
 </div></section>
+
+<?php $amk_form = (int) get_option( 'amk_newsletter_form' ); ?>
+<?php if ( $amk_form && shortcode_exists( 'mailpoet_form' ) ) : ?>
+<section class="section" style="padding-top:0"><div class="wrap">
+	<div class="cta">
+		<div><h2>নতুন লেখা পৌঁছে যাক আপনার ইনবক্সে</h2><p>Get new essays and research notes by email. No spam, unsubscribe anytime.</p></div>
+		<div class="cta-form"><?php echo do_shortcode( '[mailpoet_form id="' . $amk_form . '"]' ); // phpcs:ignore ?></div>
+	</div>
+</div></section>
+<?php endif; ?>
 <?php
 wp_reset_postdata();
 amk_footer();

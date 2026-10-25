@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AMK_VERSION', '1.0.1' );
+define( 'AMK_VERSION', '1.0.2' );
 
 require_once __DIR__ . '/inc/helpers.php';
 
@@ -31,6 +31,12 @@ add_action( 'init', function () {
 		'sanitize_callback' => function ( $value ) {
 			return wp_strip_all_tags( (string) $value );
 		},
+	) );
+	// MailPoet form shown in the home-page sign-up box (0 = no box).
+	register_setting( 'general', 'amk_newsletter_form', array(
+		'type'         => 'integer',
+		'default'      => 0,
+		'show_in_rest' => true,
 	) );
 	foreach ( array( 'amk_profile', 'amk_research' ) as $name ) {
 		register_setting( 'general', $name, array(
