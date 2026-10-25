@@ -7,7 +7,7 @@
 <meta name="description" content="Publications, citation metrics, current projects, funding and peer-review activity of Dr. Md Abdullah Saeed Khan.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261026">
+<link rel="stylesheet" href="assets/style.css?v=20261026b">
 </head>
 <body>
 <div id="site-header"></div>
@@ -52,7 +52,7 @@
 <div id="site-footer"></div>
 <script src="assets/profile.js"></script>
 <script src="assets/research.js"></script>
-<script src="assets/site.js?v=20261026"></script>
+<script src="assets/site.js?v=20261026b"></script>
 <script>
   renderChrome("research.html");
   const R = window.RESEARCH, P = window.PROFILE, S = R.scholar;
@@ -67,8 +67,8 @@
     <div class="metric"><b>${fmt(S.citations)}</b><span class="lbl">Citations</span><span class="sub">${fmt(S.citations_recent)} since ${S.since}</span></div>
     <div class="metric"><b>${S.h_index}</b><span class="lbl">h-index</span><span class="sub">${S.h_index_recent} since ${S.since}</span></div>
     <div class="metric"><b>${S.i10_index}</b><span class="lbl">i10-index</span><span class="sub">${S.i10_index_recent} since ${S.since}</span></div>
-    <div class="metric"><b>${rg.research_interest_score ?? fmt(publishedPubs(R.publications).length)}</b><span class="lbl">${rg.research_interest_score != null ? "ResearchGate interest" : "Publications listed"}</span>
-      <span class="sub">${rg.research_interest_score != null ? `${fmt(rg.reads)} reads` : "peer-reviewed articles"}</span></div>
+    <div class="metric"><b>${rg.research_interest_score ?? fmt(R.publications.length)}</b><span class="lbl">${rg.research_interest_score != null ? "ResearchGate interest" : "Publications listed"}</span>
+      <span class="sub">${rg.research_interest_score != null ? `${fmt(rg.reads)} reads` : "articles, chapters & preprints"}</span></div>
     <div class="metric chart"><span class="lbl" style="margin:0">Citations per year</span>
       <div class="bars">${years.map(([y, v]) => `<div style="height:${Math.max(4, v / max * 100)}%" title="${y}: ${fmt(v)}"></div>`).join("")}</div>
       <div class="bars-x">${years.map(([y]) => `<span>${y.slice(2)}</span>`).join("")}</div></div>`;

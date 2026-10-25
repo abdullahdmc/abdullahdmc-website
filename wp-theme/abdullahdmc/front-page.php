@@ -25,7 +25,7 @@ amk_header( 'home' );
 			<a class="btn btn-ghost" href="<?php echo esc_url( amk_page_url( 'research' ) ); ?>">Research &amp; publications</a>
 		</div>
 		<div class="stats">
-			<div class="stat"><b id="pub-count">100+</b><span>peer-reviewed publications</span></div>
+			<div class="stat"><b id="pub-count">100+</b><span>publications, incl. preprints</span></div>
 			<div class="stat"><b>300+</b><span>research projects analysed</span></div>
 			<div class="stat"><b><?php echo esc_html( $amk_count ); ?></b><span>essays, poems &amp; reviews</span></div>
 		</div>

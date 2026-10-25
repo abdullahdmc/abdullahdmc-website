@@ -7,7 +7,7 @@
 <meta name="description" content="Physician, epidemiologist and writer. Research on infectious disease and public health, and essays in Bangla on science, mind and faith.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261026">
+<link rel="stylesheet" href="assets/style.css?v=20261026b">
 </head>
 <body>
 <div id="site-header"></div>
@@ -23,7 +23,7 @@
       <a class="btn btn-ghost" href="research.html">Research &amp; publications</a>
     </div>
     <div class="stats">
-      <div class="stat"><b id="pub-count">109</b><span>peer-reviewed publications</span></div>
+      <div class="stat"><b id="pub-count">119</b><span>publications, incl. preprints</span></div>
       <div class="stat"><b>300+</b><span>research projects analysed</span></div>
       <div class="stat"><b id="post-count">160</b><span>essays, poems &amp; reviews</span></div>
     </div>
@@ -105,14 +105,14 @@
 <script src="assets/feeds.js"></script>
 <script src="assets/profile.js"></script>
 <script src="assets/research.js"></script>
-<script src="assets/site.js?v=20261026"></script>
+<script src="assets/site.js?v=20261026b"></script>
 <script>
   renderChrome("index.html");
   const everything = allPosts();
   const posts = everything.filter(p => p.theme !== "ai");  // daily AI roundups get their own strip
   const R = window.RESEARCH, S = R.scholar;
   const fmt = n => n.toLocaleString("en-US");
-  document.getElementById("pub-count").textContent = publishedPubs(R.publications).length;
+  document.getElementById("pub-count").textContent = R.publications.length;
 
   // Google Scholar card under the photo (same layout as the Scholar profile table).
   const yrs = Object.entries(S.per_year).slice(-6);

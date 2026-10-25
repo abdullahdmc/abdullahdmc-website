@@ -18,7 +18,7 @@
   });
 
   // ---- Home ----
-  if (R && $("pub-count")) $("pub-count").textContent = publishedPubs(R.publications).length;
+  if (R && $("pub-count")) $("pub-count").textContent = R.publications.length;
   if (S && $("scholar-card")) {
     const yrs = Object.entries(S.per_year).slice(-6);
     const peak = Math.max(...yrs.map(([, v]) => v));
@@ -52,8 +52,8 @@
       <div class="metric"><b>${fmt(S.citations)}</b><span class="lbl">Citations</span><span class="sub">${fmt(S.citations_recent)} since ${S.since}</span></div>
       <div class="metric"><b>${S.h_index}</b><span class="lbl">h-index</span><span class="sub">${S.h_index_recent} since ${S.since}</span></div>
       <div class="metric"><b>${S.i10_index}</b><span class="lbl">i10-index</span><span class="sub">${S.i10_index_recent} since ${S.since}</span></div>
-      <div class="metric"><b>${rg.research_interest_score ?? fmt(publishedPubs(R.publications).length)}</b><span class="lbl">${rg.research_interest_score != null ? "ResearchGate interest" : "Publications listed"}</span>
-        <span class="sub">${rg.research_interest_score != null ? `${fmt(rg.reads)} reads` : "peer-reviewed articles"}</span></div>
+      <div class="metric"><b>${rg.research_interest_score ?? fmt(R.publications.length)}</b><span class="lbl">${rg.research_interest_score != null ? "ResearchGate interest" : "Publications listed"}</span>
+        <span class="sub">${rg.research_interest_score != null ? `${fmt(rg.reads)} reads` : "articles, chapters & preprints"}</span></div>
       <div class="metric chart"><span class="lbl" style="margin:0">Citations per year</span>
         <div class="bars">${years.map(([y, v]) => `<div style="height:${Math.max(4, v / max * 100)}%" title="${y}: ${fmt(v)}"></div>`).join("")}</div>
         <div class="bars-x">${years.map(([y]) => `<span>${y.slice(2)}</span>`).join("")}</div></div>`;
