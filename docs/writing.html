@@ -6,7 +6,7 @@
 <title>Writing · Abdullah Saeed Khan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261026b">
+<link rel="stylesheet" href="assets/style.css?v=20261029">
 </head>
 <body>
 <div id="site-header"></div>
@@ -32,7 +32,7 @@
 <script src="assets/posts.js"></script>
 <script src="assets/feeds.js"></script>
 <script src="assets/profile.js"></script>
-<script src="assets/site.js?v=20261026b"></script>
+<script src="assets/site.js?v=20261029"></script>
 <script>
   renderChrome("writing.html");
   const params = new URLSearchParams(location.search);
@@ -45,7 +45,7 @@
   const counts = { all: posts.length };
   posts.forEach(p => counts[p.theme] = (counts[p.theme] || 0) + 1);
   const chips = document.getElementById("chips");
-  chips.innerHTML = [["all", "সব"], ...Object.entries(THEMES).map(([k, t]) => [k, t.bn])]
+  chips.innerHTML = [["all", "সব"], ...Object.entries(THEMES).filter(([k]) => k !== "podcast").map(([k, t]) => [k, t.bn])]
     .map(([k, l]) => `<button class="chip" data-k="${k}">${k === "all" ? "" : `<span class="dot" style="--c1:${THEMES[k].c1}"></span>`}${l} <small>${bn(counts[k] || 0)}</small></button>`).join("");
   chips.onclick = e => { const b = e.target.closest(".chip"); if (!b) return; theme = b.dataset.k; shown = PAGE; draw(); };
   document.getElementById("q").oninput = () => { shown = PAGE; draw(); };

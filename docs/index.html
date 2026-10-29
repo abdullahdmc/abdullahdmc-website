@@ -7,7 +7,7 @@
 <meta name="description" content="Physician, epidemiologist and writer. Research on infectious disease and public health, and essays in Bangla on science, mind and faith.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261026b">
+<link rel="stylesheet" href="assets/style.css?v=20261029">
 </head>
 <body>
 <div id="site-header"></div>
@@ -105,7 +105,7 @@
 <script src="assets/feeds.js"></script>
 <script src="assets/profile.js"></script>
 <script src="assets/research.js"></script>
-<script src="assets/site.js?v=20261026b"></script>
+<script src="assets/site.js?v=20261029"></script>
 <script>
   renderChrome("index.html");
   const everything = allPosts();
@@ -146,7 +146,7 @@
   document.getElementById("all-links").innerHTML = linkChips([...PROFILE.links.research, ...PROFILE.links.social]);
   const counts = {};
   everything.forEach(p => counts[p.theme] = (counts[p.theme] || 0) + 1);
-  document.getElementById("themes").innerHTML = Object.entries(THEMES).map(([k, th]) =>
+  document.getElementById("themes").innerHTML = Object.entries(THEMES).filter(([k]) => k !== "podcast").map(([k, th]) =>
     `<a class="theme-tile" href="writing.html?theme=${k}" style="--c1:${th.c1};--c2:${th.c2}">${motifSVG(th.motif)}
       <b>${th.bn}</b><span>${th.en} · ${bn(counts[k] || 0)}টি লেখা</span></a>`).join("");
 </script>

@@ -50,12 +50,15 @@ def render(i, post, tmp):
 
 def main(upload):
     wp = WP()
-    posts = wp.get_all("/wp/v2/posts", status="publish,draft,private", _fields="id,title,categories,featured_media")
+    posts = wp.get_all("/wp/v2/posts", status="publish,draft,private", _fields="id,title,categories,tags,featured_media")
     todo = [p for p in posts if not p["featured_media"]]
     print(f"{len(posts)} posts, {len(todo)} without a featured image")
     ai = wp.get("/wp/v2/categories", slug="ai-in-health-research", _fields="id")
     ai_cat = ai[0]["id"] if ai else None
-    data = [{"id": p["id"], "title": html.unescape(p["title"]["rendered"]), "theme": theme_of(p["categories"], ai_cat)} for p in todo]
+    pod = wp.get("/wp/v2/tags", slug="podcast", _fields="id")
+    pod_tag = pod[0]["id"] if pod else None
+    data = [{"id": p["id"], "title": html.unescape(p["title"]["rendered"]),
+             "theme": "podcast" if pod_tag in p.get("tags", []) else theme_of(p["categories"], ai_cat)} for p in todo]
     (ROOT / "tools" / "covers.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     OUT.mkdir(exist_ok=True)
 

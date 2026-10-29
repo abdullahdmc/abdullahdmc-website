@@ -40,7 +40,7 @@ class WP:
             h["Content-Type"] = "application/json"
         req = urllib.request.Request(url, data=body, method=method, headers=h)
         try:
-            with urllib.request.urlopen(req, timeout=120) as r:
+            with urllib.request.urlopen(req, timeout=900 if raw is not None else 120) as r:  # large audio uploads take a while
                 text = r.read().decode("utf-8", "replace")
                 return json.loads(text) if text else None, dict(r.headers)
         except urllib.error.HTTPError as e:

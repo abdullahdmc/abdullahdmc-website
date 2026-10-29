@@ -7,7 +7,10 @@ defined( 'ABSPATH' ) || exit;
 $amk_ai_ids  = amk_theme_category_ids( 'ai' );
 $amk_series  = new WP_Query( array( 'tag' => 'arguments-for-god', 'posts_per_page' => 4, 'ignore_sticky_posts' => true ) );
 $amk_latest  = new WP_Query( array( 'posts_per_page' => 8, 'category__not_in' => $amk_ai_ids, 'ignore_sticky_posts' => true ) );
-$amk_ai      = $amk_ai_ids ? new WP_Query( array( 'category__in' => $amk_ai_ids, 'posts_per_page' => 3 ) ) : null;
+// AI block: the newest podcast episode (if any) leads, followed by the latest daily roundups.
+$amk_pod     = $amk_ai_ids ? new WP_Query( array( 'category__in' => $amk_ai_ids, 'tag' => 'podcast', 'posts_per_page' => 1 ) ) : null;
+$amk_pod     = $amk_pod && $amk_pod->have_posts() ? $amk_pod->posts[0] : null;
+$amk_ai      = $amk_ai_ids ? new WP_Query( array( 'category__in' => $amk_ai_ids, 'tag__not_in' => array_filter( array( get_term_by( 'slug', 'podcast', 'post_tag' )->term_id ?? 0 ) ), 'posts_per_page' => $amk_pod ? 2 : 3 ) ) : null;
 $amk_feature = $amk_series->have_posts() ? $amk_series->posts[0] : ( $amk_latest->posts[0] ?? null );
 // "Essays, poems & reviews": the author's own writing, so the daily AI roundups are not counted.
 $amk_count   = ( new WP_Query( array( 'category__not_in' => $amk_ai_ids, 'posts_per_page' => 1, 'fields' => 'ids', 'no_found_rows' => false ) ) )->found_posts;
@@ -67,15 +70,22 @@ amk_header( 'home' );
 </div></section>
 <?php endif; ?>
 
-<?php if ( $amk_ai && $amk_ai->have_posts() ) : ?>
+<?php if ( $amk_ai && ( $amk_ai->have_posts() || $amk_pod ) ) : ?>
 <section class="section" style="padding-top:0"><div class="wrap">
 	<div class="ai-strip">
 		<div class="section-head" style="margin-bottom:0">
 			<div><span class="eyebrow">Updated daily</span><h2>AI in Health Research</h2>
 				<p style="margin:8px 0 0;opacity:.8;max-width:40em">A daily roundup of new studies on large language models, machine learning and prediction models in medicine.</p></div>
-			<a class="link-more" href="<?php echo esc_url( amk_writing_url( array( 'theme' => 'ai' ) ) ); ?>">All roundups →</a>
+			<a class="link-more" href="<?php echo esc_url( amk_writing_url( array( 'theme' => 'ai' ) ) ); ?>">All roundups and episodes →</a>
 		</div>
-		<div class="ai-list">
+		<div class="ai-list<?php echo $amk_pod ? ' has-pod' : ''; ?>">
+			<?php if ( $amk_pod ) : $amk_pd = amk_podcast( $amk_pod ); ?>
+				<div class="ai-pod">
+					<?php echo amk_podcast_chip( $amk_pod ); // phpcs:ignore ?>
+					<a class="ai-pod-title" href="<?php echo esc_url( get_permalink( $amk_pod ) ); ?>"><?php echo esc_html( get_the_title( $amk_pod ) ); ?></a>
+					<?php if ( $amk_pd[0] ) : ?><audio controls preload="none" src="<?php echo esc_url( $amk_pd[0] ); ?>"></audio><?php endif; ?>
+				</div>
+			<?php endif; ?>
 			<?php foreach ( $amk_ai->posts as $amk_p ) : ?>
 				<a href="<?php echo esc_url( get_permalink( $amk_p ) ); ?>"><span class="d"><?php echo esc_html( strtoupper( get_the_date( 'j M Y', $amk_p ) ) ); ?></span><p><?php echo esc_html( wp_strip_all_tags( get_the_excerpt( $amk_p ) ) ); ?></p></a>
 			<?php endforeach; ?>

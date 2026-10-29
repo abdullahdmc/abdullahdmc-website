@@ -21,6 +21,13 @@ amk_header( 'writing' );
 			<input type="search" name="s" placeholder="লেখা খুঁজুন…" aria-label="Search posts">
 		</form>
 	</div>
+	<?php if ( 'ai' === $amk_theme ) : $amk_kind = isset( $_GET['kind'] ) ? sanitize_key( wp_unslash( $_GET['kind'] ) ) : ''; ?>
+		<div class="chips kind-chips">
+			<?php foreach ( array( '' => 'All', 'roundups' => 'Roundups', 'podcasts' => 'Podcasts' ) as $amk_k => $amk_l ) : ?>
+				<a class="chip" aria-pressed="<?php echo $amk_k === $amk_kind ? 'true' : 'false'; ?>" href="<?php echo esc_url( amk_writing_url( array_filter( array( 'theme' => 'ai', 'kind' => $amk_k ) ) ) ); ?>"><?php echo 'podcasts' === $amk_k ? amk_headphones_icon() : ''; // phpcs:ignore ?><?php echo esc_html( $amk_l ); ?></a>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
 	<?php amk_post_grid(); ?>
 </div></section>
 <?php

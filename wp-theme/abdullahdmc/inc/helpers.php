@@ -89,6 +89,30 @@ function amk_cover( $post = null, $size = 'amk-card', $class = '' ) {
 	);
 }
 
+/**
+ * Podcast episodes are posts tagged "podcast" whose content starts with the audio player
+ * (written by tools/publish_podcasts.py). Returns [audio url, duration] or null.
+ */
+function amk_podcast( $post = null ) {
+	$post = get_post( $post );
+	if ( ! $post || ! has_tag( 'podcast', $post ) ) {
+		return null;
+	}
+	$src = preg_match( '/<audio[^>]+src="([^"]+)"/', $post->post_content, $m ) ? $m[1] : '';
+	$len = preg_match( '/data-duration="([^"]*)"/', $post->post_content, $d ) ? $d[1] : '';
+	return array( $src, $len );
+}
+
+function amk_headphones_icon() {
+	return '<svg class="hp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/></svg>';
+}
+
+/** "Podcast · 14:02" label for cards and lists. */
+function amk_podcast_chip( $post = null ) {
+	$pod = amk_podcast( $post );
+	return $pod ? '<span class="pod-chip">' . amk_headphones_icon() . 'Podcast' . ( $pod[1] ? ' · ' . esc_html( $pod[1] ) : '' ) . '</span>' : '';
+}
+
 function amk_card( $post = null ) {
 	$post  = get_post( $post );
 	$theme = amk_themes()[ amk_theme_of( $post ) ];
@@ -96,7 +120,7 @@ function amk_card( $post = null ) {
 	<a class="card" href="<?php echo esc_url( get_permalink( $post ) ); ?>" style="--c1:<?php echo esc_attr( $theme['c1'] ); ?>">
 		<?php echo amk_cover( $post ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 		<div class="card-body">
-			<div class="card-meta"><span class="dot"></span><?php echo esc_html( $theme['bn'] . ' · ' . amk_date( $post ) ); ?></div>
+			<div class="card-meta"><?php echo amk_podcast_chip( $post ); // phpcs:ignore ?><span class="dot"></span><?php echo esc_html( $theme['bn'] . ' · ' . amk_date( $post ) ); ?></div>
 			<h3><?php echo esc_html( get_the_title( $post ) ); ?></h3>
 			<p><?php echo esc_html( wp_strip_all_tags( get_the_excerpt( $post ) ) ); ?></p>
 		</div>

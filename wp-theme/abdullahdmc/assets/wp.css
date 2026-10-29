@@ -41,6 +41,22 @@ body.admin-bar .site-header { top: 32px; }
 .cta-form .mailpoet_message { flex-basis: 100%; color: #fff; font-size: 14px; }
 .cta-form .mailpoet_validate_success { color: #c9f2d8 !important; }
 
+/* Podcast episodes. */
+.hp { width: 15px; height: 15px; flex: none; }
+.pod-chip { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  background: #7fd3f0; color: #04342c; margin-right: 4px; }
+.kind-chips { margin: -12px 0 24px; }
+.kind-chips .chip { gap: 6px; }
+.ai-list.has-pod { grid-template-columns: 1.3fr 1fr 1fr; }
+.ai-pod { padding: 18px; border-radius: 14px; background: rgba(255,255,255,.1); border: 1px solid #7fd3f0; display: flex; flex-direction: column; gap: 10px; }
+.ai-pod-title { color: #fff; text-decoration: none; font: 600 16px/1.4 var(--serif); }
+.ai-pod-title:hover { text-decoration: underline; }
+.ai-pod audio { width: 100%; height: 40px; }
+@media (max-width: 860px) { .ai-list.has-pod { grid-template-columns: 1fr; } }
+.prose .amk-podcast { margin: 0 0 1.6em; padding: 16px 18px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.prose .amk-podcast::before { content: "শুনুন · Listen to this episode"; display: block; font: 600 14px var(--sans); color: var(--ink-2); margin-bottom: 10px; }
+.prose .amk-podcast audio { width: 100%; }
+
 /* Consultation page. */
 .consult-hero { padding: 56px 0 32px; }
 .consult-hero h1 { font-size: clamp(34px, 4.6vw, 52px); margin: 12px 0 14px; }

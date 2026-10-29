@@ -6,3 +6,7 @@ dist/
 covers/
 tools/covers.json
 covers-staging/
+
+# Podcast audio stays on this PC (large files); only the guide is in git
+podcasts/*
+!podcasts/README.txt

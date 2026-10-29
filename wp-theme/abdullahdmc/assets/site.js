@@ -8,6 +8,8 @@ const THEMES = {
   literature: { bn: "সাহিত্য ও রিভিউ", en: "Poems, Stories & Reviews", c1: "#7a4a17", c2: "#c08a3e", motif: "book" },
   essays:     { bn: "ভাবনা ও প্রবন্ধ", en: "Essays & Reflections", c1: "#34433a", c2: "#5f7a67", motif: "ripple" },
   ai:         { bn: "AI in Health Research", en: "Daily research roundup", c1: "#0b3d5c", c2: "#1f8ab0", motif: "circuit" },
+  // Podcast episodes are AI in Health Research posts; this entry only styles their covers.
+  podcast:    { bn: "Podcast", en: "Podcast", c1: "#082f47", c2: "#0f7fa6", motif: "headphones" },
 };
 
 // WordPress posts plus the auto-written feeds (philosophy posts, daily AI roundups), newest first.
@@ -27,6 +29,8 @@ const MOTIFS = {
   book: `<path d="M100 60 C 70 40, 30 40, 10 50 V 160 C 30 150, 70 150, 100 170 C 130 150, 170 150, 190 160 V 50 C 170 40, 130 40, 100 60 Z" />
     <path d="M100 60 V170" /><path d="M30 75 C 50 70, 70 72, 85 80 M30 100 C 50 95, 70 97, 85 105 M30 125 C 50 120, 70 122, 85 130 M115 80 C 130 72, 150 70, 170 75 M115 105 C 130 97, 150 95, 170 100" />`,
   ripple: `${[18, 38, 58, 78, 98].map(r => `<circle cx="100" cy="100" r="${r}" />`).join("")}`,
+  headphones: `<path d="M30 120 V100 a70 70 0 0 1 140 0 V120" stroke-width="6" /><rect x="22" y="112" width="34" height="62" rx="12" /><rect x="144" y="112" width="34" height="62" rx="12" />
+    ${[[78, 28], [90, 52], [102, 70], [114, 44], [126, 24]].map(([x, h]) => `<line x1="${x}" y1="${143 - h / 2}" x2="${x}" y2="${143 + h / 2}" stroke-width="6" />`).join("")}`,
   circuit: `<rect x="65" y="65" width="70" height="70" rx="8" /><rect x="85" y="85" width="30" height="30" rx="4" />
     ${[75, 100, 125].map(v => `<path d="M${v} 65 V20 M${v} 135 V180 M65 ${v} H20 M135 ${v} H180" /><circle cx="${v}" cy="16" r="4" /><circle cx="${v}" cy="184" r="4" /><circle cx="16" cy="${v}" r="4" /><circle cx="184" cy="${v}" r="4" />`).join("")}`,
 };

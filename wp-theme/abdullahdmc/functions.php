@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AMK_VERSION', '1.0.6' );
+define( 'AMK_VERSION', '1.0.7' );
 
 require_once __DIR__ . '/inc/helpers.php';
 require_once __DIR__ . '/inc/seo.php';
@@ -103,6 +103,14 @@ add_action( 'pre_get_posts', function ( $q ) {
 		$cats  = amk_theme_category_ids( $theme );
 		if ( $cats ) {
 			$q->set( 'category__in', $cats );
+		}
+		// AI in Health Research: ?kind=podcasts or ?kind=roundups.
+		$kind = isset( $_GET['kind'] ) ? sanitize_key( wp_unslash( $_GET['kind'] ) ) : '';
+		$pod  = get_term_by( 'slug', 'podcast', 'post_tag' );
+		if ( 'podcasts' === $kind ) {
+			$q->set( 'tag', 'podcast' );
+		} elseif ( 'roundups' === $kind && $pod ) {
+			$q->set( 'tag__not_in', array( $pod->term_id ) );
 		}
 	}
 } );
