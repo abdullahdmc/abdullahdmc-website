@@ -49,7 +49,7 @@ body.admin-bar .site-header { top: 32px; }
 .kind-chips .chip { gap: 6px; }
 .ai-list.has-pod { grid-template-columns: 1.3fr 1fr 1fr; }
 .ai-pod { padding: 18px; border-radius: 14px; background: rgba(255,255,255,.1); border: 1px solid #7fd3f0; display: flex; flex-direction: column; gap: 10px; }
-.ai-pod-title { color: #fff; text-decoration: none; font: 600 16px/1.4 var(--serif); }
+.ai-list .ai-pod-title { display: block; padding: 0; background: none; border: 0; border-radius: 0; color: #fff; text-decoration: none; font: 600 16px/1.4 var(--serif); }
 .ai-pod-title:hover { text-decoration: underline; }
 .ai-pod audio { width: 100%; height: 40px; }
 @media (max-width: 860px) { .ai-list.has-pod { grid-template-columns: 1fr; } }

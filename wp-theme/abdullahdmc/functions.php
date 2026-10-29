@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AMK_VERSION', '1.0.8' );
+define( 'AMK_VERSION', '1.0.9' );
 
 require_once __DIR__ . '/inc/helpers.php';
 require_once __DIR__ . '/inc/seo.php';
@@ -57,6 +57,17 @@ add_action( 'init', function () {
 	}
 } );
 
+/**
+ * URL of a theme asset with the version in its file name (site-1.0.9.css, made by tools/build_theme.py).
+ * Namecheap's Supersonic CDN ignores "?ver=", so a new file name is the only reliable way to make
+ * every visitor get the new file after a theme update.
+ */
+function amk_asset( $name ) {
+	$versioned = preg_replace( '/\.(css|js)$/', '-' . AMK_VERSION . '.$1', $name );
+	$file      = file_exists( get_stylesheet_directory() . '/assets/' . $versioned ) ? $versioned : $name;
+	return get_stylesheet_directory_uri() . '/assets/' . $file;
+}
+
 add_action( 'wp_enqueue_scripts', function () {
 	// Astra's styles and scripts are not needed: our templates render the whole page.
 	foreach ( wp_styles()->queue as $handle ) {
@@ -70,14 +81,14 @@ add_action( 'wp_enqueue_scripts', function () {
 		}
 	}
 	wp_enqueue_style( 'amk-fonts', 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600&display=swap', array(), null );
-	wp_enqueue_style( 'amk-site', get_stylesheet_directory_uri() . '/assets/site.css', array( 'amk-fonts' ), AMK_VERSION );
-	wp_enqueue_style( 'amk-wp', get_stylesheet_directory_uri() . '/assets/wp.css', array( 'amk-site' ), AMK_VERSION );
+	wp_enqueue_style( 'amk-site', amk_asset( 'site.css' ), array( 'amk-fonts' ), AMK_VERSION );
+	wp_enqueue_style( 'amk-wp', amk_asset( 'wp.css' ), array( 'amk-site' ), AMK_VERSION );
 	if ( get_option( 'amk_css' ) ) {
 		wp_add_inline_style( 'amk-wp', get_option( 'amk_css' ) );
 	}
-	wp_enqueue_script( 'amk-site', get_stylesheet_directory_uri() . '/assets/site.js', array(), AMK_VERSION, true );
+	wp_enqueue_script( 'amk-site', amk_asset( 'site.js' ), array(), AMK_VERSION, true );
 	wp_add_inline_script( 'amk-site', amk_data_script(), 'before' );
-	wp_enqueue_script( 'amk-pages', get_stylesheet_directory_uri() . '/assets/pages.js', array( 'amk-site' ), AMK_VERSION, true );
+	wp_enqueue_script( 'amk-pages', amk_asset( 'pages.js' ), array( 'amk-site' ), AMK_VERSION, true );
 }, 100 );
 
 // Astra's scroll-to-top button has no styling without Astra's CSS.

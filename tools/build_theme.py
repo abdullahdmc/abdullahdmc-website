@@ -29,6 +29,9 @@ def main():
         for f in sorted(THEME.rglob("*")):
             if f.is_file():
                 z.write(f, Path("abdullahdmc") / f.relative_to(THEME))
+                # Also ship css/js as e.g. assets/site-1.0.9.css: the CDN ignores "?ver=", the theme loads these.
+                if f.parent.name == "assets" and f.suffix in (".css", ".js"):
+                    z.write(f, Path("abdullahdmc") / "assets" / f"{f.stem}-{version}{f.suffix}")
     print(f"{out} ({out.stat().st_size // 1024} KB), version {version}")
 
 
