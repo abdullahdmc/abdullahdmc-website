@@ -127,6 +127,7 @@ window.PROFILE = {
       ["LinkedIn", "https://www.linkedin.com/in/md-abdullah-saeed-khan-a5bb5818/", "linkedin"],
       ["Facebook", "https://www.facebook.com/abdullahdmc", "facebook"],
       ["X (Twitter)", "https://twitter.com/abdullahdmc", "x"],
+      ["Spotify podcast", "https://open.spotify.com/show/4nq2A5sj8Y8TBqi7lQUBVw", "spotify"],
     ],
     youtube: [
       ["Truth Quest", "https://www.youtube.com/@defendingbelief", "youtube", "বিশ্বাস, দর্শন ও বিজ্ঞান"],
