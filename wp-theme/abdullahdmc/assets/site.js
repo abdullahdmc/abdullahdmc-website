@@ -47,6 +47,7 @@ const LINK_ICONS = {
   facebook: `<path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15V3Z"/>`,
   x: `<path d="M4 4l16 16M20 4 4 20"/>`,
   youtube: `<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor"/>`,
+  spotify: `<circle cx="12" cy="12" r="9.5"/><path d="M7.5 9.6c3-1 6.4-.8 9.2.7M8 12.6c2.5-.7 5.2-.5 7.4.7M8.6 15.4c1.9-.5 3.9-.3 5.6.6"/>`,
   mail: `<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>`,
 };
 function linkIcon(name) {

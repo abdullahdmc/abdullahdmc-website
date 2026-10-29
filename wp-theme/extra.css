@@ -11,3 +11,8 @@
 #main .cta-form form.mailpoet_form input.mailpoet_submit:hover { filter: brightness(1.08); }
 #main .cta-form .mailpoet_message, #main .cta-form .mailpoet_validate_success, #main .cta-form .mailpoet_validate_error { flex-basis: 100%; font-size: 14px; color: #fff !important; }
 #main .cta-form .parsley-errors-list { color: #ffd9d9; font-size: 13px; margin: 6px 0 0 14px; padding: 0; list-style: none; }
+
+/* "Listen on Spotify" button on podcast episode pages. */
+#main .prose a.spotify-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 999px;
+  background: #1db954; color: #0b1f12 !important; font: 600 15px var(--sans); text-decoration: none; }
+#main .prose a.spotify-btn:hover { filter: brightness(1.06); }

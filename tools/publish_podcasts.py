@@ -1,30 +1,33 @@
-"""Publish podcast episodes dropped into podcasts/inbox to the WordPress site in .env.
+"""Publish new episodes of the Spotify podcast to the WordPress site in .env.
 
   python tools/publish_podcasts.py            # publish new episodes
   python tools/publish_podcasts.py --dry-run  # only show what would happen
 
-File name: "YYYY-MM-DD Episode title.mp3" (title optional; see podcasts/README.txt).
-Each episode becomes a post in "AI in health research" tagged "Podcast", with the audio player at
-the top, links to the AI roundups published since the previous episode, and a headphones cover.
-The audio (and its optional notes .txt) then moves to podcasts/published.
+The audio lives on Spotify for Creators. This reads the show's public RSS feed (tools/podcast.json)
+and, for each episode not yet on the website, creates a post in "AI in health research" tagged
+"Podcast": a player that streams the episode from Spotify's servers (no audio is stored on the
+website), a "Listen on Spotify" button, the episode description, links to the AI roundups
+published since the previous episode, and a headphones cover.
+
+podcasts/ on this PC is only the author's personal archive; nothing there is uploaded.
 """
 import html
+import json
 import re
-import shutil
 import sys
+import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import date, timedelta
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 import make_covers
 from wp import WP
 
-ROOT = Path(__file__).resolve().parent.parent
-INBOX = ROOT / "podcasts" / "inbox"
-DONE = ROOT / "podcasts" / "published"
-AUDIO = {".mp3", ".m4a", ".wav", ".ogg"}
-NAME = re.compile(r"^(\d{4}-\d{2}-\d{2})\s*[-–:]?\s*(.*)$")
+CONFIG = Path(__file__).resolve().parent / "podcast.json"
 AI_CATEGORY = "ai-in-health-research"
 PODCAST_TAG = ("Podcast", "podcast")
+ITUNES = "{http://www.itunes.com/dtds/podcast-1.0.dtd}"
 NOTE = "Audio created with Google Gemini Notebook (Audio Overview) from the AI in Health Research roundups listed below."
 
 
@@ -37,89 +40,90 @@ def term_id(wp, kind, name, slug):
     return found[0]["id"] if found else wp.post(f"/wp/v2/{kind}", {"name": name, "slug": slug})["id"]
 
 
-def read_notes(audio):
-    txt = audio.with_suffix(".txt")
-    if not txt.exists():
-        return None, [], None
-    lines = [l.strip() for l in txt.read_text(encoding="utf-8-sig").splitlines() if l.strip()]
-    links = [l for l in lines[1:] if re.match(r"https?://", l)]
-    return (lines[0] if lines else None), links, txt
+def duration(text):
+    """itunes:duration as seconds or h:mm:ss -> "m:ss" / "h:mm:ss"."""
+    if not text:
+        return ""
+    if text.isdigit():
+        s = int(text)
+        h, rest = divmod(s, 3600)
+        m, s = divmod(rest, 60)
+        return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
+    return text.lstrip("0:") or text
 
 
-def episode_html(audio_url, duration, description, roundups, links):
-    parts = [f'<figure class="wp-block-audio amk-podcast" data-duration="{html.escape(duration or "")}">'
-             f'<audio controls preload="metadata" src="{html.escape(audio_url)}"></audio></figure>',
-             f"<p>{html.escape(description)}</p>"]
+def plain(text, limit=600):
+    t = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", text or ""))).strip()
+    return t if len(t) <= limit else t[:limit].rsplit(" ", 1)[0] + "…"
+
+
+def episodes(feed_url):
+    req = urllib.request.Request(feed_url, headers={"User-Agent": "abdullahdmc-website"})
+    root = ET.fromstring(urllib.request.urlopen(req, timeout=60).read())
+    out = []
+    for item in root.iter("item"):
+        enc = item.find("enclosure")
+        out.append({
+            "title": (item.findtext("title") or "").strip(),
+            "date": parsedate_to_datetime(item.findtext("pubDate")).date(),
+            "audio": enc.get("url") if enc is not None else "",
+            "duration": duration((item.findtext(f"{ITUNES}duration") or "").strip()),
+            "link": (item.findtext("link") or "").strip(),
+            "description": plain(item.findtext("description") or item.findtext(f"{ITUNES}summary")),
+        })
+    return sorted(out, key=lambda e: e["date"])
+
+
+def episode_html(ep, spotify_url, roundups):
+    parts = [f'<figure class="wp-block-audio amk-podcast" data-duration="{html.escape(ep["duration"])}">'
+             f'<audio controls preload="none" src="{html.escape(ep["audio"])}"></audio></figure>']
+    if spotify_url:
+        parts.append(f'<p><a class="spotify-btn" href="{html.escape(spotify_url)}" target="_blank" rel="noopener">Listen on Spotify</a></p>')
+    if ep["description"]:
+        parts.append(f"<p>{html.escape(ep['description'])}</p>")
     if roundups:
         items = "".join(f'<li><a href="{html.escape(r["link"])}">{html.escape(html.unescape(r["title"]["rendered"]))}</a></li>' for r in roundups)
         parts.append(f"<h3>Roundups discussed</h3><ul>{items}</ul>")
-    if links:
-        parts.append("<h3>Further reading</h3><ul>" + "".join(f'<li><a href="{html.escape(u)}" target="_blank" rel="noopener">{html.escape(u)}</a></li>' for u in links) + "</ul>")
     parts.append(f"<p><em>{NOTE}</em></p>")
     return "\n".join(parts)
 
 
 def main(dry_run):
-    files = sorted(p for p in INBOX.glob("*") if p.suffix.lower() in AUDIO) if INBOX.exists() else []
-    if not files:
-        print("No new podcast episodes in", INBOX)
+    cfg = json.loads(CONFIG.read_text(encoding="utf-8")) if CONFIG.exists() else {}
+    if not cfg.get("rss"):
+        print("Spotify feed not set up yet (add the RSS address to tools/podcast.json).")
         return
     wp = WP()
     ai = wp.get("/wp/v2/categories", slug=AI_CATEGORY, _fields="id")[0]["id"]
-    tag = term_id(wp, "tags", *PODCAST_TAG) if not dry_run else None
+    tag = term_id(wp, "tags", *PODCAST_TAG)
     published = 0
-    for audio in files:
-        m = NAME.match(audio.stem)
-        if not m:
-            print(f"SKIPPED {audio.name}: name must start with the date, e.g. '2026-10-29 Episode title{audio.suffix}'")
+    for ep in episodes(cfg["rss"]):
+        if not ep["audio"]:
             continue
-        try:
-            day = date.fromisoformat(m.group(1))
-        except ValueError:
-            print(f"SKIPPED {audio.name}: '{m.group(1)}' is not a real date")
-            continue
-        slug = f"podcast-{day.isoformat()}"
+        slug = f"podcast-{ep['date'].isoformat()}"
         if wp.get("/wp/v2/posts", slug=slug, status="publish,future,draft,private", _fields="id"):
-            print(f"SKIPPED {audio.name}: an episode for {day} is already published (slug {slug}); rename the file if this is a second episode that day")
             continue
-
-        # Roundups covered: those since the previous episode (or the last 7 days), up to this date.
-        prev = wp.get("/wp/v2/posts", tags=tag, before=f"{day.isoformat()}T00:00:00", per_page=1, _fields="date") if tag else []
-        start = date.fromisoformat(prev[0]["date"][:10]) if prev else day - timedelta(days=7)
+        prev = wp.get("/wp/v2/posts", tags=tag, before=f"{ep['date'].isoformat()}T00:00:00", per_page=1, _fields="date")
+        # Roundups covered: those since the previous episode (or the last 7 days), up to this one.
+        start = date.fromisoformat(prev[0]["date"][:10]) if prev else ep["date"] - timedelta(days=7)
         roundups = [r for r in wp.get_all("/wp/v2/posts", categories=ai, after=f"{start.isoformat()}T23:59:59",
-                                          before=f"{day.isoformat()}T23:59:59", _fields="id,link,title,date,tags")
-                    if not tag or tag not in r.get("tags", [])]
+                                          before=f"{ep['date'].isoformat()}T23:59:59", _fields="id,link,title,date,tags")
+                    if tag not in r.get("tags", [])]
         roundups.sort(key=lambda r: r["date"])
-        span = f"{nice_date(date.fromisoformat(roundups[0]['date'][:10]))} – {nice_date(day)}" if roundups else nice_date(day)
-
-        title = m.group(2).strip() or f"AI in Health Research podcast: {span}"
-        description, links, notes = read_notes(audio)
-        description = description or f"A conversation about the latest research on AI in medicine, from the roundups of {span}."
-        size_mb = audio.stat().st_size / 1e6
-        print(f"{'would publish' if dry_run else 'publish'} {day} | {title} | {size_mb:.1f} MB | {len(roundups)} roundups", flush=True)
+        print(f"{'would publish' if dry_run else 'publish'} {ep['date']} | {ep['title']} | {ep['duration']} | {len(roundups)} roundups", flush=True)
         if dry_run:
             continue
-
-        try:
-            media = wp.upload(audio, title=f"Podcast: {title}")
-        except Exception as e:
-            print(f"FAILED to upload {audio.name} ({size_mb:.1f} MB): {str(e)[:200]}")
-            continue
-        duration = (media.get("media_details") or {}).get("length_formatted")
         post = wp.post("/wp/v2/posts", {
-            "title": title, "slug": slug, "status": "publish", "date": f"{day.isoformat()}T10:00:00",
-            "content": episode_html(media["source_url"], duration, description, roundups, links),
-            "excerpt": description, "categories": [ai], "tags": [tag],
+            "title": ep["title"], "slug": slug, "status": "publish", "date": f"{ep['date'].isoformat()}T10:00:00",
+            "content": episode_html(ep, ep["link"] or cfg.get("show_url"), roundups),
+            "excerpt": ep["description"][:300], "categories": [ai], "tags": [tag],
         })
-        wp.post(f"/wp/v2/media/{media['id']}", {"post": post["id"]})  # attach the audio to its episode
-        DONE.mkdir(parents=True, exist_ok=True)
-        for f in (audio, notes):
-            if f:
-                shutil.move(str(f), str(DONE / f.name))
         published += 1
-        print(f"published {post['link']} ({duration or 'length unknown'})", flush=True)
+        print(f"published {post['link']}", flush=True)
     if published:
         make_covers.main(upload=True)
+    elif not dry_run:
+        print("No new Spotify episodes.")
 
 
 if __name__ == "__main__":
