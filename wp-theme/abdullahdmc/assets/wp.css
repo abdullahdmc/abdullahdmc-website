@@ -77,7 +77,10 @@ html:not(.js) .article-share .copy-link{display:none}
 
 /* Page-header pictures on listing pages (Writing, Faith & Philosophy, the series, not found). */
 .intro-art{flex:0 0 min(40%,460px);margin:0}
-.intro-art img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:3px;filter:var(--art-filter);opacity:var(--art-opacity)}
+.intro-art img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:3px}
+
+/* Post covers are 16:9 cards with the title written on them: show them whole, never cropped. */
+.feature-cover img{aspect-ratio:16/9}
 .not-found .intro-art{max-width:460px;margin-bottom:34px}
 @media(max-width:800px){.intro-line{flex-direction:column;align-items:stretch}.intro-art{flex:none;order:-1}.intro-art img{aspect-ratio:2;max-height:260px}}
 
