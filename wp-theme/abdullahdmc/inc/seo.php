@@ -98,14 +98,16 @@ add_action( 'wpseo_add_opengraph_images', function ( $images ) {
 
 // Bangla posts are tagged as Bangla for search engines and social sites.
 function amk_is_bangla_page() {
-	return is_singular( 'post' ) && amk_is_bangla( get_the_title() );
+	return is_singular( 'post' ) && amk_post_is_bangla( get_queried_object() );
 }
 add_filter( 'language_attributes', function ( $output ) {
 	return amk_is_bangla_page() ? preg_replace( '/lang="[^"]*"/', 'lang="bn-BD"', $output ) : $output;
 } );
-add_filter( 'wpseo_locale', function ( $locale ) {
+$amk_locale = function ( $locale ) {
 	return amk_is_bangla_page() ? 'bn_BD' : $locale;
-} );
+};
+add_filter( 'wpseo_locale', $amk_locale );
+add_filter( 'wpseo_og_locale', $amk_locale );
 
 // Describe the author as a Person (name, roles, affiliations, profiles) and credit posts to him.
 add_filter( 'wpseo_schema_graph', function ( $graph ) {
@@ -179,3 +181,37 @@ add_action( 'template_redirect', function () {
 add_filter( 'wpseo_robots', function ( $robots ) {
 	return is_singular( 'mailpoet_page' ) ? 'noindex, follow' : $robots;
 } );
+
+// Without Yoast, the site's own pages keep their titles.
+add_filter( 'pre_get_document_title', function ( $title ) {
+	if ( defined( 'WPSEO_VERSION' ) ) {
+		return $title;
+	}
+	$seo = amk_page_seo();
+	return $seo ? esc_html( $seo[0] ) : $title;
+} );
+
+// Without Yoast, still give search engines and social sites a description and a preview.
+add_action( 'wp_head', function () {
+	if ( defined( 'WPSEO_VERSION' ) ) {
+		return;
+	}
+	$seo   = amk_page_seo();
+	$title = $seo ? $seo[0] : wp_get_document_title();
+	$desc  = amk_description( $seo ? $seo[1] : get_bloginfo( 'description' ) );
+	$image = is_singular() && has_post_thumbnail() ? get_the_post_thumbnail_url( null, 'amk-cover' ) : '';
+	if ( ! $image && get_option( 'amk_og_image' ) ) {
+		$image = wp_get_attachment_image_url( (int) get_option( 'amk_og_image' ), 'full' );
+	}
+	if ( ! $image ) {
+		$image = amk_img( 'og-image.jpg' );
+	}
+	$url = is_singular() ? get_permalink() : home_url( add_query_arg( array() ) );
+	printf( '<meta name="description" content="%s">' . "\n", esc_attr( $desc ) );
+	printf( '<meta property="og:type" content="%s">' . "\n", is_singular( 'post' ) ? 'article' : 'website' );
+	printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( $title ) );
+	printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $desc ) );
+	printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $url ) );
+	printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $image ) );
+	echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+}, 5 );

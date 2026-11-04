@@ -10,3 +10,6 @@ covers-staging/
 # Podcast audio stays on this PC (large files); only the guide is in git
 podcasts/*
 !podcasts/README.txt
+
+# Archived zips stay on this PC (OneDrive), not in git
+archive/**/*.zip

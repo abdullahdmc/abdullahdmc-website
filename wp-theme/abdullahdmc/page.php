@@ -7,9 +7,19 @@ amk_head();
 amk_header();
 while ( have_posts() ) :
 	the_post();
+	$amk_bn = amk_post_is_bangla();
 	?>
-	<section class="page-head"><div class="wrap"><h1><?php the_title(); ?></h1></div></section>
-	<section><div class="wrap"><div class="prose page-prose<?php echo amk_is_bangla( get_the_title() ) ? '' : ' en'; ?>"><?php the_content(); ?></div></div></section>
+	<div class="reading-progress" aria-hidden="true"><span></span></div>
+	<section class="wrap page-intro">
+		<?php amk_crumb( wp_strip_all_tags( get_the_title() ) ); ?>
+		<div class="intro-line"><div><h1<?php echo $amk_bn ? ' lang="bn"' : ''; ?>><?php the_title(); ?></h1></div></div>
+	</section>
+	<div class="wrap page-layout">
+		<article <?php post_class( 'article-body page-body' ); ?><?php echo $amk_bn ? ' lang="bn"' : ''; ?>>
+			<?php the_content(); ?>
+			<?php wp_link_pages( array( 'before' => '<nav class="page-links" aria-label="Pages">', 'after' => '</nav>' ) ); ?>
+		</article>
+	</div>
 	<?php
 endwhile;
 amk_footer();
