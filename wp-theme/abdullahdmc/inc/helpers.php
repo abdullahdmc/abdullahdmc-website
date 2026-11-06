@@ -145,10 +145,10 @@ function amk_series_ids() {
 
 /**
  * The gold line drawing on a post's cover, as inline SVG without the cover's title text
- * (used on the home page's series cards). tools/make_covers.py stores the drawing's name in the
+ * (used on the home page's series cards and small story thumbnails). tools/make_covers.py stores the drawing's name in the
  * post meta amk_motif; the drawings are copied from tools/cover_icons.js by tools/export_icons.js.
  */
-function amk_motif_svg( $post_id, $fallback = 'star' ) {
+function amk_motif_svg( $post_id, $fallback = 'star', $class = 'series-art' ) {
 	static $icons = null;
 	if ( null === $icons ) {
 		$icons = json_decode( (string) file_get_contents( get_stylesheet_directory() . '/assets/cover-icons.json' ), true );
@@ -156,7 +156,7 @@ function amk_motif_svg( $post_id, $fallback = 'star' ) {
 	}
 	$motif = (string) get_post_meta( $post_id, 'amk_motif', true );
 	$svg   = $icons[ $motif ] ?? ( $icons[ $fallback ] ?? '' );
-	return $svg ? '<svg class="series-art" viewBox="0 0 100 100" aria-hidden="true" focusable="false">' . $svg . '</svg>' : '';
+	return $svg ? '<svg class="' . esc_attr( $class ) . '" viewBox="0 0 100 100" aria-hidden="true" focusable="false">' . $svg . '</svg>' : '';
 }
 
 /** Part number (1-based) of a post in the series, or 0. */

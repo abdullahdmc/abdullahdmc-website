@@ -29,7 +29,7 @@ function amk_home_story( $post, $feature ) {
 	$sizes  = $feature ? '(max-width:800px) calc(100vw - 40px), 600px' : '(max-width:560px) 100px, 140px';
 	?>
 	<article class="<?php echo $feature ? 'feature-story' : 'small-story'; ?>">
-		<a class="story-image" href="<?php echo esc_url( $url ); ?>" tabindex="-1" aria-hidden="true"><?php echo amk_post_image( $post, $feature ? 'amk-cover' : 'amk-card', $sizes ); // phpcs:ignore ?></a>
+		<a class="story-image" href="<?php echo esc_url( $url ); ?>" tabindex="-1" aria-hidden="true"><?php echo $feature ? amk_post_image( $post, 'amk-cover', $sizes ) : amk_motif_tile( $post ); // phpcs:ignore ?></a>
 		<div class="story-copy">
 			<div class="meta"><span<?php echo amk_is_bangla( $theme ) ? ' lang="bn"' : ''; ?>><?php echo esc_html( $theme ); ?></span><time datetime="<?php echo esc_attr( get_the_date( 'Y-m-d', $post ) ); ?>"<?php echo $lang; // phpcs:ignore ?>><?php echo esc_html( amk_date( $post ) ); ?></time></div>
 			<h3<?php echo $lang; // phpcs:ignore ?>><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( get_the_title( $post ) ); ?></a></h3>

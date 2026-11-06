@@ -87,3 +87,4 @@ html:not(.js) .article-share .copy-link{display:none}
 /* "Listen on Spotify" button on podcast episode pages (written by tools/publish_podcasts.py). */
 .article-body a.spotify-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 20px;border-radius:999px;background:#1db954;color:#0b1f12;font:600 14px var(--sans);text-decoration:none}
 .article-body a.spotify-btn:hover{background:#1ed760}
+.motif-tile{display:grid;place-items:center;width:100%;aspect-ratio:1.1;background:var(--forest) url('img/series-texture.webp') center/cover}.motif-tile .motif-art{width:64%;height:64%;fill:none;stroke:var(--gold);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;transition:transform 500ms var(--ease-out)}@media(hover:hover) and (pointer:fine){.story-image:hover .motif-art{transform:scale(1.06)}}@media(max-width:560px){.motif-tile{aspect-ratio:1}}@media(prefers-reduced-motion:reduce){.story-image:hover .motif-art{transform:none}}

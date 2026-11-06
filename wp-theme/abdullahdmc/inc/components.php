@@ -27,6 +27,16 @@ function amk_post_image( $post, $size = 'amk-card', $sizes = '(max-width:800px) 
 	return '<span class="type-cover"><span' . ( amk_is_bangla( $name ) ? ' lang="bn"' : '' ) . '>' . esc_html( $name ) . '</span></span>';
 }
 
+/**
+ * A small square thumbnail: only the cover's gold drawing on the forest texture. The full cover
+ * would be cut down to part of its title at this size.
+ */
+function amk_motif_tile( $post ) {
+	$post     = get_post( $post );
+	$defaults = array( 'ai' => 'chip', 'podcast' => 'headphones', 'health' => 'stethoscope', 'mind' => 'brain', 'science' => 'atom', 'faith' => 'star', 'literature' => 'quill', 'essays' => 'bulb' );
+	return '<span class="motif-tile">' . amk_motif_svg( $post->ID, $defaults[ amk_theme_of( $post ) ] ?? 'bulb', 'motif-art' ) . '</span>';
+}
+
 function amk_part_chip( $post = null ) {
 	$part = amk_series_part( $post );
 	if ( ! $part ) {
