@@ -2,22 +2,75 @@
 <html>
 <head>
 <meta charset="utf-8">
-<!-- Renders one post cover full-window for tools/make_covers.py: cover.html?i=<index into covers.json> -->
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@500;600&family=Noto+Serif+Bengali:wght@600&display=block" rel="stylesheet">
-<link rel="stylesheet" href="../docs/assets/style.css">
+<!-- Renders one post cover full-window for tools/make_covers.py: cover.html?i=<index into covers.json>.
+     cover.html?sheet=1 shows every cover in covers.json at small size, for checking the design.
+     Colours and fonts are the theme's (wp-theme/abdullahdmc/assets/base.css and fonts.css). -->
+<link rel="stylesheet" href="../wp-theme/abdullahdmc/assets/fonts.css">
 <style>
+  :root { --forest: #102d27; --green: #285d50; --sage: #b1cbbb; --gold: #e0c480; --cream: #f6f1e4; }
   html, body { margin: 0; background: #000; overflow: hidden; }
-  .cover { width: 100vw; height: 100vh; aspect-ratio: auto; }
+  .cover { position: relative; width: 1600px; height: 900px; overflow: hidden; background: var(--forest); color: var(--cream); font-family: 'DM Sans', sans-serif; }
+  .cover .texture { position: absolute; inset: 0; background: url('../wp-theme/abdullahdmc/assets/img/series-texture.webp') center/cover; opacity: .45; }
+  .cover .glow { position: absolute; width: 900px; height: 900px; right: -260px; top: -10px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(40, 93, 80, .75) 0%, rgba(40, 93, 80, .25) 45%, rgba(16, 45, 39, 0) 70%); }
+  .cover .art { position: absolute; right: 120px; top: 50%; width: 400px; height: 400px; margin-top: -200px; }
+  .cover .art svg { width: 100%; height: 100%; overflow: visible; fill: none; stroke: var(--gold); stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+  .cover .frame { position: absolute; right: 70px; top: 50%; width: 500px; height: 500px; margin-top: -250px; border-radius: 50%; border: 2px solid rgba(177, 203, 187, .22); }
+  .cover .text { position: absolute; left: 110px; top: 110px; bottom: 110px; width: 840px; display: flex; flex-direction: column; }
+  .cover .eyebrow { display: flex; align-items: center; gap: 22px; color: var(--gold); font: 600 34px/1 'DM Sans', sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+  .cover .eyebrow.bn { font: 600 38px/1 'Hind Siliguri', sans-serif; letter-spacing: 0; text-transform: none; }
+  .cover .eyebrow:after { content: ''; width: 90px; height: 2px; background: var(--gold); opacity: .7; }
+  .cover .title-box { flex: 1; display: flex; align-items: center; min-height: 0; margin: 28px 0; }
+  .cover .title { font: 400 92px/1.12 'DM Serif Display', Georgia, serif; color: var(--cream); text-wrap: balance; }
+  .cover .title.bn { font-family: 'Noto Serif Bengali', serif; font-weight: 600; line-height: 1.38; }
+  .cover .sig { color: var(--sage); font: 500 28px/1 'DM Sans', sans-serif; letter-spacing: .04em; }
+  .cover .sig b { color: var(--cream); font-weight: 600; }
+  body.sheet { overflow: auto; background: #222; display: flex; flex-wrap: wrap; gap: 12px; padding: 12px; }
+  body.sheet .cell { width: 400px; height: 225px; overflow: hidden; position: relative; }
+  body.sheet .cell .cover { transform: scale(.25); transform-origin: 0 0; }
+  body.sheet .cell span { position: absolute; left: 4px; bottom: 2px; color: #fff; font: 11px sans-serif; background: #0008; padding: 1px 4px; }
 </style>
 </head>
 <body>
 <div id="out"></div>
-<script src="../docs/assets/site.js"></script>
+<script src="cover_icons.js"></script>
 <script>
+  const isBangla = s => /[ঀ-৿]/.test(s);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function coverHTML(post) {
+    return `<div class="cover"><div class="texture"></div><div class="glow"></div><div class="frame"></div>
+      <div class="art"><svg viewBox="0 0 100 100">${ICONS[post.motif] || ICONS.quill}</svg></div>
+      <div class="text">
+        <div class="eyebrow${isBangla(post.label) ? " bn" : ""}">${esc(post.label)}</div>
+        <div class="title-box"><div class="title${isBangla(post.title) ? " bn" : ""}" lang="${isBangla(post.title) ? "bn" : "en"}">${esc(post.title)}</div></div>
+        <div class="sig"><b>Md Abdullah Saeed Khan</b> · abdullahdmc.com</div>
+      </div></div>`;
+  }
+
+  // Shrink the title until it fits its box (long Bangla titles run to four lines).
+  function fit(cover) {
+    const box = cover.querySelector(".title-box"), title = cover.querySelector(".title");
+    let size = 92;
+    while (size > 44 && (title.scrollHeight > box.clientHeight || title.scrollWidth > box.clientWidth)) {
+      size -= 4; title.style.fontSize = size + "px";
+    }
+  }
+
   fetch("covers.json").then(r => r.json()).then(async list => {
-    const post = list[Number(new URLSearchParams(location.search).get("i"))];
-    document.getElementById("out").innerHTML = coverHTML(post);
+    await document.fonts.load("92px 'DM Serif Display'");
+    await document.fonts.load("600 92px 'Noto Serif Bengali'", "অ");
+    await document.fonts.load("600 34px 'Hind Siliguri'", "অ");
+    await document.fonts.load("600 30px 'DM Sans'");
+    const params = new URLSearchParams(location.search), out = document.getElementById("out");
+    if (params.get("sheet")) {
+      document.body.className = "sheet";
+      out.outerHTML = list.map(p => `<div class="cell">${coverHTML(p)}<span>${p.id} ${p.motif}</span></div>`).join("");
+    } else {
+      out.innerHTML = coverHTML(list[Number(params.get("i"))]);
+    }
     await document.fonts.ready;
+    document.querySelectorAll(".cover").forEach(fit);
     document.title = "ready";
   });
 </script>
