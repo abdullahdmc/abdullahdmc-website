@@ -125,3 +125,4 @@ html:not(.js) .theme-toggle{display:none}
 .hero-bio,.story-copy p,.roundup-excerpt{text-wrap:pretty}
 /* Avoid single words alone on the last line of paragraphs and list items. */
 p,li{text-wrap:pretty}
+.series-card .series-art{position:absolute;z-index:0;top:24px;right:24px;width:104px;height:104px;fill:none;stroke:var(--gold);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.9;transition:transform 500ms var(--ease-out)}@media(hover:hover) and (pointer:fine){.series-card:hover .series-art{transform:scale(1.05) rotate(-2deg)}}@media(max-width:800px){.series-card .series-art{width:88px;height:88px;top:18px;right:16px}}@media(prefers-reduced-motion:reduce){.series-card:hover .series-art{transform:none}}

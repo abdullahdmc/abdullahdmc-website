@@ -4,11 +4,14 @@
   python tools/make_covers.py --upload         -> also upload each cover and set it as the post's featured image
   python tools/make_covers.py --all --upload   -> redo every post whose cover is not yet in the current style (safe to re-run)
   python tools/make_covers.py --all --dry      -> only write tools/covers.json; view tools/cover.html?sheet=1
+  python tools/make_covers.py --ids=12,34 --upload -> make the covers of these posts again
+  python tools/make_covers.py --motifs         -> store every post's drawing name in its amk_motif meta (theme 2.0.3+)
 
 Design (tools/cover.html): the theme's forest green, gold and fonts, the post's topic and title, and one
 line drawing (tools/cover_icons.js) that matches the post. The drawing comes from tools/cover_motifs.json
 (chosen by hand per post), else from keywords in the title and text (RULES), else from the topic.
 --all keeps the old images in the media library and lists their ids in dist/old_cover_ids.txt.
+The drawing's name is also stored in the post meta amk_motif: the home page's series cards show it.
 """
 import html
 import json
@@ -86,24 +89,49 @@ def motif_of(post, theme, chosen):
     return best if scores[best] >= 2 else DEFAULT_MOTIF[theme]
 
 
+def blank(png):
+    """True if the screenshot is all black: Chrome took it before the cover had loaded."""
+    return Image.open(png).convert("L").getextrema()[1] < 10
+
+
 def render(i, post, tmp):
     png = OUT / f"{post['id']}-{STYLE}.png"
-    if png.exists():
+    if png.exists() and not blank(png):
         return png
     profile = tmp / f"chrome-{i % 4}"
-    subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
-                    f"--user-data-dir={profile}", "--window-size=1600,900", "--virtual-time-budget=8000",
-                    f"--screenshot={png}", f"http://localhost:{PORT}/tools/cover.html?i={i}"],
-                   capture_output=True, timeout=120)
+    for budget in (8000, 20000, 40000):  # a slow start leaves a black screenshot: try again with more time
+        png.unlink(missing_ok=True)
+        try:
+            subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
+                            f"--user-data-dir={profile}", "--window-size=1600,900", f"--virtual-time-budget={budget}",
+                            f"--screenshot={png}", f"http://localhost:{PORT}/tools/cover.html?i={i}"],
+                           capture_output=True, timeout=120)
+        except subprocess.TimeoutExpired:
+            continue
+        if png.exists() and not blank(png):
+            return png
+    png.unlink(missing_ok=True)  # never upload a blank cover; the next run tries again
     return png
 
 
-def main(upload, redo_all=False, dry=False):
+def set_motif(wp, post_id, motif):
+    try:  # the theme registers amk_motif from 2.0.3; with an older theme this is skipped
+        wp.post(f"/wp/v2/posts/{post_id}", {"meta": {"amk_motif": motif}})
+    except Exception as e:
+        print("motif not stored for", post_id, str(e)[:120], flush=True)
+
+
+def main(upload, redo_all=False, dry=False, motifs_only=False, ids=()):
     wp = WP()
-    posts = wp.get_all("/wp/v2/posts", status="publish,draft,private", _fields="id,title,content,categories,tags,featured_media")
+    posts = wp.get_all("/wp/v2/posts", status="publish,draft,private", _fields="id,title,content,categories,tags,featured_media,meta")
     if redo_all:  # every post whose featured image is not yet in the current style
         styled = {m["id"] for m in wp.get_all("/wp/v2/media", _fields="id,source_url") if f"-{STYLE}." in m["source_url"]}
         todo = [p for p in posts if p["featured_media"] not in styled]
+    elif ids:
+        todo = [p for p in posts if p["id"] in ids]
+        for p in todo:  # render again, not from the cache
+            for f in OUT.glob(f"{p['id']}-{STYLE}.*"):
+                f.unlink()
     else:
         todo = [p for p in posts if not p["featured_media"]]
     print(f"{len(posts)} posts, {len(todo)} to do")
@@ -117,6 +145,17 @@ def main(upload, redo_all=False, dry=False):
         theme = "podcast" if pod_tag in p.get("tags", []) else theme_of(p["categories"], ai_cat)
         data.append({"id": p["id"], "title": html.unescape(p["title"]["rendered"]), "label": LABELS[theme],
                      "motif": motif_of(p, theme, chosen), "old": p["featured_media"]})
+    if motifs_only:  # every post, not only those whose cover is out of date
+        data = []
+        for p in posts:
+            theme = "podcast" if pod_tag in p.get("tags", []) else theme_of(p["categories"], ai_cat)
+            m = motif_of(p, theme, chosen)
+            if (p.get("meta") or {}).get("amk_motif") != m:
+                data.append((p["id"], m))
+        print(len(data), "posts to update")
+        for pid, m in data:
+            set_motif(wp, pid, m)
+        return
     (ROOT / "tools" / "covers.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     if dry:
         print("wrote tools/covers.json")
@@ -126,6 +165,10 @@ def main(upload, redo_all=False, dry=False):
     class QuietHandler(SimpleHTTPRequestHandler):
         def log_message(self, *args):
             pass
+
+        def end_headers(self):  # the Chrome profiles are reused: never let them keep an old cover.html
+            self.send_header("Cache-Control", "no-store")
+            super().end_headers()
 
     server = ThreadingHTTPServer(("127.0.0.1", PORT), partial(QuietHandler, directory=str(ROOT)))
     threading.Thread(target=server.serve_forever, daemon=True).start()
@@ -151,6 +194,7 @@ def main(upload, redo_all=False, dry=False):
                     media = wp.upload(jpg, title=post["title"], alt=post["title"])
                     wp.post(f"/wp/v2/posts/{post['id']}", {"featured_media": media["id"]})
                     print("set", post["id"], "->", media["id"], flush=True)
+                    set_motif(wp, post["id"], post["motif"])
                     if post["old"]:
                         old_ids.append(post["old"])
                     break
@@ -167,4 +211,5 @@ def main(upload, redo_all=False, dry=False):
 
 
 if __name__ == "__main__":
-    main("--upload" in sys.argv, "--all" in sys.argv, "--dry" in sys.argv)
+    ids = [int(x) for a in sys.argv if a.startswith("--ids=") for x in a[6:].split(",")]
+    main("--upload" in sys.argv, "--all" in sys.argv, "--dry" in sys.argv, "--motifs" in sys.argv, ids)

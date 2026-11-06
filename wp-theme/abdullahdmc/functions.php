@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AMK_VERSION', '2.0.2' );
+define( 'AMK_VERSION', '2.0.3' );
 
 require_once __DIR__ . '/inc/helpers.php';
 require_once __DIR__ . '/inc/components.php';
@@ -27,6 +27,17 @@ add_action( 'after_setup_theme', function () {
 
 // Profile and research data, editable by administrators over REST, readable by the theme.
 add_action( 'init', function () {
+	// Name of the line drawing on the post's cover (set by tools/make_covers.py), shown on series cards.
+	register_post_meta( 'post', 'amk_motif', array(
+		'type'              => 'string',
+		'single'            => true,
+		'default'           => '',
+		'show_in_rest'      => true,
+		'sanitize_callback' => 'sanitize_key',
+		'auth_callback'     => function () {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
 	// Extra CSS for small design tweaks without re-uploading the theme.
 	register_setting( 'general', 'amk_css', array(
 		'type'              => 'string',

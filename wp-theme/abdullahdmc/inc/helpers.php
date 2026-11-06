@@ -143,6 +143,22 @@ function amk_series_ids() {
 	return array_map( 'intval', (array) $ids );
 }
 
+/**
+ * The gold line drawing on a post's cover, as inline SVG without the cover's title text
+ * (used on the home page's series cards). tools/make_covers.py stores the drawing's name in the
+ * post meta amk_motif; the drawings are copied from tools/cover_icons.js by tools/export_icons.js.
+ */
+function amk_motif_svg( $post_id, $fallback = 'star' ) {
+	static $icons = null;
+	if ( null === $icons ) {
+		$icons = json_decode( (string) file_get_contents( get_stylesheet_directory() . '/assets/cover-icons.json' ), true );
+		$icons = is_array( $icons ) ? $icons : array();
+	}
+	$motif = (string) get_post_meta( $post_id, 'amk_motif', true );
+	$svg   = $icons[ $motif ] ?? ( $icons[ $fallback ] ?? '' );
+	return $svg ? '<svg class="series-art" viewBox="0 0 100 100" aria-hidden="true" focusable="false">' . $svg . '</svg>' : '';
+}
+
 /** Part number (1-based) of a post in the series, or 0. */
 function amk_series_part( $post = null ) {
 	$index = array_search( (int) get_post( $post )->ID, amk_series_ids(), true );
