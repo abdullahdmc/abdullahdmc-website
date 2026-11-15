@@ -1,7 +1,6 @@
 Google Scholar records NOT shown on the website, and why.
 To hide a paper, add its exact title to tools/publications_exclude.json; to mark a book chapter, add it to tools/publication_types.json.
 
-excluded                   | 2026 | Lancet Infectious Diseases 26 (8), e278- | Global burden of enteric infectious diseases, diarrhoeal diseases, and corresponding aetiologies, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023 …
 correction                 | 2022 | Tropical medicine and health 50, 10, 202 | Correction to: Chikungunya outbreak in Bangladesh (2017): sociodemographic and clinical characteristics of patients from three hotspots
 duplicate record           | 2026 | Available at SSRN 7549166, 2026          | Global, Regional, And National Dengue Burden, 1990-2023: A Systematic Analysis from The Global Burden Of Disease Study 2023
 duplicate record           | 2023 | AIDS, 2023                               | Global, Regional, and National Burden of Tuberculosis and Multidrug-Resistant Tuberculosis in the Context of HIV/AIDS, 1990–2023: A Systematic Analysis for the Global Burden of …
