@@ -1,7 +1,9 @@
 Google Scholar records NOT shown on the website, and why.
 To hide a paper, add its exact title to tools/publications_exclude.json; to mark a book chapter, add it to tools/publication_types.json.
 
+excluded                   | 2026 | Lancet Infectious Diseases 26 (8), e278- | Global burden of enteric infectious diseases, diarrhoeal diseases, and corresponding aetiologies, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023 …
 correction                 | 2022 | Tropical medicine and health 50, 10, 202 | Correction to: Chikungunya outbreak in Bangladesh (2017): sociodemographic and clinical characteristics of patients from three hotspots
+duplicate record           | 2026 | Available at SSRN 7549166, 2026          | Global, Regional, And National Dengue Burden, 1990-2023: A Systematic Analysis from The Global Burden Of Disease Study 2023
 duplicate record           | 2023 | AIDS, 2023                               | Global, Regional, and National Burden of Tuberculosis and Multidrug-Resistant Tuberculosis in the Context of HIV/AIDS, 1990–2023: A Systematic Analysis for the Global Burden of …
 duplicate record           | 2025 | With Forecasts to 2050, 2025             | Global, Regional, and National Burden of Breast Cancer Among Females, 1990–2023, With Forecasts to 2050: A Systematic Analysis for the Global Burden of Disease Study 2023
 duplicate record           | ---- | Sustainable Development Goals and Mental | Sustainable Development Goals and Mental Health in Bangladesh
@@ -10,24 +12,10 @@ duplicate record           | 2025 | Available at SSRN 5392535, 2025          | G
 duplicate record           | 2025 | The Lancet 405 (10481), 785-812, 2025    | Global, regional, and national prevalence of child and adolescent overweight and obesity, 1990–2021, with forecasts to 2050: a forecasting study for the Global Burden of …
 duplicate record           | 2024 | IJID Regions 11, 1-8, 2024               | The impact of comorbidity on the quality of life of COVID-19 recovered people in Bangladesh
 duplicate record           | ---- | IJID Regions 11, 100351, 0               | The impact of comorbidity on the quality of life of people who recovered from COVID-19 in Bangladesh
-duplicate record           | 2022 | Indian Journal of Otolaryngology and Hea | Virucidal effect of povidone iodine on SARS-CoV-2 in nasopharynx: an open-label randomized clinical trial
-duplicate record           | 2022 |                                          | A Community-Based Cross-Sectional Study about the Knowledge, Attitude, and Practices of Food Safety Measures among Rural Households in Bangladesh
-duplicate record           | 2022 |                                          | Psychometric Properties of the Bangla Brief Suicide Cognitions Scale among University Level Students
 duplicate record           | 2020 |                                          | Clinico-epidemiological characteristics of asymptomatic and symptomatic COVID-19-positive patients in Bangladesh (preprint)
-duplicate record           | 2020 |                                          | Sociodemographic profile, clinical characteristics, anxiety, and depression of 74 patients infected with COVID-19: first report from Bangladesh
-duplicate record           | ---- |                                          | Sociodemographic profile, clinical characteristics, anxiety, and depression of 74 patients infected with COVID-19: 1st report from Bangladesh
-duplicate record           | ---- | a ca d e mic. o, 0                       | The STRATAA study protocol: a programme to assess the burden of enteric fever in Bangladesh, Malawi and Nepal using prospective population census, passive surveillance …
 
 Shown on the website but possibly the same paper twice (check on Google Scholar; merge or hide one):
 
-  - 2024 Acceptance of COVID-19 vaccine and its determinants: Evidence from a large population-based study in Bangladesh
-    2021 Acceptance of COVID-19 vaccine and its determinants: evidence from a large sample study in Bangladesh
-  - 2022 Virucidal effect of povidone iodine on SARS-CoV-2 in nasopharynx: an open-label randomized clinical trial
-    2022 Virucidal effect of povidone iodine on COVID-19 in the nasopharynx: an open-label randomized clinical trial
 
 In the CV list but not found on Google Scholar (add them to Scholar if they should appear):
 
-  - Khan MS, Karim F, Ovi MRA, Nasrin S, Ashraf MA, Hasan MK, Rahman MM, Hasan SMF, Islam MD, Faisel AJ, Hasan MJ and Khan MAS. Knowledge and Belief about Antibiotic Use among Rural People of Bangladesh. 
-  - Noor, S. M., Ahmad, M. M., Anwar, K. M. R., Chowdhury, M. F., Sultana, M., Kader, M. A., & Khan, M. A. S. (2024). Clinical and Radiological Presentation of Patients with Smear Positive Pulmonary Tuber
-  - Haque R, Kabir K, Hossain M, Habib MB, Khan MAS, Hasan MJ. Knowledge of Stroke and its Risk Factors among Stroke Survivors: A Hospital Based Study. Mymensingh Med J. 2021 Apr;30(2):376–86. Available f
-  - Afrose R, Islam AM, Amin MR, Saha TK, Khan MAS, Hasan MJ.  National TB control program of Bangladesh: System failure and loss of effectiveness. Mymensingh Med J (Accepted and waiting for publication)

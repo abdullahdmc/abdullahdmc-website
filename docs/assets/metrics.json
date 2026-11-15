@@ -1,23 +1,22 @@
 {
- "updated": "2026-11-03",
+ "updated": "2026-11-15",
  "scholar": {
   "url": "https://scholar.google.com/citations?user=dj7mFi8AAAAJ",
-  "citations": 7195,
-  "citations_recent": 7083,
+  "citations": 7443,
+  "citations_recent": 7360,
   "h_index": 28,
   "h_index_recent": 28,
   "i10_index": 60,
-  "i10_index_recent": 58,
+  "i10_index_recent": 60,
   "since": 2021,
   "per_year": {
-   "2019": 27,
-   "2020": 36,
-   "2021": 109,
-   "2022": 245,
-   "2023": 290,
-   "2024": 366,
-   "2025": 1441,
-   "2026": 4530
+   "2020": 31,
+   "2021": 106,
+   "2022": 241,
+   "2023": 289,
+   "2024": 360,
+   "2025": 1442,
+   "2026": 4815
   }
  },
  "researchgate": {
@@ -39,6 +38,22 @@
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:kRWSkSYxWN8C"
   },
   {
+   "title": "Vaccination status and its association with complications among the patients admitted with measles in the dedicated measles hospitals, Dhaka, Bangladesh",
+   "authors": "A Goutam, A Hasan, MAS Khan, MAH Mahid, SB Masud, H Babul, ...",
+   "venue": "PLoS One 21 (11), e0353336, 2026",
+   "cites": 1,
+   "year": 2026,
+   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:B3FOqHPlNUQC"
+  },
+  {
+   "title": "Global, regional and national burden of cervical cancer in 1990–2023 with forecasts to 2050: a Global Burden of Disease study",
+   "authors": "",
+   "venue": "Nature Medicine, 1-23, 2026",
+   "cites": 0,
+   "year": 2026,
+   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:JoZmwDi-zQgC"
+  },
+  {
    "title": "Adolescent health across Asia Pacific, 2000–23: a systematic analysis for the Global Burden of Disease Study 2023",
    "authors": "KI Cini, D Dumuid, I Abbsar, L Li, DA Priambodo, MA Abdullah, ...",
    "venue": "The Lancet Child & Adolescent Health 10 (10), 731-754, 2026",
@@ -58,7 +73,7 @@
    "title": "Global burden of elevated LDL-C: findings from the Global Burden of Disease Study 2023",
    "authors": "GBD 2023 LDL Cholesterol Collaborators, C Razo, NK DeCleene, ...",
    "venue": "Jama 336 (8), 673-698, 2026",
-   "cites": 9,
+   "cites": 10,
    "year": 2026,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:fQNAKQ3IYiAC"
   },
@@ -87,6 +102,14 @@
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:VOx2b1Wkg3QC"
   },
   {
+   "title": "Global burden of enteric infectious diseases, diarrhoeal diseases, and corresponding aetiologies, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023 …",
+   "authors": "A Vongpradith, RMV Dominguez, LT Car, A Movo, SM Ostroff, J He, ...",
+   "venue": "Lancet Infectious Diseases 26 (8), e278-e278, 2026",
+   "cites": 7,
+   "year": 2026,
+   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:SdhP9T11ey4C"
+  },
+  {
    "title": "Association between coastal residence since birth and blood pressure among adolescents: a cross-sectional comparative study",
    "authors": "I Hossain, MM Aktaruzzaman, MAS Khan, MH Khan",
    "venue": "medRxiv, 2026.07. 27.26359069, 2026",
@@ -98,7 +121,7 @@
    "title": "Global, regional, and national burden of road injuries 1990–2023: a systematic analysis for the Global Burden of Disease Study 2023",
    "authors": "SCC Van Der Lubbe, ME Moberg, D Aluquin, Y Zhou, H Lenox, H Aalruz, ...",
    "venue": "The Lancet Public Health, 2026",
-   "cites": 12,
+   "cites": 14,
    "year": 2026,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:5Ul4iDaHHb8C"
   },
@@ -114,7 +137,7 @@
    "title": "Global, regional, and national burden of tuberculosis and multidrug-resistant tuberculosis by HIV status, 1990–2023: a systematic analysis for the Global Burden of Disease …",
    "authors": "JR Ledesma, M Zhang, MF Liew, RMV Dominguez, SML Whikehart, ...",
    "venue": "The Lancet infectious diseases, 2026",
-   "cites": 12,
+   "cites": 13,
    "year": 2026,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:LPZeul_q3PIC"
   },
@@ -125,14 +148,6 @@
    "cites": 0,
    "year": 2026,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:tS2w5q8j5-wC"
-  },
-  {
-   "title": "Vaccination Status and Its Association with Complications among the Patients Admitted with Measles in the Dedicated Measles Hospitals, Dhaka, Bangladesh",
-   "authors": "A Goutam, A Hasan, MAS Khan, MAH Mahid, SB Masud, H Babul, ...",
-   "venue": "medRxiv, 2026.06. 24.26356486, 2026",
-   "cites": 0,
-   "year": 2026,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:B3FOqHPlNUQC"
   },
   {
    "title": "Knowledge, Attitude and Practice of Nursing Students on Antibiotic Use and Resistance in Bangladesh",
@@ -146,9 +161,17 @@
    "title": "Updated trends in the global prevalence and burden of mental disorders, 1990–2023: a systematic analysis for the Global Burden of Disease Study 2023",
    "authors": "DF Santomauro, PA Miller, J Shadid, SW Hanson, A Vo, DJ Roy, ...",
    "venue": "The Lancet 407 (10543), 2040-2064, 2026",
-   "cites": 147,
+   "cites": 178,
    "year": 2026,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:08ZZubdj9fEC"
+  },
+  {
+   "title": "Global, Regional, And National Dengue Burden, 1990-2023: A Systematic Analysis from The Global Burden Of Disease Study 2023",
+   "authors": "J Mosser, GBD Collaborators",
+   "venue": "Available at SSRN 7549166, 2026",
+   "cites": 0,
+   "year": 2026,
+   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:dTyEYWd-f8wC"
   },
   {
    "title": "Effect of health education on foot care knowledge and practice of patients with type 2 diabetes in rural Bangladesh",
@@ -170,7 +193,7 @@
    "title": "Global, regional, and national burden of breast cancer among females, 1990–2023, with forecasts to 2050: a systematic analysis for the Global Burden of Disease Study 2023",
    "authors": "K Bhangdia, ML May, JM Kocarnik, N Pritchett, A Crist, L Penberthy, ...",
    "venue": "The Lancet Oncology 27 (3), 302-326, 2026",
-   "cites": 99,
+   "cites": 105,
    "year": 2026,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:738O_yMBCRsC"
   },
@@ -194,7 +217,7 @@
    "title": "Sexual and reproductive health challenges among street adolescents in Sylhet city, Bangladesh: A cross-sectional study",
    "authors": "Y Ahmed, MAS Khan, L Afroz, M Nurunnabi, MG Abbas",
    "venue": "Plos one 21 (1), e0340865, 2026",
-   "cites": 2,
+   "cites": 3,
    "year": 2026,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:WbkHhVStYXYC"
   },
@@ -202,7 +225,7 @@
    "title": "Sustainable Development Goals and Mental Health in Bangladesh",
    "authors": "M Abdullah Saeed Khan, SMY Arafat",
    "venue": "Sustainable Development Goals and Mental Health in South Asia, 173-187, 2026",
-   "cites": 2,
+   "cites": 3,
    "year": 2026,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:tOudhMTPpwUC"
   },
@@ -234,7 +257,7 @@
    "title": "Cross-cultural adaptation and psychometric evaluation of Pittsburgh sleep quality index Bangla (PSQI-BN) in Bangladeshi population",
    "authors": "T Mahmood, R Afroz, JP Chowdhury, F Khan, MS Zaman, MAS Khan, ...",
    "venue": "Sleep and Biological Rhythms 24 (1), 105-113, 2026",
-   "cites": 3,
+   "cites": 4,
    "year": 2026,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:KxtntwgDAa4C"
   },
@@ -242,7 +265,7 @@
    "title": "Global, regional, and national burden of cardiovascular diseases and risk factors in 204 countries and territories, 1990-2023",
    "authors": "Global Burden of Cardiovascular Diseases and Risks 2023 Collaborators",
    "venue": "Journal of the American College of Cardiology 86 (22), 2167-2243, 2025",
-   "cites": 720,
+   "cites": 760,
    "year": 2025,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:OU6Ihb5iCvQC"
   },
@@ -274,7 +297,7 @@
    "title": "Burden of 375 diseases and injuries, risk-attributable burden of 88 risk factors, and healthy life expectancy in 204 countries and territories, including 660 subnational …",
    "authors": "SI Hay, KL Ong, DF Santomauro, MA Aalipour, H Aalruz, HS Ababneh, ...",
    "venue": "The Lancet 406 (10513), 1873-1922, 2025",
-   "cites": 472,
+   "cites": 501,
    "year": 2025,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:1sJd4Hv_s6UC"
   },
@@ -290,7 +313,7 @@
    "title": "Citizens’ feedback on health service and the responses of health authorities of Bangladesh: An analysis of the Grievance Redress System",
    "authors": "MAS Khan, MTH Shawon, A Rabbani",
    "venue": "PLOS Digital Health 4 (7), e0000967, 2025",
-   "cites": 1,
+   "cites": 2,
    "year": 2025,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:NhqRSupF_l8C"
   },
@@ -306,15 +329,23 @@
    "title": "Global, regional, and national trends in routine childhood vaccination coverage from 1980 to 2023 with forecasts to 2030: a systematic analysis for the Global Burden of Disease …",
    "authors": "E Haeuser, S Byrne, J Nguyen, C Raggi, SA McLaughlin, C Bisignano, ...",
    "venue": "The Lancet 406 (10500), 235-260, 2025",
-   "cites": 220,
+   "cites": 229,
    "year": 2025,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:EUQCXRtRnyEC"
+  },
+  {
+   "title": "Knowledge and Belief about Antibiotic Use among Rural People of Bangladesh",
+   "authors": "MS Khan, F Karim, MRA Ovi, S Nasrin, MA Ashraf, MK Hasan, ...",
+   "venue": "Mymensingh Med J 34 (3), 791-800, 2025",
+   "cites": 1,
+   "year": 2025,
+   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:5awf1xo2G04C"
   },
   {
    "title": "Awareness about cervical cancer and its socio-economic determinants among adults in Bangladesh: Results from a nationwide cross-sectional study",
    "authors": "T Islam, MAS Khan, MDH Hawlader, NES Meem, FN Eva, UK Monisha, ...",
    "venue": "Plos one 20 (6), e0325712, 2025",
-   "cites": 3,
+   "cites": 5,
    "year": 2025,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:bFI3QPDXJZMC"
   },
@@ -338,7 +369,7 @@
    "title": "Global, regional, and national prevalence of adult overweight and obesity, 1990–2021, with forecasts to 2050: a forecasting study for the Global Burden of Disease Study 2021",
    "authors": "M Ng, E Gakidou, J Lo, YH Abate, C Abbafati, N Abbas, M Abbasian, ...",
    "venue": "The Lancet 405 (10481), 813-838, 2025",
-   "cites": 1670,
+   "cites": 1733,
    "year": 2025,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:f2IySw72cVMC"
   },
@@ -346,7 +377,7 @@
    "title": "Global, regional, and national prevalence of child and adolescent overweight and obesity, 1990–2021, with forecasts to 2050: a forecasting study for the Global Burden of …",
    "authors": "JA Kerr, GC Patton, KI Cini, YH Abate, N Abbas, AHA Abd Al Magied, ...",
    "venue": "The Lancet 405 (10481), 785-812, 2025",
-   "cites": 748,
+   "cites": 771,
    "year": 2025,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:pyW8ca7W8N0C"
   },
@@ -362,7 +393,7 @@
    "title": "Factors associated with road traffic injury in a high-risk zone of Bangladesh: a mixed-method study",
    "authors": "MFK Rozars, N Ahmed, N Sultana, ASM Ishtiak, MT Alam, ME Hossan, ...",
    "venue": "Injury prevention 31 (1), 32-39, 2025",
-   "cites": 9,
+   "cites": 10,
    "year": 2025,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:ZHo1McVdvXMC"
   },
@@ -370,7 +401,7 @@
    "title": "Factors Associated With Low Utilization of Cervical Cancer Screening Services in Gazipur, Bangladesh",
    "authors": "SF Kabir, M Ashik-Ur-Rahman, A Rahman, MA Hossen, R Rahman, ...",
    "venue": "Obstetrics and Gynecology International 2025 (1), 4476955, 2025",
-   "cites": 1,
+   "cites": 2,
    "year": 2025,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:u9iWguZQMMsC"
   },
@@ -378,15 +409,15 @@
    "title": "Global age-sex-specific all-cause mortality and life expectancy estimates for 204 countries and territories and 660 subnational locations, 1950–2023: a demographic analysis for …",
    "authors": "SI Hay, L Cegolon, GBD 2023 Demographics Collaborators",
    "venue": "The Lancet 406 (10513), 1731-1810, 2025",
-   "cites": 301,
+   "cites": 320,
    "year": 2025,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:SP6oXDckpogC"
   },
   {
-   "title": "Global burden of 292 causes of death in 204 countries and territories and 660 subnational locations, 1990–2023: a systematic analysis for the Global Burden of Disease Study 2023",
-   "authors": "M Naghavi, BB Duncan, MI Schmidt, R Mattiello, CJL Murray, ...",
-   "venue": "The Lancet. London. Vol. 406, no. 10506 (Oct. 2025), p. 1811–1872, 2025",
-   "cites": 847,
+   "title": "Global burden of 292 causes of death in 204 countries and territories and 660 subnational locations, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023.",
+   "authors": "J Sundström",
+   "venue": "The Lancet 406 (10513), 1811-1872, 2025",
+   "cites": 897,
    "year": 2025,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:CHSYGLWDkRkC"
   },
@@ -434,9 +465,17 @@
    "title": "Acceptance of Human Papillomavirus (HPV) vaccine among the parents of eligible daughters (9–15 years) in Bangladesh: A nationwide study using Health Belief Model",
    "authors": "MDH Hawlader, FN Eva, MAS Khan, T Islam, UK Monisha, I Chowdhury, ...",
    "venue": "Plos one 19 (11), e0310779, 2024",
-   "cites": 17,
+   "cites": 19,
    "year": 2024,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:4OULZ7Gr8RgC"
+  },
+  {
+   "title": "Clinical and Radiological Presentation of Patients with Smear Positive Pulmonary Tuberculosis",
+   "authors": "SM Noor, MM Ahmad, KMR Anwar, MF Chowdhury, M Sultana, MA Kader, ...",
+   "venue": "Mymensingh Med J 33 (4), 1211-8, 2024",
+   "cites": 2,
+   "year": 2024,
+   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:eq2jaN3J8jMC"
   },
   {
    "title": "Predictors of health-related quality of Life for COVID-19 survivors living in Dhaka, Bangladesh: A repeated Follow-Up after 18 months of their recovery",
@@ -450,7 +489,7 @@
    "title": "Self-perceived halitosis and associated factors among university students in Dhaka, Bangladesh",
    "authors": "A Dey, MAS Khan, FN Eva, T Islam, MDH Hawlader",
    "venue": "BMC Oral Health 24 (1), 909, 2024",
-   "cites": 25,
+   "cites": 27,
    "year": 2024,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:HoB7MX3m0LUC"
   },
@@ -535,14 +574,6 @@
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:3s1wT3WcHBgC"
   },
   {
-   "title": "Acceptance of COVID-19 vaccine and its determinants: Evidence from a large population-based study in Bangladesh",
-   "authors": "MMA Haque, ML Rahman, M Hossian, KF Matin, MM Islam, MH Nabi, ...",
-   "venue": "Authorea 2024 (0130), 2024",
-   "cites": 0,
-   "year": 2024,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:RGFaLdJalmkC"
-  },
-  {
    "title": "Autonomic dysfunction in amyotrophic lateral sclerosis–a case-control study",
    "authors": "M Hasan, SKM Alam, HZ Rahman, MAS Khan, MR Huq",
    "venue": "Acta medica academica 53 (1), 24, 2024",
@@ -591,14 +622,6 @@
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:YFjsv_pBGBYC"
   },
   {
-   "title": "Social Class Determination through Monthly Household Income: A Perspective from Bangladesh.",
-   "authors": "A Fidah, M Fuad",
-   "venue": "OSF, 2023",
-   "cites": 6,
-   "year": 2023,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:blknAaTinKkC"
-  },
-  {
    "title": "Cross-cultural adaptation and validation of the Bangla version of the Psoriasis Disability Index",
    "authors": "F Nishat, MSI Bhuiyan, MA Khan, A Jesmin, MAS Khan, MJ Hasan",
    "venue": "Journal of Public Health Research 12 (2), 22799036231181205, 2023",
@@ -637,14 +660,6 @@
    "cites": 5,
    "year": 2023,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:RHpTSmoSYBkC"
-  },
-  {
-   "title": "Bangladesh Livestock Research Priorities",
-   "authors": "MH Rashid, SM Bokhtiar, MAS Khan, MS Ali",
-   "venue": "Bangladesh Agricultural Research Council: Dhaka, Bangladesh 978, 984, 2023",
-   "cites": 5,
-   "year": 2023,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:XiVPGOgt02cC"
   },
   {
    "title": "Global, Regional, and National Burden of Tuberculosis and Multidrug-Resistant Tuberculosis in the Context of HIV/AIDS, 1990–2023: A Systematic Analysis for the Global Burden of …",
@@ -706,23 +721,15 @@
    "title": "Clinical and hematological profiles of children with dengue residing in a non-endemic zone of Bangladesh",
    "authors": "S Islam, MAS Khan, MFA Badal, MZI Khan, D Gozal, MJ Hasan",
    "venue": "PLoS neglected tropical diseases 16 (10), e0010847, 2022",
-   "cites": 51,
+   "cites": 52,
    "year": 2022,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:mB3voiENLucC"
-  },
-  {
-   "title": "Virucidal effect of povidone iodine on SARS-CoV-2 in nasopharynx: an open-label randomized clinical trial",
-   "authors": "M Kamal Arefin, SS Banu, AKM Nasir Uddin, SK Nurul Fattah Rumi, ...",
-   "venue": "Indian Journal of Otolaryngology and Head & Neck Surgery 74 (Suppl 2), 3283-3292, 2022",
-   "cites": 3,
-   "year": 2022,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:ZeXyd9-uunAC"
   },
   {
    "title": "Virucidal effect of povidone iodine on COVID-19 in the nasopharynx: an open-label randomized clinical trial",
    "authors": "MK Arefin, SKNF Rumi, AKMN Uddin, SS Banu, M Khan, A Kaiser, ...",
    "venue": "Indian Journal of Otolaryngology and Head & Neck Surgery 74 (Suppl 2), 2963-2967, 2022",
-   "cites": 34,
+   "cites": 38,
    "year": 2022,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:5nxA0vEk-isC"
   },
@@ -733,6 +740,14 @@
    "cites": 23,
    "year": 2022,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:-f6ydRqryjwC"
+  },
+  {
+   "title": "National TB Control Program of Bangladesh: System Failure and Loss of Effectiveness.",
+   "authors": "R Afrose, AM Islam, MR Amin, TK Saha, AS Khan, MJ Hasan",
+   "venue": "Mymensingh Medical Journal: MMJ 31 (3), 749-757, 2022",
+   "cites": 2,
+   "year": 2022,
+   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:LjlpjdlvIbIC"
   },
   {
    "title": "Quality of life among health care workers with and without prior COVID-19 infection in Bangladesh",
@@ -767,18 +782,10 @@
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:hFOr9nPyWt4C"
   },
   {
-   "title": "Virucidal effect of povidone iodine on SARS-CoV-2 in nasopharynx: an open-label randomized clinical trial",
-   "authors": "MK Arefin, SS Banu, AKMN Uddin, SKNF Rumi, M Khan, A Kaiser, ...",
-   "venue": "Indian Journal of Otolaryngology and Head & Neck Surgery 74 (Suppl 2), 3283, 2022",
-   "cites": 3,
-   "year": 2022,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:J_g5lzvAfSwC"
-  },
-  {
    "title": "The impact of the COVID-19 pandemic on the mental health of Rohingya refugees with pre-existing health problems in Bangladesh",
    "authors": "S Palit, H Yang, J Li, MAS Khan, MJ Hasan",
    "venue": "Conflict and health 16 (1), 10, 2022",
-   "cites": 37,
+   "cites": 39,
    "year": 2022,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:4DMP91E08xMC"
   },
@@ -815,36 +822,12 @@
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:QIV2ME_5wuYC"
   },
   {
-   "title": "Comparative screening of hybrids and synthetic maize (Zea mays L.) cultivars for drought-sensitive and drought-tolerant under different irrigation regimes",
-   "authors": "MN Shah, S Hussain, H Ali, M Khan, A Bukhari, S Ali, M Naveed, M Sohail",
-   "venue": "J. Plant Environ 4 (1), 09-17, 2022",
-   "cites": 5,
-   "year": 2022,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:AXPGKjj_ei8C"
-  },
-  {
-   "title": "Research Article A Community-Based Cross-Sectional Study about the Knowledge, Attitude, and Practices of Food Safety Measures among Rural Households in Bangladesh",
-   "authors": "MR Rabyea, MHB Zihad, MA Fakir, MS Khatun, JJ Rakhi, A Islam, R Islam, ...",
-   "venue": "",
-   "cites": 0,
-   "year": 2022,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:zA6iFVUQeVQC"
-  },
-  {
-   "title": "Research Article Psychometric Properties of the Bangla Brief Suicide Cognitions Scale among University Level Students",
-   "authors": "SMY Arafat, F Hussain, R Amin, V Menon, MK Islam, ASM Redwan, ...",
-   "venue": "",
-   "cites": 0,
-   "year": 2022,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:maZDTaKrznsC"
-  },
-  {
    "title": "Psychometric properties of the Bangla brief suicide cognitions scale among university level students",
    "authors": "SMY Arafat, F Hussain, R Amin, V Menon, MK Islam, ASM Redwan, ...",
    "venue": "Mental Illness 2022 (1), 2327630, 2022",
    "cites": 7,
    "year": 2022,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:4JMBOYKVnBMC"
+   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:4JMBOYKVnBMC"
   },
   {
    "title": "A Community‐Based Cross‐Sectional Study About the Knowledge, Attitude, and Practices of Food Safety Measures Among Rural Households in Bangladesh",
@@ -858,7 +841,7 @@
    "title": "COVID-19 vaccine acceptance in South Asia: a multi-country study",
    "authors": "MDH Hawlader, ML Rahman, A Nazir, T Ara, MMA Haque, S Saha, ...",
    "venue": "International journal of infectious diseases 114, 1-10, 2022",
-   "cites": 98,
+   "cites": 99,
    "year": 2022,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:mVmsd5A6BfQC"
   },
@@ -922,7 +905,7 @@
    "title": "Clinical spectrum and predictors of severity of dengue among children in 2019 outbreak: a multicenter hospital-based study in Bangladesh",
    "authors": "MAS Khan, A Al Mosabbir, E Raheem, A Ahmed, RR Rouf, M Hasan, ...",
    "venue": "BMC pediatrics 21 (1), 478, 2021",
-   "cites": 102,
+   "cites": 104,
    "year": 2021,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:9ZlFYXVOiuMC"
   },
@@ -930,7 +913,7 @@
    "title": "Comparison of clinical manifestation of dengue fever in Bangladesh: an observation over a decade",
    "authors": "MJ Hasan, T Tabassum, M Sharif, MAS Khan, AR Bipasha, A Basher, ...",
    "venue": "BMC infectious diseases 21 (1), 1113, 2021",
-   "cites": 91,
+   "cites": 92,
    "year": 2021,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:qxL8FJ1GzNcC"
   },
@@ -949,14 +932,6 @@
    "cites": 0,
    "year": 2021,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:Zph67rFs4hoC"
-  },
-  {
-   "title": "Belief, Attitude, and Intention to take COVID-19 Vaccine among South Asian Population: A Multi-country Study",
-   "authors": "MDH Hawlader, ML Rahman, A Nazir, T Ara, MMA Haque, S Saha, ...",
-   "venue": "International Journal of Infectious Diseases, 2021",
-   "cites": 0,
-   "year": 2021,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:YOwf2qJgpHMC"
   },
   {
    "title": "Evidence of nucleos (t) ide analogue (NUC) therapy in HBV DNA negative decompensated cirrhosis",
@@ -978,7 +953,7 @@
    "title": "Clinico-epidemiologic characteristics of the 2019 dengue outbreak in Bangladesh",
    "authors": "MJ Hasan, T Tabassum, M Sharif, MAS Khan, AR Bipasha, A Basher, ...",
    "venue": "Transactions of the Royal Society of Tropical Medicine and Hygiene 115 (7 …, 2021",
-   "cites": 51,
+   "cites": 52,
    "year": 2021,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:WF5omc3nYNoC"
   },
@@ -1005,6 +980,14 @@
    "cites": 37,
    "year": 2021,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:8k81kl-MbHgC"
+  },
+  {
+   "title": "Knowledge of Stroke and its Risk Factors among Stroke Survivors: A Hospital Based Study.",
+   "authors": "R Haque, K Kabir, M Hossain, MB Habib, AS Khan, MJ Hasan",
+   "venue": "Mymensingh Medical Journal: MMJ 30 (2), 376-386, 2021",
+   "cites": 5,
+   "year": 2021,
+   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:WqliGbK-hY8C"
   },
   {
    "title": "Healthcare workers' knowledge, attitude, and practice regarding personal protective equipment for the prevention of COVID-19",
@@ -1039,14 +1022,6 @@
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:Se3iqnhoufwC"
   },
   {
-   "title": "Empirical Evidence on Concept of Knowledge Perspective in Construction Firms in Pakistan",
-   "authors": "MWJ Khan, A Khan, Z Ahmed, G Sulaiman",
-   "venue": "Review of Applied Management and Social Sciences 3 (3), 287-301, 2020",
-   "cites": 1,
-   "year": 2020,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:olpn-zPbct0C"
-  },
-  {
    "title": "Leishmaniasis in Dhaka Medical College-experience of three years",
    "authors": "MR Amin, J Fardin, N Noor, PK Mallik, T Tabassum, MAS Khan, MJ Hasan",
    "venue": "Heliyon 6 (11), 2020",
@@ -1079,14 +1054,6 @@
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:YsMSGLbcyi4C"
   },
   {
-   "title": "Socio-Demographics, Clinical Characteristics, Anxiety and Depression of 74 Patients Infected with COVID-19: First Report from Bangladesh",
-   "authors": "MJ Hasan, AS Khan, M Rahman, S Islam, S Debnath, J Fardous, ...",
-   "venue": "Clinical Characteristics, Anxiety and Depression of 74, 2020",
-   "cites": 0,
-   "year": 2020,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:NMxIlDl6LWMC"
-  },
-  {
    "title": "Clinico-epidemiological characteristics of asymptomatic and symptomatic COVID-19-positive patients in Bangladesh (preprint)",
    "authors": "MJ Hasan, SM Chowdhury, MAS Khan, M Rahaman, J Fardous, T Adit, ...",
    "venue": "",
@@ -1106,7 +1073,7 @@
    "title": "Chikungunya outbreak (2017) in Bangladesh: Clinical profile, economic impact and quality of life during the acute phase of the disease",
    "authors": "MS Hossain, MM Hasan, MS Islam, S Islam, M Mozaffor, MAS Khan, ...",
    "venue": "PLoS neglected tropical diseases 12 (6), e0006561, 2018",
-   "cites": 112,
+   "cites": 114,
    "year": 2018,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:UeHWp8X0CEIC"
   },
@@ -1119,92 +1086,12 @@
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:zYLM7Y9cAGgC"
   },
   {
-   "title": "STRATAA Study Consortium The STRATAA study protocol: a programme to assess the burden of enteric fever in Bangladesh, Malawi and Nepal using prospective population census …",
-   "authors": "TC Darton, JE Meiring, S Tonks, MA Khan, F Khanam, M Shakya, ...",
-   "venue": "BMJ Open 7 (6), e016283, 2017",
-   "cites": 12,
-   "year": 2017,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:5ugPr518TE4C"
-  },
-  {
    "title": "Comparative Analysis of Life Curve Mobile Application: an Easier Alternative to Existing Traditional Paper Partograph",
    "authors": "MJ Hasan, MS Hossain, SMY Arafat, AS Khan, Z Ahmed, F Shabnam",
    "venue": "Journal of Mobile Computing & Application, 4. IOSR Journal of Mobile …, 2017",
    "cites": 2,
    "year": 2017,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:Y0pCki6q_DkC"
-  },
-  {
-   "title": "People perception about climate change and adaptation in the arid region of Pakistan",
-   "authors": "S Khan, MU Hasan, MA Khan",
-   "venue": "Peshawar: Institute of Geography, Urban and Regional Planning University of …, 2012",
-   "cites": 9,
-   "year": 2012,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:HE397vMXCloC"
-  },
-  {
-   "title": "Saudi Arabia",
-   "authors": "AMBAK Saxena, AZ Bukhari, AA Khan, A Pachauri, BD Usmani, BM Lal, ...",
-   "venue": "Global Media, 2009",
-   "cites": 3,
-   "year": 2009,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:bnK-pcrLprsC"
-  },
-  {
-   "title": "Smith SAEvidence in Diabetes Enquiry System (EVIDENS) Research Group",
-   "authors": "AS Gami, VM Montori, PJ Erwin, MA Khan",
-   "venue": "Systematic review of lipid lowering for primary prevention of coronary heart …, 2003",
-   "cites": 5,
-   "year": 2003,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:Mojj43d5GZwC"
-  },
-  {
-   "title": "The impact of diabetes status on the efficacy of lipid lowering interventions is unjustifiably unexplored in meta-analyses of randomized controlled trials",
-   "authors": "AS Gami, VM Montori, PJ Erwin, MA Khan, SA Smith",
-   "venue": "Diabetes 51, A504-A505, 2002",
-   "cites": 1,
-   "year": 2002,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:wbdj-CoPYUoC"
-  },
-  {
-   "title": "Unjustified exclusion and misrepresentation of diabetes in primary prevention trials of lipid lowering interventions",
-   "authors": "AS Gami, VM Montori, PJ Erwin, MA Khan, SA Smith",
-   "venue": "Diabetes 51, A504-A504, 2002",
-   "cites": 1,
-   "year": 2002,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:J-pR_7NvFogC"
-  },
-  {
-   "title": "Growth response of early weaned buffalo calves fed on lysine and methionine supplemented cottonseed meal",
-   "authors": "AG Khan, A Azim, MA Khan",
-   "venue": "",
-   "cites": 0,
-   "year": 1996,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:Y5dfb0dijaUC"
-  },
-  {
-   "title": "Possible sustainable nutritional strategies for improving ruminant productivity in dry and cold mountain areas of Pakistan",
-   "authors": "AG Khan, A Azim, MA Khan",
-   "venue": "",
-   "cites": 1,
-   "year": 1995,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:WA5NYHcadZ8C"
-  },
-  {
-   "title": "Trends in Mortality from Leukemia and Ischemic Heart Disease: A 22-Year Analysis in the US (1999-2020). ASIDE Internal Medicine. 2025; 2 (2): 21-30",
-   "authors": "MF Hemida, A Khan, AA Ibrahim, A Goel, K Patel, Z Shahriar",
-   "venue": "",
-   "cites": 5,
-   "year": null,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:tkaPQYYpVKoC"
-  },
-  {
-   "title": "The STRATAA study protocol: a programme to assess the burden of enteric fever in Bangladesh, Malawi and Nepal using prospective population census, passive surveillance …",
-   "authors": "TC Darton, JE Meiring, S Tonks, MA Khan, F Khanam, M Shakya",
-   "venue": "a ca d e mic. o, 0",
-   "cites": 10,
-   "year": null,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:t6usbXjVLHcC"
   },
   {
    "title": "Sustainable Development Goals and Mental Health in Bangladesh",
@@ -1229,14 +1116,6 @@
    "cites": 0,
    "year": null,
    "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:hMod-77fHWUC"
-  },
-  {
-   "title": "Sociodemographic profile, clinical characteristics, anxiety, and depression of 74 patients infected with COVID-19: 1st report from Bangladesh",
-   "authors": "MJ Hasan, MAS Khan, M Rahman, MS Islam, S Debnath, J Fardous, ...",
-   "venue": "",
-   "cites": 0,
-   "year": null,
-   "scholar": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dj7mFi8AAAAJ&cstart=100&pagesize=100&sortby=pubdate&citation_for_view=dj7mFi8AAAAJ:L8Ckcad2t8MC"
   }
  ]
 }
