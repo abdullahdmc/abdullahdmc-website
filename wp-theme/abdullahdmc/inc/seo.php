@@ -41,7 +41,7 @@ function amk_page_seo() {
 		),
 		'templates/template-biography.php'    => array(
 			'Biography · Dr. ' . AMK_NAME . ', Epidemiologist',
-			'Dr. ' . AMK_NAME . ': Assistant Professor (Epidemiology), DPhil fellow in Clinical Medicine at the University of Oxford (MORU). Education, affiliations, experience, training and awards.',
+			'Dr. ' . AMK_NAME . ': Epidemiologist & Public Health Specialist, DPhil (ongoing) in Clinical Medicine at the University of Oxford (MORU). Education, affiliations, experience, training and awards.',
 		),
 		'templates/template-consultation.php' => array(
 			'Health Research Consultation: Proposals, Data Analysis & Manuscripts · Dr. ' . AMK_NAME,
@@ -123,7 +123,7 @@ add_filter( 'wpseo_schema_graph', function ( $graph ) {
 		'name'        => 'Dr. ' . AMK_NAME,
 		'url'         => home_url( '/' ),
 		'image'       => get_stylesheet_directory_uri() . '/assets/portrait.jpg',
-		'jobTitle'    => 'Assistant Professor (Epidemiology)',
+		'jobTitle'    => 'Epidemiologist & Public Health Specialist',
 		'description' => 'Epidemiologist and medical doctor; DPhil fellow in Clinical Medicine, University of Oxford.',
 		'email'       => 'mailto:abdullahdmc@gmail.com',
 		'worksFor'    => array(

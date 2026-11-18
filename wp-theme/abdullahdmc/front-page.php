@@ -60,8 +60,8 @@ amk_header( 'home' );
 <section class="profile-section wrap" id="research-profile" aria-labelledby="profile-title">
 	<div class="profile-top">
 		<div class="profile-copy">
-			<h2 id="profile-title">DPhil, University of Oxford</h2>
-			<p class="profile-roles">Assistant Professor (Epidemiology)<br>Health Research &amp; Data Analytics Consultant</p>
+			<h2 id="profile-title">DPhil, University of Oxford <span class="profile-status">(Ongoing)</span></h2>
+			<p class="profile-roles">Epidemiologist &amp; Public Health Specialist<br>Health Research &amp; Data Analytics Consultant</p>
 			<p>Machine-learning tools for febrile illness with MORU &amp; SEACTN</p>
 			<a class="text-link" href="<?php echo esc_url( amk_page_url( 'research' ) . '#projects' ); ?>">Current projects and funding <?php echo $amk_arrow; // phpcs:ignore ?></a>
 		</div>

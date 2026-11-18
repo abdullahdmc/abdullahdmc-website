@@ -21,7 +21,7 @@ amk_header( 'biography' );
 	<div class="biography-intro">
 		<div>
 			<h1>Dr. Md Abdullah<br>Saeed Khan</h1>
-			<p class="lead">Assistant Professor (Epidemiology) · DPhil fellow, University of Oxford</p>
+			<p class="lead">Epidemiologist &amp; Public Health Specialist · DPhil (Ongoing), University of Oxford</p>
 			<div class="bio-opening"><?php foreach ( array_slice( $amk_bio, 0, 1 ) as $amk_s ) : ?><p><?php echo esc_html( $amk_s ); ?></p><?php endforeach; ?></div>
 			<a class="text-link" href="mailto:<?php echo esc_attr( $amk_email ); ?>">Get in touch <span aria-hidden="true">→</span></a>
 		</div>
