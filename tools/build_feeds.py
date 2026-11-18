@@ -41,7 +41,8 @@ def excerpt(text, n=170):
 
 def philosophy_posts(today):
     log = file_text(PHILOSOPHY_REPO, "LOG.md")
-    # Bangla titles by post file name; posts without one fall back to the English LOG.md topic.
+    # Bangla titles by post file name. A post without one keeps the English LOG.md topic here (for the
+    # mockup), is marked "needs_title", and publish_feeds.py holds it back until a Bangla title is added.
     titles = json.loads(TITLES.read_text(encoding="utf-8"))
     posts = []
     for row in re.findall(r"^\| (\d{4}-\d{2}-\d{2}) \| (.+?) \| \[(posts/[^\]]+)\]\([^)]+\) \| (.+?) \|$", log, re.M):
@@ -60,6 +61,7 @@ def philosophy_posts(today):
             "date": live.isoformat(),
             "title": titles.get(stem, topic),
             "title_en": topic,
+            "needs_title": stem not in titles,
             "excerpt": excerpt(body[0]),
             "theme": "faith",
             "cats": ["স্রষ্টার অস্তিত্বের যুক্তি", "দর্শন"],

@@ -6,6 +6,9 @@
 - Daily "AI in Healthcare" roundups (abdullahdmc/AI-in-healthcare) -> category "AI in health research".
 - Philosophy posts (abdullahdmc/bangla-facebook-post-creator) that the author has reviewed, one week
   after they were written, with their Bangla title -> category দর্শন and tag "স্রষ্টার অস্তিত্বের যুক্তি".
+  A Bangla post is never published with an English title: without an entry in philosophy_titles.json it
+  is held back ("HELD") until one is added. If a published post's title differs from the titles file,
+  the title is corrected on WordPress and its cover remade.
 
 Each post gets a fixed slug, so running this again never creates duplicates.
 """
@@ -50,10 +53,20 @@ def main(dry_run):
     feed = philosophy_posts(date.today()) + ai_posts()
     ai_cat = term_id(wp, "categories", *AI_CATEGORY) if not dry_run else None
     series = term_id(wp, "tags", *SERIES_TAG) if not dry_run else None
-    created = 0
+    created, retitled = 0, []
     for post in sorted(feed, key=lambda p: p["date"]):
         slug = slug_for(post)
-        if wp.get("/wp/v2/posts", slug=slug, status="publish,future,draft,private", _fields="id"):
+        found = wp.get("/wp/v2/posts", slug=slug, status="publish,future,draft,private", _fields="id,title")
+        if found:
+            current = html.unescape(found[0]["title"]["rendered"])
+            if post["source"] == "philosophy" and not post.get("needs_title") and current != post["title"]:
+                print(("would retitle" if dry_run else "retitle"), found[0]["id"], "|", current, "->", post["title"], flush=True)
+                if not dry_run:
+                    wp.post(f"/wp/v2/posts/{found[0]['id']}", {"title": post["title"]})
+                    retitled.append(found[0]["id"])
+            continue
+        if post.get("needs_title"):
+            print("HELD (no Bangla title yet)", post["date"], slug, "|", post["title_en"], flush=True)
             continue
         print(("would publish" if dry_run else "publish"), post["date"], slug, "|", post["title"][:60], flush=True)
         if dry_run:
@@ -68,9 +81,11 @@ def main(dry_run):
             data.update(categories=[PHILOSOPHY_CATEGORY_ID], tags=[series])
         wp.post("/wp/v2/posts", data)
         created += 1
-    print(f"{created} new posts", flush=True)
+    print(f"{created} new posts, {len(retitled)} retitled", flush=True)
     if created:
         make_covers.main(upload=True)
+    if retitled:  # the title is drawn on the cover, so remake those covers
+        make_covers.main(upload=True, ids=retitled)
 
 
 if __name__ == "__main__":
