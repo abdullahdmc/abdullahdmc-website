@@ -4,8 +4,8 @@ window.PROFILE = {
   email: "abdullahdmc@gmail.com",
   bio: [
     "Dr. Md Abdullah Saeed Khan is a physician and epidemiologist from Bangladesh and a DPhil fellow in Clinical Medicine at the University of Oxford, working with the Mahidol Oxford Tropical Medicine Research Unit (MORU). His doctoral work develops machine-learning prediction tools for the management of febrile illness with the South East Asian Community Trial Network (SEACTN).",
-    "He is an Assistant Professor of Epidemiology under the Ministry of Health and Family Welfare, Bangladesh, currently on deputation to Oxford. He trained in medicine at Dhaka Medical College (MBBS, University of Dhaka), then earned an MPH in Epidemiology from North South University and an MPhil in Preventive and Social Medicine from the National Institute of Preventive and Social Medicine (NIPSOM), where he placed first. Before Oxford he taught at NIPSOM and at Shaheed Syed Nazrul Islam Medical College, and worked as a clinician at the Infectious Disease Hospital, Dhaka, and Rajshahi Medical College Hospital.",
-    "His research covers infectious diseases (tetanus, dengue, COVID-19, tuberculosis), noncommunicable diseases, mental health, quality of life, economic evaluation and health systems. Since 2017 he has analysed data for more than 300 research projects, and he is a Global Burden of Disease (GBD) collaborator. His goal is to become an expert in health data science, applying artificial intelligence and machine learning to preventive and curative medicine.",
+    "He is an epidemiologist, public health expert and physician under the Ministry of Health and Family Welfare, Bangladesh, currently on deputation to Oxford. He trained in medicine at Dhaka Medical College (MBBS, University of Dhaka), then earned an MPH in Epidemiology from North South University and an MPhil in Preventive and Social Medicine from the National Institute of Preventive and Social Medicine (NIPSOM), where he placed first. Before Oxford he taught at NIPSOM and at Shaheed Syed Nazrul Islam Medical College, and worked as a clinician at the Infectious Disease Hospital, Dhaka, and Rajshahi Medical College Hospital.",
+    "His research covers infectious diseases (tetanus, dengue, COVID-19, chikungunya, tuberculosis, rabies), noncommunicable diseases, mental health, quality of life, economic evaluation and health systems. Since 2017 he has analysed data for more than 300 research projects, and he is a Global Burden of Disease (GBD) collaborator. His goal is to become an expert in health data science, applying artificial intelligence and machine learning to preventive and curative medicine.",
     "Outside research, he writes in Bangla on science, philosophy, faith and health, and runs two YouTube channels: Truth Quest and Research Notes.",
   ],
   affiliations: [
@@ -74,6 +74,7 @@ window.PROFILE = {
     ],
     tools: ["R", "Stata", "SPSS", "Python", "ArcGIS", "NVivo 12"],
     teaching: [
+      ["Public Health (Master of Public Health students)", "National Institute of Preventive and Social Medicine (NIPSOM)", "2024 – 2025", ""],
       ["Pharmacology (undergraduate medical students)", "Shaheed Syed Nazrul Islam Medical College", "2018 – 2020", ""],
       ["Finding and critically appraising journal articles (workshop)", "Ahsania Mission Cancer and General Hospital", "2026", "1 session"],
       ["Data analysis with Stata (basic)", "Pi Research Development Center, online", "2022", "4 sessions"],
@@ -85,7 +86,7 @@ window.PROFILE = {
     ],
   },
   awards: [
-    "Prime Minister Fellowship Award: academic fees and stipend for the Oxford DPhil",
+    "Prime Minister Fellowship Award: academic fees and stipend for the Oxford DPhil (later cancelled due to political change)",
     "UGC Overseas PhD Scholarship: stipend for the Oxford DPhil",
     "Tropical Network Fund: academic fees for the Oxford DPhil",
     "First position, MPhil in Preventive and Social Medicine (NIPSOM)",
