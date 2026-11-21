@@ -105,8 +105,10 @@ window.PROFILE = {
     { title: "Cost of illness associated with tetanus in Bangladesh", role: "Principal investigator", status: "MPhil thesis completed · manuscript in preparation", with: "NIPSOM" },
   ],
   grants: [
+    { title: "Perception of validity and utilisation of large language models in medical education among undergraduate medical students", role: "Co-investigator", funder: "Centre for Medical Education, Bangladesh", amount: "BDT 350,000 (~USD 2,844)", year: "2026" },
     { title: "Controlling Nutritional Status (CONUT) score as a predictor of treatment response in lymphoma: a prospective cohort study", role: "Co-investigator", funder: "MA Rashid Research Grant, Hematology Society of Bangladesh", amount: "BDT 200,000 (~USD 1,625)", year: "2026" },
-    { title: "Challenges in healthcare delivery, initiation and maintenance among HIV/AIDS patients: a mixed-method study", role: "Co-investigator", funder: "AIDS/STD Programme, DGHS, Ministry of Health and Family Welfare, Bangladesh", amount: "BDT 500,000 (~USD 4,063)", year: "2024" },
+    { title: "Vulnerability, pattern and healthcare expenditure of cancer in urban and rural communities in Bangladesh", role: "Co-investigator", funder: "National Institute of Preventive and Social Medicine (NIPSOM)", amount: "BDT 2,200,000 (~USD 17,734)", year: "2024" },
+    { title: "Challenges in healthcare delivery, initiation and maintenance among HIV/AIDS patients: a mixed-method study", role: "Co-investigator", funder: "AIDS/STD Programme, DGHS, Ministry of Health and Family Welfare, Bangladesh", amount: "BDT 500,000 (~USD 4,063)", year: "2023" },
     { title: "Effectiveness of the Residential Field Site Training (RFST) programme for undergraduate medical students in Bangladesh", role: "Co-investigator", funder: "World Health Organization, Bangladesh (Evidence Generation and Capacity Building for Public Health Education and Research)", amount: "BDT 3,956,350 (~USD 32,149)", year: "2023" },
   ],
   editorial: [
