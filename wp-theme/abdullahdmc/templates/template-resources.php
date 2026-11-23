@@ -15,7 +15,7 @@ amk_header( 'resources' );
 	<h1>Resources</h1>
 	<p class="lead">Websites and tools I have made for doctors, researchers and students.</p>
 </section>
-<section class="wrap section resource-section">
+<section class="resource-band"><div class="wrap section">
 	<?php if ( $amk_items ) : ?>
 	<div class="resource-list">
 		<?php foreach ( $amk_items as $amk_i ) : ?>
@@ -30,6 +30,6 @@ amk_header( 'resources' );
 	<?php else : ?>
 	<p class="lead">Resources will be listed here soon.</p>
 	<?php endif; ?>
-</section>
+</div></section>
 <?php
 amk_footer();
