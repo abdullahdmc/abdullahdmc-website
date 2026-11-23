@@ -105,7 +105,10 @@ window.PROFILE = {
     { title: "Cost of illness associated with tetanus in Bangladesh", role: "Principal investigator", status: "MPhil thesis completed · manuscript in preparation", with: "NIPSOM" },
   ],
   resources: [
-    { title: "Clinical Guidelines", url: "https://guidelines.abdullahdmc.com/", label: "Website", desc: "Quick-reference summaries of the latest international and Bangladesh national clinical guidelines in medicine." },
+    { title: "Clinical Guidelines", url: "https://guidelines.abdullahdmc.com/", label: "Clinical reference", desc: "Quick-reference summaries of the latest international and Bangladesh national clinical guidelines in medicine." },
+    { title: "Health Conference Tracker", url: "https://conferences.abdullahdmc.com/", label: "Conferences", desc: "Upcoming international conferences in health and health research, by subject, with abstract and registration deadlines, fees, scholarships and travel grants. Each one is flagged for whether applicants from Bangladesh and other LMICs can get support." },
+    { title: "Health Research Funding Tracker", url: "https://funding.abdullahdmc.com/", label: "Funding", desc: "Grants, fellowships and calls for proposals in health research worldwide, with deadlines, amounts and eligibility, including which calls are open to Bangladesh and other LMIC applicants, plus national funds in South and Southeast Asia." },
+    { title: "Open Health Databases", url: "https://healthdata.abdullahdmc.com/", label: "Data", desc: "A catalogue of about 400 freely available health and clinical datasets, such as MIMIC-IV, eICU, NHANES, TCGA and PhysioNet, from ICU records and imaging to genomics and population surveys, each with a short description, the original article and how to get access." },
   ],
   grants: [
     { title: "Perception of validity and utilisation of large language models in medical education among undergraduate medical students", role: "Co-investigator", funder: "Centre for Medical Education, Bangladesh", amount: "BDT 350,000 (~USD 2,844)", year: "2026" },
