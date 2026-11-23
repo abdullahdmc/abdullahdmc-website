@@ -104,6 +104,9 @@ window.PROFILE = {
     { title: "Optimizing prediction of HPV vaccine acceptance with machine learning in a low- and middle-income country", role: "Principal investigator", status: "Analysis ongoing", with: "" },
     { title: "Cost of illness associated with tetanus in Bangladesh", role: "Principal investigator", status: "MPhil thesis completed · manuscript in preparation", with: "NIPSOM" },
   ],
+  resources: [
+    { title: "Clinical Guidelines", url: "https://guidelines.abdullahdmc.com/", label: "Website", desc: "Quick-reference summaries of the latest international and Bangladesh national clinical guidelines in medicine." },
+  ],
   grants: [
     { title: "Perception of validity and utilisation of large language models in medical education among undergraduate medical students", role: "Co-investigator", funder: "Centre for Medical Education, Bangladesh", amount: "BDT 350,000 (~USD 2,844)", year: "2026" },
     { title: "Controlling Nutritional Status (CONUT) score as a predictor of treatment response in lymphoma: a prospective cohort study", role: "Co-investigator", funder: "MA Rashid Research Grant, Hematology Society of Bangladesh", amount: "BDT 200,000 (~USD 1,625)", year: "2026" },

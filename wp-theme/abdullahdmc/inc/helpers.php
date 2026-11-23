@@ -294,6 +294,7 @@ function amk_header( $active = '' ) {
 	$links = array(
 		'writing'      => array( amk_writing_url(), 'Writing' ),
 		'research'     => array( amk_page_url( 'research' ), 'Research' ),
+		'resources'    => array( amk_page_url( 'resources' ), 'Resources' ),
 		'biography'    => array( amk_page_url( 'biography' ), 'Biography' ),
 		'consultation' => array( amk_page_url( 'consultation' ), 'Consultation' ),
 	);
@@ -327,6 +328,7 @@ function amk_footer() {
 	$links = array(
 		'Writing'      => amk_writing_url(),
 		'Research'     => amk_page_url( 'research' ),
+		'Resources'    => amk_page_url( 'resources' ),
 		'Biography'    => amk_page_url( 'biography' ),
 		'Consultation' => amk_page_url( 'consultation' ),
 	);

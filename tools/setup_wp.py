@@ -20,6 +20,7 @@ PAGES = {  # slug: (title, template)
     "writing": ("Writing", ""),
     "research": ("Research", "templates/template-research.php"),
     "biography": ("Biography", "templates/template-biography.php"),
+    "resources": ("Resources", "templates/template-resources.php"),
     "consultation": ("Consultation", "templates/template-consultation.php"),
 }
 

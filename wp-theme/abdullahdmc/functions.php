@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AMK_VERSION', '2.0.5' );
+define( 'AMK_VERSION', '2.0.6' );
 
 require_once __DIR__ . '/inc/helpers.php';
 require_once __DIR__ . '/inc/components.php';
@@ -136,7 +136,7 @@ add_filter( 'body_class', function ( $classes ) {
 	if ( ! is_front_page() ) {
 		$classes[] = 'inner-page';
 	}
-	if ( is_404() || in_array( get_page_template_slug(), array( 'templates/template-research.php', 'templates/template-biography.php', 'templates/template-consultation.php' ), true ) ) {
+	if ( is_404() || in_array( get_page_template_slug(), array( 'templates/template-research.php', 'templates/template-biography.php', 'templates/template-consultation.php', 'templates/template-resources.php' ), true ) ) {
 		$classes[] = 'latin-page';
 	}
 	return $classes;

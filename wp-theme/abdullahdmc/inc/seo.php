@@ -43,6 +43,10 @@ function amk_page_seo() {
 			'Biography · Dr. ' . AMK_NAME . ', Epidemiologist',
 			'Dr. ' . AMK_NAME . ': Epidemiologist & Public Health Specialist, DPhil (ongoing) in Clinical Medicine at the University of Oxford (MORU). Education, affiliations, experience, training and awards.',
 		),
+		'templates/template-resources.php'    => array(
+			'Resources · Dr. ' . AMK_NAME,
+			'Websites and tools by Dr. ' . AMK_NAME . ' for doctors, researchers and students, including quick-reference summaries of clinical guidelines.',
+		),
 		'templates/template-consultation.php' => array(
 			'Health Research Consultation: Proposals, Data Analysis & Manuscripts · Dr. ' . AMK_NAME,
 			'Independent consultation on health research proposal development, statistical data analysis (R, Stata, SPSS, Python), manuscript writing and review. Email for fee details.',
