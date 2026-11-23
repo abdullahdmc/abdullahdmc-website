@@ -339,9 +339,9 @@ function amk_footer() {
 	<div class="wrap footer-bottom">
 		<div><a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">Md Abdullah Saeed Khan</a><p>© <?php echo esc_html( wp_date( 'Y' ) ); ?> Md Abdullah Saeed Khan</p><a href="mailto:<?php echo esc_attr( amk_email() ); ?>"><?php echo esc_html( amk_email() ); ?></a></div>
 		<nav aria-label="Footer navigation"><?php foreach ( $links as $label => $url ) : ?><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a><?php endforeach; ?></nav>
-		<a class="back-top" href="#top" aria-label="Back to top">↑</a>
 	</div>
 </footer>
+<a class="to-top" id="to-top" href="#top" aria-label="Back to top"><span aria-hidden="true">↑</span> Top</a>
 <?php wp_footer(); ?>
 </body>
 </html>

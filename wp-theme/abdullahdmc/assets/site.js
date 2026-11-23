@@ -138,3 +138,17 @@ if (oxfordSketch && !motion.matches && 'IntersectionObserver' in window) {
     }
   });
 }
+
+// Floating "Top" button: shows once the reader is a screen down the page.
+const toTop = document.querySelector('#to-top');
+if (toTop) {
+  let topQueued = false;
+  const showTop = () => { topQueued = false; toTop.classList.toggle('show', scrollY > innerHeight * 0.8); };
+  addEventListener('scroll', () => { if (!topQueued) { topQueued = true; requestAnimationFrame(showTop); } }, {passive: true});
+  showTop();
+  toTop.addEventListener('click', event => {
+    event.preventDefault();
+    scrollTo({top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    toTop.blur();
+  });
+}
